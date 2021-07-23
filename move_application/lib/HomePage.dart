@@ -20,40 +20,30 @@ class _HomePageState extends State<HomePage> {
       body: RefreshIndicator(
         onRefresh: _onReFresh,
         child: SingleChildScrollView(
-
           physics: AlwaysScrollableScrollPhysics(),
           child: Container(
-
             // decoration: BoxDecoration(
             //   border: Border(bottom: BorderSide(color: Colors.yellow,width: 5)),
             // ),
             //위쪽 상태바 바로 아래서 시작
-            padding: EdgeInsets.only(top: MediaQuery
-                .of(context)
-                .padding
-                .top),
-
+            padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
 
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.menu),
-                    ),
-                    Spacer(),
-                    Text('비켜!',
+
+                    Text('   비켜',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25,
                             color: Colors.black)),
-                    Spacer(),
                     IconButton(
                       icon: Icon(
-                        Icons.gps_fixed,
-                        color: Colors.white,
+                        Icons.doorbell_sharp,
+                        color: Colors.black,
+                        size: 35,
                       ),
                       onPressed: () {},
                     )
@@ -64,207 +54,256 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Row(
-                      //   children: [
-                      //     Expanded(
-                      //       child: Container(
-                      //         margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                      //         height: 100,
-                      //         decoration: BoxDecoration(
-                      //           border: Border(
-                      //               bottom: BorderSide(
-                      //                   color: Colors.yellow, width: 5),
-                      //               top: BorderSide(
-                      //                   color: Colors.yellow, width: 5),
-                      //               right: BorderSide(
-                      //                   color: Colors.yellow, width: 5),
-                      //               left: BorderSide(
-                      //                   color: Colors.yellow, width: 5)),
-                      //         ),
-                      //         child: Column(
-                      //           mainAxisAlignment: MainAxisAlignment.center,
-                      //           children: [
-                      //             Text(
-                      //               "김민석",
-                      //               style: TextStyle(
-                      //                   fontSize: 40,
-                      //                   fontWeight: FontWeight.bold,
-                      //                   color: Colors.black),
-                      //               textAlign: TextAlign.center,
-                      //             )
-                      //           ],
-                      //         ),
-                      //       ),
-                      //     )
-                      //   ],
-                      // ),
+                      Container(
+                        height: 30,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.1,
+                            ),
+                            VerticalDivider(
+                              color: Colors.white,
+                              thickness: 4,
+                            ),
+                            Container(
+                                width: MediaQuery.of(context).size.width * 0.0),
+                            VerticalDivider(
+                              color: Colors.white,
+                              thickness: 4,
+                            ),
+                            Container(
+                                width: MediaQuery.of(context).size.width * 0.1),
+                          ],
+                        ),
+                      ),
                       Stack(
                         children: <Widget>[
                           Container(
-                            height: MediaQuery.of(context).size.height*0.35,
-
+                            height: MediaQuery.of(context).size.height * 0.35,
                             decoration: BoxDecoration(
-
-                                color: Colors.yellow[300],
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(36),
-                                  bottomRight: Radius.circular(36),
-                                )
+                              color: Colors.yellow[300],
                             ),
                           ),
                           Positioned(
-                            top: 35,
-                              left: 0,
+                              top: 35,
+                              left: 150,
                               right: 0,
                               child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 35.0),
-                                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                                height: 80,
-                                decoration: BoxDecoration(
-
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          offset: Offset(0,10),
-                                          blurRadius: 50,
-                                          color:Colors.yellow.shade300.withOpacity(0.4),
-                                      )
-                                    ]
-
-                                ),
-                                child:Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('김민석',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 35),)
-                                  ],
-                                )
-                              )),Positioned(
-                              top: 120,
-                              left: 0,
-                              right: 0,
-                              child: Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 35.0),
-                                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                  margin:
+                                      EdgeInsets.symmetric(horizontal: 18.0),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 20.0),
                                   height: 80,
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(20),
                                       boxShadow: [
                                         BoxShadow(
-                                          offset: Offset(0,10),
+                                          offset: Offset(0, 10),
                                           blurRadius: 50,
-                                          color:Colors.yellow.shade300.withOpacity(0.4),
+                                          color: Colors.yellow.shade300
+                                              .withOpacity(0.4),
                                         )
-                                      ]
-
-                                  ),
-                                  child:Column(
+                                      ]),
+                                  child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text('회원번호 : 5581',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 35),),
-                                      SizedBox(height: 3,),
-                                      Text('회원번호를 타인과 공유하지마세용',style: TextStyle(
-                                                                fontSize: 15,
-                                                                fontWeight: FontWeight.bold,
-                                                                color: Colors.grey[700]),),
+                                      Text(
+                                        '김민석',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 35),
+                                      )
                                     ],
-                                  )
+                                  ))),
+                          Positioned(
+                              top: 120,
+                              left: 150,
+                              right: 0,
+                              child: Container(
+                                  margin:
+                                      EdgeInsets.symmetric(horizontal: 18.0),
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 20.0),
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          offset: Offset(0, 10),
+                                          blurRadius: 50,
+                                          color: Colors.yellow.shade300
+                                              .withOpacity(0.4),
+                                        )
+                                      ]),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '회원번호 : 5581',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 25),
+                                      ),
+                                      SizedBox(
+                                        height: 3,
+                                      ),
+                                      Text(
+                                        '회원번호를 타인과 공유하지마세용',
+                                        style: TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey[700]),
+                                      ),
+                                    ],
+                                  ))),
+                          Positioned(
+                              top: 50,
+                              left: -240,
+                              right: 0,
+                              child: Container(
+                                width: 0,
+                                height: 140,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            'https://yt3.ggpht.com/ytc/AKedOLTrg1TdPY-UQFlUQNtjFRrHCmtHsQbZNsAZnDlW=s900-c-k-c0x00ffffff-no-rj'))),
                               ))
                         ],
                       ),
-                      // Row(
-                      //   children: [
-                      //     Expanded(
-                      //         child: Container(
-                      //           margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                      //           height: 100,
-                      //           child: Container(
-                      //               decoration: BoxDecoration(
-                      //                 border: Border(
-                      //                     bottom: BorderSide(
-                      //                         color: Colors.yellow, width: 5),
-                      //                     right: BorderSide(
-                      //                         color: Colors.yellow, width: 5),
-                      //                     left: BorderSide(
-                      //                         color: Colors.yellow, width: 5)),
-                      //               ),
-                      //               child: Column(
-                      //                 mainAxisAlignment: MainAxisAlignment
-                      //                     .center,
-                      //                 children: [
-                      //                   Text(
-                      //                     "회원번호 : 5581",
-                      //                     style: TextStyle(
-                      //                         fontSize: 30,
-                      //                         fontWeight: FontWeight.bold,
-                      //                         color: Colors.white),
-                      //                     textAlign: TextAlign.center,
-                      //                   ),
-                      //                   SizedBox(
-                      //                     height: 10,
-                      //                   ),
-                      //                   Text(
-                      //                     "회원번호를 타인과 공유하지마세용",
-                      //                     style: TextStyle(
-                      //                         fontSize: 15,
-                      //                         fontWeight: FontWeight.bold,
-                      //                         color: Colors.grey[700]),
-                      //                     textAlign: TextAlign.center,
-                      //                   ),
-                      //                 ],
-                      //               )),
-                      //         ))
-                      //   ],
-                      // ),
-                      SizedBox(height:MediaQuery.of(context).size.height*0.1),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.08),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Expanded(
-                            child: Container(
-                              margin: EdgeInsets.all(10),
-                              child: Column(
-                                children: [
-                                  Row(children: [
-                                    Text('1. 헬스장', style: TextStyle(
+                          Column(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 2, color: Colors.white),
+                                    color: Colors.yellow.shade300,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20))),
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(15, 5, 50, 5),
+                                  child: Text(
+                                    'WELLSFIT . 웰스핏',
+                                    style: TextStyle(
+                                        color: Colors.black,
                                         fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),)
-                                  ],), Row(children: [
-                                    Text(
-                                        '  -  2021-07-01 ~ 2021-08-01 / 30회 이용가능',
-                                        style: TextStyle(
-                                            fontSize: 15, color: Colors.white))
-                                  ],),
-                                  SizedBox(height: 20,),
-                                  Row(children: [
-                                    Text('2. PT(김태엽 T)', style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),)
-                                  ],), Row(children: [
-                                    Text('  - 15회 이용가능', style: TextStyle(
-                                        fontSize: 15, color: Colors.white))
-                                  ],),
-                                  SizedBox(height: 20,),
-                                  Row(children: [
-                                    Text('3. GX(싸이클)', style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),)
-                                  ],), Row(children: [
-                                    Text(
-                                        '  -  2021-06-01 ~ 2021-09-01 / 72회 이용가능',
-                                        style: TextStyle(
-                                            fontSize: 15, color: Colors.white))
-                                  ],)
-                                ],
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
                               ),
-                            ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 2, color: Colors.white),
+                                    color: Colors.yellow.shade300,
+
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.fromLTRB(15, 5, 15, 5),
+                                      child: Text(
+                                        '21.07.01 ~ 21.08.01',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                      EdgeInsets.fromLTRB(15, 5, 15, 5),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('현재 이용자 수',style: TextStyle(color: Colors.black,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),),
+                                          Text('N / 코로나 가능 인원수',style: TextStyle(color: Colors.black,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.8,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 2, color: Colors.white),
+                                    color: Colors.yellow.shade300,
+                                  borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(20),
+                                      bottomLeft: Radius.circular(20))
+                                      ),
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'PT (김태엽T)',
+
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            '07 - 23',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            '하체수업                     ',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            'n/15회',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+
+
+                                    ],
+                                  ),
+
+
+                                ),
+                              ),
+                              SizedBox(
+                                  height: MediaQuery.of(context).size.height * 0.1),
+                            ],
                           )
                         ],
-                      ),
-                      SizedBox(height:MediaQuery.of(context).size.height*0.1)
+                      )
                     ],
                   ),
                 ),
@@ -292,9 +331,10 @@ class _HomePageState extends State<HomePage> {
           ),
           TabItem(
               icon: Image.asset(
-                "icons/reservation-icon-5.jpg",
-                color: Colors.yellow[500], scale: 30,
-              )),
+            "icons/reservation-icon-5.jpg",
+            color: Colors.yellow[500],
+            scale: 30,
+          )),
           TabItem(icon: Icons.person),
         ],
       ),
