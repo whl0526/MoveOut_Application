@@ -1,6 +1,7 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:move_application/view/home.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,6 +14,8 @@ class _HomePageState extends State<HomePage> {
     print('d');
   }
 
+  int selectedPage = 0;
+  final _pageOptions = [HomePage(),Reservation(),Reservation()];
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -31,6 +34,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 Row(
+
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
@@ -49,8 +53,9 @@ class _HomePageState extends State<HomePage> {
                     )
                   ],
                 ),
+                Divider(color: Colors.yellow,thickness: 2,height: 0,),
                 Container(
-                  color: Colors.black,
+                  color: Colors.white,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -63,13 +68,13 @@ class _HomePageState extends State<HomePage> {
                               width: MediaQuery.of(context).size.width * 0.1,
                             ),
                             VerticalDivider(
-                              color: Colors.white,
+                              color: Colors.yellow.shade300,
                               thickness: 4,
                             ),
                             Container(
                                 width: MediaQuery.of(context).size.width * 0.0),
                             VerticalDivider(
-                              color: Colors.white,
+                              color: Colors.yellow.shade300,
                               thickness: 4,
                             ),
                             Container(
@@ -86,58 +91,27 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Positioned(
-                              top: 35,
-                              left: 150,
+                              top: 65,
+                              left: 25,
                               right: 0,
-                              child: Container(
-                                  margin:
-                                      EdgeInsets.symmetric(horizontal: 18.0),
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 20.0),
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          offset: Offset(0, 10),
-                                          blurRadius: 50,
-                                          color: Colors.yellow.shade300
-                                              .withOpacity(0.4),
-                                        )
-                                      ]),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        '김민석',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 35),
-                                      )
-                                    ],
-                                  ))),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '김민석',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 35),
+                                  )
+                                ],
+                              )
+                              ),
                           Positioned(
                               top: 120,
-                              left: 150,
+                              left: 100,
                               right: 0,
                               child: Container(
-                                  margin:
-                                      EdgeInsets.symmetric(horizontal: 18.0),
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 20.0),
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          offset: Offset(0, 10),
-                                          blurRadius: 50,
-                                          color: Colors.yellow.shade300
-                                              .withOpacity(0.4),
-                                        )
-                                      ]),
+
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -150,13 +124,7 @@ class _HomePageState extends State<HomePage> {
                                       SizedBox(
                                         height: 3,
                                       ),
-                                      Text(
-                                        '회원번호를 타인과 공유하지마세용',
-                                        style: TextStyle(
-                                            fontSize: 11,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.grey[700]),
-                                      ),
+
                                     ],
                                   ))),
                           Positioned(
@@ -184,14 +152,16 @@ class _HomePageState extends State<HomePage> {
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.8,
                                 decoration: BoxDecoration(
-                                    border: Border.all(
-                                        width: 2, color: Colors.white),
+                                    border:
+                                    Border.all(
+                                        width: 2, color: Colors.black),
                                     color: Colors.yellow.shade300,
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(20),
                                         topRight: Radius.circular(20))),
                                 child: Padding(
                                   padding: EdgeInsets.fromLTRB(15, 5, 50, 5),
+                                  
                                   child: Text(
                                     'WELLSFIT . 웰스핏',
                                     style: TextStyle(
@@ -204,8 +174,10 @@ class _HomePageState extends State<HomePage> {
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.8,
                                 decoration: BoxDecoration(
-                                    border: Border.all(
-                                        width: 2, color: Colors.white),
+                                    border: Border(
+                                      right: BorderSide(width: 2, color: Colors.black),
+                                        left:  BorderSide(width: 2, color: Colors.black),
+                                       ),
                                     color: Colors.yellow.shade300,
 
                                 ),
@@ -245,7 +217,7 @@ class _HomePageState extends State<HomePage> {
                                 width: MediaQuery.of(context).size.width * 0.8,
                                 decoration: BoxDecoration(
                                     border: Border.all(
-                                        width: 2, color: Colors.white),
+                                        width: 2, color: Colors.black),
                                     color: Colors.yellow.shade300,
                                   borderRadius: BorderRadius.only(
                                       bottomRight: Radius.circular(20),
@@ -337,6 +309,15 @@ class _HomePageState extends State<HomePage> {
           )),
           TabItem(icon: Icons.person),
         ],
+
+        onTap: (int index){
+          // if(index == 1){
+          //   setState(() {
+          //     final res =  Navigator.push(context, MaterialPageRoute(builder: (context)=> Reservation()));
+          //   });
+          // }
+
+        },
       ),
     );
     throw UnimplementedError();
