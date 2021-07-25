@@ -30,8 +30,7 @@ class _HomePageState extends State<HomePage> {
             // ),
             //위쪽 상태바 바로 아래서 시작
             padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-	//Column으로 설정하여 세로로 채워나갔다
-	// appbar를 통해 비켜 상태창을 변경하여 UI개선을 해야함
+
             child: Column(
               children: [
                 Row(
