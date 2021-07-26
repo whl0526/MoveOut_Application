@@ -39,10 +39,4 @@ class Reservation extends StatelessWidget{
         )
     );
   }
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
-  }
 }

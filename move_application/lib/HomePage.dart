@@ -20,6 +20,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      // appBar: AppBar(
+      //   title: Text('비켜'),
+      // ),
       body: RefreshIndicator(
         onRefresh: _onReFresh,
         child: SingleChildScrollView(
@@ -42,6 +45,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25,
+                            fontFamily: 'BMHANNAPro',
                             color: Colors.black)),
                     IconButton(
                       icon: Icon(
@@ -101,6 +105,7 @@ class _HomePageState extends State<HomePage> {
                                     '김민석',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
+                                        fontFamily: "BMHANNAPro",
                                         fontSize: 35),
                                   )
                                 ],
@@ -206,6 +211,7 @@ class _HomePageState extends State<HomePage> {
                                               fontWeight: FontWeight.bold),),
                                           Text('N / 코로나 가능 인원수',style: TextStyle(color: Colors.black,
                                               fontSize: 15,
+                                              fontFamily: 'BMHANNAPro',
                                               fontWeight: FontWeight.bold))
                                         ],
                                       ),
