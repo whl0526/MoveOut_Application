@@ -35,12 +35,14 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
 
             child: Column(
+
               children: [
+
                 Row(
 
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-
+                    IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
                     Text('   비켜',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -59,33 +61,34 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Divider(color: Colors.yellow,thickness: 2,height: 0,),
                 Container(
+
                   color: Colors.white,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 30,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.1,
-                            ),
-                            VerticalDivider(
-                              color: Colors.yellow.shade300,
-                              thickness: 4,
-                            ),
-                            Container(
-                                width: MediaQuery.of(context).size.width * 0.0),
-                            VerticalDivider(
-                              color: Colors.yellow.shade300,
-                              thickness: 4,
-                            ),
-                            Container(
-                                width: MediaQuery.of(context).size.width * 0.1),
-                          ],
-                        ),
-                      ),
+                      // Container(
+                      //   height: 30,
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //     children: [
+                      //       Container(
+                      //         width: MediaQuery.of(context).size.width * 0.1,
+                      //       ),
+                      //       VerticalDivider(
+                      //         color: Colors.yellow.shade300,
+                      //         thickness: 4,
+                      //       ),
+                      //       Container(
+                      //           width: MediaQuery.of(context).size.width * 0.0),
+                      //       VerticalDivider(
+                      //         color: Colors.yellow.shade300,
+                      //         thickness: 4,
+                      //       ),
+                      //       Container(
+                      //           width: MediaQuery.of(context).size.width * 0.1),
+                      //     ],
+                      //   ),
+                      // ),
                       Stack(
                         children: <Widget>[
                           Container(
@@ -105,7 +108,6 @@ class _HomePageState extends State<HomePage> {
                                     '김민석',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontFamily: "BMHANNAPro",
                                         fontSize: 35),
                                   )
                                 ],
@@ -116,10 +118,10 @@ class _HomePageState extends State<HomePage> {
                               left: 100,
                               right: 0,
                               child: Container(
-
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
+                                      SizedBox(height: 5,),
                                       Text(
                                         '회원번호 : 5581',
                                         style: TextStyle(
@@ -156,6 +158,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Container(
                                 width: MediaQuery.of(context).size.width * 0.8,
+                                height: 50,
                                 decoration: BoxDecoration(
                                     border:
                                     Border.all(
@@ -167,12 +170,18 @@ class _HomePageState extends State<HomePage> {
                                 child: Padding(
                                   padding: EdgeInsets.fromLTRB(15, 5, 50, 5),
                                   
-                                  child: Text(
-                                    'WELLSFIT . 웰스핏',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'WELLSFIT . 웰스핏',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
@@ -220,6 +229,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Container(
+                                height:70,
                                 width: MediaQuery.of(context).size.width * 0.8,
                                 decoration: BoxDecoration(
                                     border: Border.all(
@@ -232,6 +242,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Padding(
                                   padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
                                   child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
