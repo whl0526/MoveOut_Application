@@ -1,61 +1,21 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-
+import '../constants.dart';
 
 class home extends StatelessWidget{
 
   Widget build(BuildContext context){
     return Scaffold(
-      // body: RefreshIndicator(
-      //   onRefresh: _onReFresh,
-      //   child: SingleChildScrollView(
-      //     physics: AlwaysScrollableScrollPhysics(),
-      //     child: Container(
-      //       //위쪽 상태바 바로 아래서 시작
-      //
-      //
-      //       child:
-      //       _pageOptions[selectedPage]
-      //       // home()
-      //       ,
-      //
-      //     ),
-      //   ),
-      // ),
-
       body: Container(
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child:Column(
       children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
-            Text('   비켜',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    fontFamily: 'BMHANNAPro',
-                    color: Colors.black)),
-            IconButton(
-              icon: Icon(
-                Icons.doorbell_sharp,
-                color: Colors.black,
-                size: 35,
-              ),
-              onPressed: () {},
-            )
-          ],
-        ),
-        Divider(color: Colors.yellow,thickness: 2,height: 0,),
         Container(
 
           color: Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
-              // ),
               Stack(
                 children: <Widget>[
                   Container(
@@ -117,7 +77,7 @@ class home extends StatelessWidget{
                 ],
               ),
               SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.08),
+                  height: MediaQuery.of(context).size.height * 0.06),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -125,7 +85,7 @@ class home extends StatelessWidget{
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width * 0.8,
-                        height: 50,
+                        height: MediaQuery.of(context).size.height*0.07,
                         decoration: BoxDecoration(
                             border:
                             Border.all(
@@ -153,6 +113,7 @@ class home extends StatelessWidget{
                         ),
                       ),
                       Container(
+                        height: MediaQuery.of(context).size.height*0.12,
                         width: MediaQuery.of(context).size.width * 0.8,
                         decoration: BoxDecoration(
                           border: Border(
@@ -163,6 +124,7 @@ class home extends StatelessWidget{
 
                         ),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
@@ -215,47 +177,22 @@ class home extends StatelessWidget{
                               Text(
                                 'PT (김태엽T)',
 
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                                style: MyTextStyle(size: 20),
                               ),
+                              SizedBox(height: MediaQuery.of(context).size.height*0.005,),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
+                                  Text('07 - 23',style: MyTextStyle(size: 15),),
+                                  Text( '하체수업                     ',style: MyTextStyle(size: 15),),
                                   Text(
-                                    '07 - 23',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    '하체수업                     ',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    'n/15회',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                                    'n/15회',style: MyTextStyle(size: 15),),
                                 ],
                               ),
-
-
                             ],
                           ),
-
-
                         ),
                       ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.1),
                     ],
                   )
                 ],
