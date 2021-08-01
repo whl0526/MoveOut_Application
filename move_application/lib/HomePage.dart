@@ -9,12 +9,16 @@ import 'package:move_application/view/my_info.dart';
 import 'package:move_application/style/text_style.dart';
 import 'package:move_application/appbar.dart';
 
+import 'custom_drawer.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
+
   Future<Null> _onReFresh() async {
     setState(() {});
     print('d');
@@ -26,6 +30,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      key: _scaffoldkey,
+      drawer: CustomDrawer(),
       appBar: CustomAppbar(),
       body: _pageOptions[selectedPage],
       bottomNavigationBar: ConvexAppBar(
