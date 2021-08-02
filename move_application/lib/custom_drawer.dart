@@ -8,18 +8,21 @@ class CustomDrawer extends Drawer{
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.yellow,
-                 borderRadius: BorderRadius.only(
-                     bottomLeft: Radius.circular(40.0),
-                     bottomRight: Radius.circular(40.0)
-                 )
-            ),
-            child: Text('d'),
-          ),
+          // const DrawerHeader(
+          //   decoration: BoxDecoration(
+          //     color: Colors.yellow,
+          //        borderRadius: BorderRadius.only(
+          //            bottomLeft: Radius.circular(40.0),
+          //            bottomRight: Radius.circular(40.0)
+          //        )
+          //   ),
+          //   child: Text('비켜 이자식아'),
+          // ),
           Container(
             padding: EdgeInsets.only(left: 10),
+            margin: EdgeInsets.only(
+                top: MediaQuery.of(context).padding.top), //상태창아래로
+
             child: Row(
               children: [
                 Text(

@@ -52,6 +52,7 @@ flutter:
   assets:
     - icons/reserved.png
     - icons/reservation-icon-5.jpg
+    - icons/exercise.png
 
 
   # To add assets to your application, add an assets section, like this:

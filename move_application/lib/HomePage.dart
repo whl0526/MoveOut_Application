@@ -10,6 +10,7 @@ import 'package:move_application/style/text_style.dart';
 import 'package:move_application/appbar.dart';
 
 import 'custom_drawer.dart';
+import 'end_drawer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -32,7 +33,34 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _scaffoldkey,
       drawer: CustomDrawer(),
-      appBar: CustomAppbar(),
+      endDrawer: CustomEndDrawer(),
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            _scaffoldkey.currentState!.openDrawer();
+          },
+          icon: Icon(Icons.menu),
+          color: Colors.black,
+        ),
+        title: Text(
+          '비켜',
+          style: TitleStyle,
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              _scaffoldkey.currentState!.openEndDrawer();
+            },
+            icon: Icon(Icons.doorbell_sharp),
+            color: Colors.black,
+            iconSize: 35,
+          )
+        ],
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        shadowColor: null,
+        elevation: 0.0,
+      ),
       body: _pageOptions[selectedPage],
       bottomNavigationBar: ConvexAppBar(
         initialActiveIndex: 0,
