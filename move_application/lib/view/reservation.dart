@@ -12,11 +12,12 @@ class _Reservation extends State<Reservation> {
   String _value = '아직 날짜 선택 안됐음';
 
   Future _selectDate() async {
+    var _today =  DateTime.now();
     DateTime? picked = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
         firstDate: DateTime.now(),
-        lastDate: DateTime(2030),
+        lastDate: DateTime.now().add(Duration(days: 2)),
     );
     if(picked != null) setState(() => _value = picked.toString());
   }

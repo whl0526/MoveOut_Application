@@ -8,7 +8,6 @@ import 'package:move_application/view/reservation.dart';
 import 'package:move_application/view/my_info.dart';
 import 'package:move_application/style/text_style.dart';
 import 'package:move_application/appbar.dart';
-
 import 'custom_drawer.dart';
 import 'end_drawer.dart';
 
