@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:move_application/style/text_style.dart';
+import 'package:move_application/power_rack_1.dart';
+
+import 'appbar.dart';
 
 class weight_zone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('웨이트 존',style: MyTextStyle(size: 30),),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        shadowColor: null,
-        iconTheme: IconThemeData(color: Colors.yellow),
-
-      ),
+      appBar: CustomAppbar(),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,7 +23,13 @@ class weight_zone extends StatelessWidget {
                 children: [
                   RaisedButton(
                       child: Text('Power Rack 1'),
-                      onPressed: (){ }
+                      onPressed: ()async{
+
+                          final res = await Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Power_Rack_1()));
+                          print(res);
+
+                      }
                   ),RaisedButton(
                       child: Text('Power Rack 2'),
                       onPressed: (){ }

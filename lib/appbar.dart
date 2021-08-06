@@ -4,13 +4,10 @@ import 'package:move_application/HomePage.dart';
 
 class CustomAppbar extends AppBar{
   CustomAppbar():super(
-    leading: IconButton(onPressed: (){}, icon: Icon(Icons.menu),color: Colors.black,),
-    title: Text('비켜',style:TitleStyle,),
-    actions: [IconButton(onPressed: (){},icon : Icon(Icons.doorbell_sharp),color: Colors.black,iconSize: 35,
-    )],
+    title: Text('웨이트 존',style: MyTextStyle(size: 30),),
     centerTitle: true,
     backgroundColor: Colors.white,
     shadowColor: null,
-    elevation: 0.0,
+    iconTheme: IconThemeData(color: Colors.black),
   );
 }
