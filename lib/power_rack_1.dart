@@ -34,20 +34,49 @@ class Power_Rack_1 extends StatelessWidget{
           SizedBox(height: 20,),
           Container(color: Colors.black,height: 10,),
           Container(
-            height: MediaQuery.of(context).size.height * 0.5,
+            height: MediaQuery.of(context).size.height * 0.8,
             child: Row(
               children: [
 
                 Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width*0.5,
                   child: TimetableView(
-                    timetableStyle: TimetableStyle(timeItemTextColor: Colors.black,timelineItemColor: Colors.red),
+
+                    timetableStyle: TimetableStyle(
+                      timeItemTextColor: Colors.black,
+                      startHour: 10,
+                      endHour: 23,
+                      laneHeight: MediaQuery.of(context).size.height * 0.05,
+                      laneWidth: MediaQuery.of(context).size.width * 0.33,
+                      visibleDecorationBorder: true,
+                      decorationLineDashSpaceWidth: 0,
+
+                      decorationLineBorderColor: Colors.black,
+                      timeItemWidth: 50,
+                      cornerColor: Colors.black12,
+                      timeItemHeight: 150,
+                      timelineItemColor: Colors.yellowAccent,
+                      timelineBorderColor: Colors.black,
+
+
+                    ),
                     laneEventsList: [
                       LaneEvents(
                           lane: Lane(
-                            name: 'Track A',
+                            name: '8/6일',
+                            width:MediaQuery.of(context).size.width * 0.35,
+                            textStyle: TextStyle(color: Colors.black)
+
                           ),
-                          events: _list()
+                          events: [TableEvent(
+                              title: '',
+                              start: TableEventTime(hour:10, minute: 0),
+                              end: TableEventTime(hour: 10, minute: 15),
+                              textStyle: TextStyle(color: Colors.black,fontSize: 9,fontWeight: FontWeight.bold),
+
+                              backgroundColor: Colors.yellow
+                          ),
+                          ]
                       ),
                     ],
                   ),
@@ -64,13 +93,14 @@ class Power_Rack_1 extends StatelessWidget{
   }
   List<TableEvent> _list(){
     List<TableEvent> a = [];
-    for(int i =0;i<visibleRange;i++){
+    for(int i =0;i<visibleRange;i+2){
       a.add(TableEvent(
-          title: '${i}+11',
-          start: TableEventTime(hour: i+4, minute: 0),
-          end: TableEventTime(hour: i+4, minute: 30),
+          title: 'dddddddddddddddddddd',
+          start: TableEventTime(hour: i+8, minute: 0),
+          end: TableEventTime(hour: i+9, minute: 30),
           textStyle: TextStyle(color: Colors.black,fontSize: 50),
-          backgroundColor: Colors.blue
+
+          backgroundColor: Colors.yellow
       ));
     }
     return a;
