@@ -1,6 +1,8 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:move_application/appbar.dart';
-import 'package:move_application/view/aa.dart';
 import 'package:simple_timetable/simple_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_timetable/simple_timetable.dart';
@@ -20,66 +22,104 @@ class Event<T> {
     required this.date,
     required this.payload,
   });
+
 }
-class Power_Rack_1 extends StatelessWidget{
+class Power_Rack_1 extends StatefulWidget{
+  @override
+  _Power_Rack_1 createState() => _Power_Rack_1();
+}
+class _Power_Rack_1 extends State<Power_Rack_1>{
+  List<TableEvent> _list()  {
+    List<TableEvent> a = [];
+    for(int i =0;i<7;i++){
+      a.add(TableEvent(
+        padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+        margin: EdgeInsets.zero,
+        title: '',
+        start: TableEventTime(hour: i+10, minute: 10),
+        end: TableEventTime(hour: i+10, minute: visibleRange+8),
+        textStyle: TextStyle(
+          color: Colors.black,
+          fontSize: 10,
+          fontWeight: FontWeight.bold,
+
+        ),
+        onTap: (){
+          showDialog(context: this.context, builder: (BuildContext context){
+            return AlertDialog(
+              title: Text('예약시간 확인'),
+              content:  Text('${i}'+'시00분 ~ '+'${i}'+'시'+ '${visibleRange+8}'+'분'),
+              actions: [
+
+                new FlatButton(
+                    child: new Text("닫기"),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    })
+              ],
+            );
+          }
+          );
+        },
+        decoration: BoxDecoration(color: Colors.yellow,backgroundBlendMode:backgroundBlendMode ),
+      ));
+    }
+    return a;
+  }
+
+  final BlendMode? backgroundBlendMode = BlendMode.darken;
   DateTime _month = DateTime.now();
   DateTime _initDate = DateTime.now();
   int visibleRange = 7;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(),
       body: Column(
         children: [
-          SizedBox(height: 20,),
-          Container(color: Colors.black,height: 10,),
           Container(
-            height: MediaQuery.of(context).size.height * 0.8,
+            height: MediaQuery.of(context).size.height * 0.85,
             child: Row(
               children: [
 
                 Container(
-                  width: MediaQuery.of(context).size.width*0.5,
+                  width: MediaQuery.of(context).size.width*0.55
+                  ,
                   child: TimetableView(
-
                     timetableStyle: TimetableStyle(
                       timeItemTextColor: Colors.black,
                       startHour: 10,
                       endHour: 23,
-                      laneHeight: MediaQuery.of(context).size.height * 0.05,
-                      laneWidth: MediaQuery.of(context).size.width * 0.33,
+                      laneHeight: MediaQuery.of(context).size.height * 0.07,
+                      laneWidth: MediaQuery.of(context).size.width * 0.4,
                       visibleDecorationBorder: true,
                       decorationLineDashSpaceWidth: 0,
-
                       decorationLineBorderColor: Colors.black,
-                      timeItemWidth: 50,
-                      cornerColor: Colors.black12,
+                      timeItemWidth: 60,
                       timeItemHeight: 150,
-                      timelineItemColor: Colors.yellowAccent,
                       timelineBorderColor: Colors.black,
-
-
+                      decorationLineHeight: 150/12
                     ),
                     laneEventsList: [
                       LaneEvents(
                           lane: Lane(
-                            name: '8/6일',
-                            width:MediaQuery.of(context).size.width * 0.35,
-                            textStyle: TextStyle(color: Colors.black)
+
+                            name: 'Power_Rack_1( 8/6일 )',
+                            width:MediaQuery.of(context).size.width * 0.4,
+                            textStyle: TextStyle(color: Colors.black,),
+
 
                           ),
-                          events: [TableEvent(
-                              title: '',
-                              start: TableEventTime(hour:10, minute: 0),
-                              end: TableEventTime(hour: 10, minute: 15),
-                              textStyle: TextStyle(color: Colors.black,fontSize: 9,fontWeight: FontWeight.bold),
-
-                              backgroundColor: Colors.yellow
-                          ),
-                          ]
+                          events: _list()
                       ),
                     ],
                   ),
+                ),
+                Container(
+                    width: MediaQuery.of(context).size.width*0.45,
+                  color: Colors.black,
                 )
               ],
             ),
@@ -91,18 +131,5 @@ class Power_Rack_1 extends StatelessWidget{
       ),
     );
   }
-  List<TableEvent> _list(){
-    List<TableEvent> a = [];
-    for(int i =0;i<visibleRange;i+2){
-      a.add(TableEvent(
-          title: 'dddddddddddddddddddd',
-          start: TableEventTime(hour: i+8, minute: 0),
-          end: TableEventTime(hour: i+9, minute: 30),
-          textStyle: TextStyle(color: Colors.black,fontSize: 50),
 
-          backgroundColor: Colors.yellow
-      ));
-    }
-    return a;
-  }
 }

@@ -2,7 +2,6 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:move_application/appbar.dart';
-import 'package:move_application/constants.dart';
 import 'package:move_application/view/home.dart';
 import 'package:move_application/view/reservation.dart';
 import 'package:move_application/view/my_info.dart';
