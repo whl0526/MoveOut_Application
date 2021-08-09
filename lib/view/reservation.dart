@@ -85,9 +85,10 @@ class _Reservation extends State<Reservation> {
                     child:  Text('하체실'),
                   ),RaisedButton(
                     onPressed: () async{
+
                       final res = await Navigator.push(context,
                           MaterialPageRoute(builder: (context) => weight_zone()));
-                      print(res);
+
                     },
                     child:  Text('웨이트존'),
                   ),RaisedButton(
