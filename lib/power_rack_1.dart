@@ -67,11 +67,26 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
     return a;
   }
 
+
+  Future _selectMin() async {
+    TimeOfDay? pick_min =
+    await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now()
+    );
+
+    if (pick_min != null)
+      setState(() => _min =
+          pick_min.hour.toString() + '시' + pick_min.minute.toString() + '분');
+  }
+
+
   final BlendMode? backgroundBlendMode = BlendMode.darken;
   DateTime _month = DateTime.now();
   DateTime _initDate = DateTime.now();
+  String _min = '시작 시간 선택';
   int visibleRange = 7;
-
+  String ae = '이용 시간 선택';
 
   @override
   Widget build(BuildContext context) {
@@ -118,8 +133,78 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                   ),
                 ),
                 Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+
+                    children: [
+                      IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {
+                        _selectMin();
+                      },),
+                      Container(
+                        child: Text(_min),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.watch_sharp, size: 30),
+                        onPressed: () async {
+                          showDialog(
+                            context:context,
+                            builder: (BuildContext context){
+                              int selectedRadio = 0;
+                              return AlertDialog(
+                                content: StatefulBuilder(
+                                  builder: (BuildContext context, StateSetter setState){
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: List<Widget>.generate(4,(int index){
+                                        return RadioListTile<int>(
+                                          title: Text(((index+1)*5).toString()+'분'),
+                                          value: index,
+                                          groupValue:selectedRadio,
+                                          onChanged:(value) {
+                                            setState(()=> (selectedRadio=value!)
+                                            );
+                                          },
+
+
+                                        );
+
+                                      }),
+                                    );
+                                  },
+                                ),
+                                actions: [
+                                  new FlatButton(
+                                      child: new Text("닫기"),
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        ae = selectedRadio.toString();
+                                        setState(() {
+                                          if(ae== "0")ae= '5분';
+                                          else if(ae == "1"){
+                                            ae= '10분';
+                                          } else if(ae == "2"){
+                                            ae= '15분';
+                                          } else if(ae == "3"){
+                                            ae= '20분';
+                                          }
+                                        });
+                                      })
+                                ],
+                              );
+
+                            }
+                          );
+
+                        },
+                      ),
+                      Container(
+                        child: Text(ae),
+                      ),
+
+                    ],
+                  ),
                     width: MediaQuery.of(context).size.width*0.45,
-                  color: Colors.black,
+
                 )
               ],
             ),
@@ -131,5 +216,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
       ),
     );
   }
+
+
 
 }
