@@ -17,7 +17,7 @@ class _weight_zone extends State<weight_zone> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(),
+      appBar: CustomAppbar('웨이트'),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,6 +70,7 @@ class _weight_zone extends State<weight_zone> {
                                     if(selectedRadio == 0) _selected_day = Today.toString();
                                     else if(selectedRadio == 1) _selected_day = Tomorrow.toString();
                                     else if(selectedRadio == 2) _selected_day = The_day_after_tomorrow.toString();
+                                    Navigator.pop(context);
                                     final res = await Navigator.push(context,
                                         MaterialPageRoute(builder: (context) => Power_Rack_1(day:_selected_day,)));
 

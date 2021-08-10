@@ -9,19 +9,9 @@ class Reservation extends StatefulWidget{
 
 class _Reservation extends State<Reservation> {
 
-  String _day = '아직 날짜 선택 안됐음';
   String _min = '아직 시간 선택 안됐음';
 
-  Future _selectDay() async {
-    var _today =  DateTime.now();
-    DateTime? picked_day = await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime.now(),
-        lastDate: DateTime.now().add(Duration(days: 2)),
-    );
-    if(picked_day != null) setState(() => _day = picked_day.day.toString()+'일');
-  }
+
 
   Future _selectMin() async {
     TimeOfDay? pick_min =
@@ -46,19 +36,6 @@ class _Reservation extends State<Reservation> {
               child:  Row(
 
                 children: [
-
-                  Column(
-                    children: [
-                      IconButton(icon: Icon(Icons.padding,size: 30), onPressed: () async {
-                        _selectDay();
-                      },),
-                      SizedBox(height: 10,),
-                      Container(
-                        child: Text(_day),
-                      ),
-                    ],
-                  ),
-                  Spacer(flex: 5,),
                   Column(
                     children: [
                       IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {

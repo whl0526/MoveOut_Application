@@ -1,5 +1,6 @@
 
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:move_application/appbar.dart';
@@ -54,7 +55,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
           showDialog(context: this.context, builder: (BuildContext context){
             return AlertDialog(
               title: Text('예약시간 확인'),
-              content:  Text('${i}'+'시00분 ~ '+'${i}'+'시'+ '${visibleRange+8}'+'분'+widget.day),
+              content:  Text('${i}'+'시00분 ~ '+'${i}'+'시'+ '${visibleRange+8}'+'분'),
               actions: [
 
                 new FlatButton(
@@ -99,12 +100,12 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
   DateTime _initDate = DateTime.now();
   String _min = '시작 시간 선택';
   int visibleRange = 7;
-  String ae = '이용 시간 선택';
+  String _use_time = '이용 시간 선택';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(),
+      appBar: CustomAppbar('웨이트'),
       body: RefreshIndicator(
         onRefresh: _onReFresh,
         child: SingleChildScrollView(
@@ -113,6 +114,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
             children: [
               Container(
                 height: MediaQuery.of(context).size.height * 0.85,
+
                 child: Row(
                   children: [
 
@@ -138,7 +140,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                           LaneEvents(
                               lane: Lane(
 
-                                name: 'Power_Rack_1( 8/6일 )',
+                                name: 'Power_Rack_1 8/'+widget.day,
                                 width:MediaQuery.of(context).size.width * 0.4,
                                 textStyle: TextStyle(color: Colors.black,),
 
@@ -151,73 +153,88 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                     ),
                     Container(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                         children: [
-                          IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {
-                            _selectMin();
-                          },),
+                          SizedBox(height:MediaQuery.of(context).size.height*0.2,),
                           Container(
-                            child: Text(_min),
+                            child: Row(
+                              children: [
+                                IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {
+                                  _selectMin();
+                                },),
+                                Container(
+                                  child: Text(_min),
+                                ),
+                              ],
+                            ),
                           ),
-                          IconButton(
-                            icon: Icon(Icons.watch_sharp, size: 30),
-                            onPressed: () async {
-                              showDialog(
-                                  context:context,
-                                  builder: (BuildContext context){
-                                    int selectedRadio = 0;
-                                    return AlertDialog(
-                                      content: StatefulBuilder(
-                                        builder: (BuildContext context, StateSetter setState){
-                                          return Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: List<Widget>.generate(4,(int index){
-                                              return RadioListTile<int>(
-                                                title: Text(((index+1)*5).toString()+'분'),
-                                                value: index,
-                                                groupValue:selectedRadio,
-                                                onChanged:(value) {
-                                                  setState(()=> (selectedRadio=value!)
-                                                  );
-                                                },
+                          Container(
+                            child:Row(
+                              children: [
+                                IconButton(
+                                  icon: Icon(Icons.watch_sharp, size: 30),
+                                  onPressed: () async {
+                                    showDialog(
+                                        context:context,
+                                        builder: (BuildContext context){
+                                          int selectedRadio = 0;
+                                          return AlertDialog(
+                                            content: StatefulBuilder(
+                                              builder: (BuildContext context, StateSetter setState){
+                                                return Column(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: List<Widget>.generate(4,(int index){
+                                                    return RadioListTile<int>(
+                                                      title: Text(((index+1)*5).toString()+'분'),
+                                                      value: index,
+                                                      groupValue:selectedRadio,
+                                                      onChanged:(value) {
+                                                        setState(()=> (selectedRadio=value!)
+                                                        );
+                                                      },
 
 
-                                              );
+                                                    );
 
-                                            }),
+                                                  }),
+                                                );
+                                              },
+                                            ),
+                                            actions: [
+                                              new FlatButton(
+                                                  child: new Text("선택"),
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                    _use_time = selectedRadio.toString();
+                                                    setState(() {
+                                                      if(_use_time== "0")_use_time= '5분';
+                                                      else if(_use_time == "1"){
+                                                        _use_time= '10분';
+                                                      } else if(_use_time == "2"){
+                                                        _use_time= '15분';
+                                                      } else if(_use_time == "3"){
+                                                        _use_time= '20분';
+                                                      }
+                                                    });
+                                                  })
+                                            ],
                                           );
-                                        },
-                                      ),
-                                      actions: [
-                                        new FlatButton(
-                                            child: new Text("닫기"),
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                              ae = selectedRadio.toString();
-                                              setState(() {
-                                                if(ae== "0")ae= '5분';
-                                                else if(ae == "1"){
-                                                  ae= '10분';
-                                                } else if(ae == "2"){
-                                                  ae= '15분';
-                                                } else if(ae == "3"){
-                                                  ae= '20분';
-                                                }
-                                              });
-                                            })
-                                      ],
+
+                                        }
                                     );
 
-                                  }
-                              );
-
-                            },
+                                  },
+                                ),
+                                Container(
+                                  child: Text(_use_time),
+                                ),
+                              ],
+                            ),
                           ),
-                          Container(
-                            child: Text(ae),
-                          ),
 
+                          RaisedButton(onPressed: (){},child: Text('예약하기'),),
+                          SizedBox(height: MediaQuery.of(context).size.height*0.2,),
                         ],
                       ),
                       width: MediaQuery.of(context).size.width*0.45,
