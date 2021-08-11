@@ -30,16 +30,9 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement build
     return Scaffold(
       key: _scaffoldkey,
-      drawer: CustomDrawer(),
       endDrawer: CustomEndDrawer(),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            _scaffoldkey.currentState!.openDrawer();
-          },
-          icon: Icon(Icons.menu),
-          color: Colors.black,
-        ),
+
         title: Text(
           '비켜',
           style: TitleStyle,

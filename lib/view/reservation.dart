@@ -38,12 +38,12 @@ class _Reservation extends State<Reservation> {
                 children: [
                   Column(
                     children: [
-                      IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {
-                        _selectMin();
-                      },),  SizedBox(height: 10,),
-                      Container(
-                        child: Text(_min),
-                      ),
+                      // IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {
+                      //   _selectMin();
+                      // },),  SizedBox(height: 10,),
+                      // Container(
+                      //   child: Text(_min),
+                      // ),
                     ],
                   )
                 ],
