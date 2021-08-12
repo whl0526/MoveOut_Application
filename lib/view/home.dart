@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:move_application/style/text_style.dart';
 
 class home extends StatelessWidget{
+  late String _member_name;
+  late String _member_number;
+  late String _PT_Teacher;
+  late DateTime _Start_day;
+  late DateTime _Edn_day;
+
+
 
   Widget build(BuildContext context){
     return Scaffold(
@@ -20,7 +27,7 @@ class home extends StatelessWidget{
               Stack(
                 children: <Widget>[
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.35,
+                    height: MediaQuery.of(context).size.height * 0.32,
                     decoration: BoxDecoration(
                       color: Colors.yellow[300],
                     ),
@@ -67,8 +74,8 @@ class home extends StatelessWidget{
                       left: -240,
                       right: 0,
                       child: Container(
-                        width: 0,
-                        height: 140,
+
+                        height: MediaQuery.of(context).size.height * 0.2,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(

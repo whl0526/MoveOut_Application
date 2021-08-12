@@ -69,10 +69,17 @@ class _HomePageState extends State<HomePage> {
           TabItem(
               icon: Image.asset(
             "icons/reservation-icon-5.jpg",
-            color: Colors.yellow[500],
+
+            color: Colors.yellow[600],
             scale: 30,
-          )),
+          ),activeIcon: Image.asset(
+            "icons/reservation-icon-5.jpg",
+
+            color: Colors.white,
+            scale: 30,)
+          ),
           TabItem(icon: Icons.person),
+
         ],
         onTap: (int index){
           setState(() {
