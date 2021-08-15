@@ -27,7 +27,7 @@ class Info extends StatelessWidget {
           children: <Widget>[
             Container(
               margin: EdgeInsets.all(14),
-              child: Text('내 예약 운동기구',style: MyTextStyle(size: 20),),
+              child: Text('내 예약 운동기구지롱',style: MyTextStyle(size: 20),),
             ),
             Container(
               height: MediaQuery.of(context).size.height * 0.35,
