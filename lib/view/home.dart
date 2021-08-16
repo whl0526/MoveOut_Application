@@ -24,19 +24,39 @@ class home extends StatelessWidget{
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Stack(
-                children: <Widget>[
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.32,
-                    decoration: BoxDecoration(
-                      color: Colors.yellow[300],
-                    ),
+              Container(
+                  height: MediaQuery.of(context).size.height * 0.32,
+                  decoration: BoxDecoration(
+                    color: Colors.yellow[300],
                   ),
-                  Positioned(
-                      top: 65,
-                      left: 25,
-                      right: 0,
+
+                child: Row(
+
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width*0.5,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.2,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: NetworkImage(
+                                            'https://yt3.ggpht.com/ytc/AKedOLTrg1TdPY-UQFlUQNtjFRrHCmtHsQbZNsAZnDlW=s900-c-k-c0x00ffffff-no-rj'))),
+                              )
+                            ],
+                      ),
+                    ),
+                    Container(
+
+                      width: MediaQuery.of(context).size.width*0.4,
+
+
+                      child: Column(
+
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
@@ -44,46 +64,24 @@ class home extends StatelessWidget{
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 35),
+                          ),
+                          SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+                          Text(
+                            '회원번호 : 5581',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25),
                           )
                         ],
-                      )
-                  ),
-                  Positioned(
-                      top: 120,
-                      left: 100,
-                      right: 0,
-                      child: Container(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(height: 5,),
-                              Text(
-                                '회원번호 : 5581',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 25),
-                              ),
-                              SizedBox(
-                                height: 3,
-                              ),
-
-                            ],
-                          ))),
-                  Positioned(
-                      top: 50,
-                      left: -240,
-                      right: 0,
-                      child: Container(
-
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://yt3.ggpht.com/ytc/AKedOLTrg1TdPY-UQFlUQNtjFRrHCmtHsQbZNsAZnDlW=s900-c-k-c0x00ffffff-no-rj'))),
-                      ))
-                ],
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width*0.1,
+                    )
+                  ],
+                ),
               ),
+
               SizedBox(
                   height: MediaQuery.of(context).size.height * 0.06),
               Row(
