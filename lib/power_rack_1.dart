@@ -1,5 +1,4 @@
-
-
+import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -8,6 +7,7 @@ import 'package:simple_timetable/simple_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_timetable/simple_timetable.dart';
 import 'package:flutter_timetable_view/flutter_timetable_view.dart';
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 
 class Event<T> {
   final String id;
@@ -34,6 +34,14 @@ class Power_Rack_1 extends StatefulWidget{
 }
 class _Power_Rack_1 extends State<Power_Rack_1>{
 
+
+  TimeOfDay _time = TimeOfDay(hour: 17, minute: 00);
+  void onTimeChanged(TimeOfDay newTime) {
+
+    setState(() {
+      _time = newTime;
+    });
+  }
 
 
   List<TableEvent> _list()  {
@@ -74,21 +82,14 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
     return a;
   }
 
-
   Future _selectMin() async {
-    TimeOfDay? pick_min =
-    await showTimePicker(
-        context: context,
-        initialTime: TimeOfDay.now(),
-      helpText: '원하는 시작 시간을 선택하세요',
-
-      initialEntryMode: TimePickerEntryMode.input,
-      useRootNavigator: false
+    TimeOfDay? pick_min = await showTimePicker(
+        initialTime: TimeOfDay(hour: 10, minute: 10),
+        context: context
     );
 
     if (pick_min != null)
-      setState(() => _min =
-          pick_min.hour.toString() + '시' + pick_min.minute.toString() + '분');
+      setState(() => _min = pick_min.hour.toString() + '시' + pick_min.minute.toString() + '분');
   }
 
   Future<Null> _onReFresh() async {
@@ -235,6 +236,27 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
                           RaisedButton(onPressed: (){},child: Text('예약하기'),),
                           SizedBox(height: MediaQuery.of(context).size.height*0.2,),
+                          FlatButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                showPicker(
+                                  context: context,
+                                  value: _time,
+                                  onChange: onTimeChanged,
+                                  minuteInterval: MinuteInterval.FIVE ,
+                                  maxHour: 21,
+                                  minHour: 17,
+                                  maxMinute: 55,
+
+                                  is24HrFormat: true,
+                                ),
+                              );
+                            },
+                            child: Text(
+                              _time.toString(),
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
                         ],
                       ),
                       width: MediaQuery.of(context).size.width*0.45,

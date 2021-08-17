@@ -54,9 +54,11 @@ class _Reservation extends State<Reservation> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  RaisedButton(
-                    onPressed: () {  },
+
+                  InkWell(
                     child:  Text('유산소'),
+                    onTap: (){},
+
                   ),RaisedButton(
                     onPressed: () {  },
                     child:  Text('하체실'),
