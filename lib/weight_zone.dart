@@ -24,7 +24,7 @@ class _weight_zone extends State<weight_zone> {
           children: [
             SizedBox(height: 10,),
             Container(
-              height: MediaQuery.of(context).size.height * 0.4,
+              height: MediaQuery.of(context).size.height * 0.6,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

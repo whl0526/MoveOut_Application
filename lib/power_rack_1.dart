@@ -247,8 +247,11 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                                   maxHour: 21,
                                   minHour: 17,
                                   maxMinute: 55,
-
+                                  iosStylePicker: true,
                                   is24HrFormat: true,
+                                  borderRadius: 55,
+                                  barrierDismissible: false,
+                                  displayHeader: false
                                 ),
                               );
                             },

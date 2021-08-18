@@ -66,11 +66,12 @@ class home extends StatelessWidget{
                                 fontSize: 35),
                           ),
                           SizedBox(height: MediaQuery.of(context).size.height*0.03,),
-                          Text(
-                            '회원번호 : 5581',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25),
+                          FittedBox(
+
+                            fit: BoxFit.cover,
+                            child: Text(
+                              '회원번호 : 5581' ,style: TextStyle(fontSize:25, fontWeight: FontWeight.bold,),
+                            ),
                           )
                         ],
                       ),
