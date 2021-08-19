@@ -45,9 +45,13 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
 
   List<TableEvent> _list()  {
-    List<TableEvent> a = [];
+    List<TableEvent> machine_reservation_Time = [];
+    List machine_reservation_StartTime_hour = [];
+    List machine_reservation_StartTime_minute = [];
+    List machine_reservation_EndTime_hour = [];
+    List machine_reservation_EndTime_minute = [];
     for(int i =0;i<7;i++){
-      a.add(TableEvent(
+      machine_reservation_Time.add(TableEvent(
         padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
         margin: EdgeInsets.zero,
         title: '',
@@ -79,7 +83,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
         decoration: BoxDecoration(color: Colors.yellow,backgroundBlendMode:backgroundBlendMode ),
       ));
     }
-    return a;
+    return machine_reservation_Time;
   }
 
   Future _selectMin() async {
@@ -251,7 +255,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                                   is24HrFormat: true,
                                   borderRadius: 55,
                                   barrierDismissible: false,
-                                  displayHeader: false
+                                  displayHeader: false,
                                 ),
                               );
                             },
