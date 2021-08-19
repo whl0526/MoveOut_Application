@@ -35,11 +35,13 @@ class Power_Rack_1 extends StatefulWidget{
 class _Power_Rack_1 extends State<Power_Rack_1>{
 
 
-  TimeOfDay _time = TimeOfDay(hour: 17, minute: 00);
+  TimeOfDay _time = TimeOfDay.now();
+
   void onTimeChanged(TimeOfDay newTime) {
 
     setState(() {
       _time = newTime;
+      _start_time = _time.hour.toString()+'시'+_time.minute.toString()+'분';
     });
   }
 
@@ -87,13 +89,22 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
   }
 
   Future _selectMin() async {
-    TimeOfDay? pick_min = await showTimePicker(
-        initialTime: TimeOfDay(hour: 10, minute: 10),
-        context: context
+    Navigator.of(context).push(
+      showPicker(
+        context: context,
+        value: _time,
+        onChange: onTimeChanged,
+        minuteInterval: MinuteInterval.FIVE ,
+        maxHour: 21,
+        minHour: 17,
+        maxMinute: 55,
+        iosStylePicker: true,
+        is24HrFormat: true,
+        borderRadius: 55,
+        barrierDismissible: false,
+        displayHeader: false,
+      ),
     );
-
-    if (pick_min != null)
-      setState(() => _min = pick_min.hour.toString() + '시' + pick_min.minute.toString() + '분');
   }
 
   Future<Null> _onReFresh() async {
@@ -103,7 +114,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
   final BlendMode? backgroundBlendMode = BlendMode.darken;
   DateTime _month = DateTime.now();
   DateTime _initDate = DateTime.now();
-  String _min = '시작 시간 선택';
+  String _start_time = '시작 시간 선택';
   int visibleRange = 7;
   String _use_time = '이용 시간 선택';
 
@@ -166,10 +177,12 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                             child: Row(
                               children: [
                                 IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {
-                                  _selectMin();
+                                 _selectMin();
+
+
                                 },),
                                 Container(
-                                  child: Text(_min),
+                                  child:Text(_start_time),
                                 ),
                               ],
                             ),
@@ -240,30 +253,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
                           RaisedButton(onPressed: (){},child: Text('예약하기'),),
                           SizedBox(height: MediaQuery.of(context).size.height*0.2,),
-                          FlatButton(
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                showPicker(
-                                  context: context,
-                                  value: _time,
-                                  onChange: onTimeChanged,
-                                  minuteInterval: MinuteInterval.FIVE ,
-                                  maxHour: 21,
-                                  minHour: 17,
-                                  maxMinute: 55,
-                                  iosStylePicker: true,
-                                  is24HrFormat: true,
-                                  borderRadius: 55,
-                                  barrierDismissible: false,
-                                  displayHeader: false,
-                                ),
-                              );
-                            },
-                            child: Text(
-                              _time.toString(),
-                              style: TextStyle(color: Colors.blue),
-                            ),
-                          ),
+
                         ],
                       ),
                       width: MediaQuery.of(context).size.width*0.45,
