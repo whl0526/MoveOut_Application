@@ -1,3 +1,6 @@
+import 'dart:collection';
+import 'dart:convert';
+
 import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:simple_timetable/simple_timetable.dart';
 import 'package:flutter_timetable_view/flutter_timetable_view.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
+import 'package:http/http.dart' as http;
+
 
 class Event<T> {
   final String id;
@@ -251,7 +256,15 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                             ),
                           ),
 
-                          RaisedButton(onPressed: (){},child: Text('예약하기'),),
+                          RaisedButton(onPressed: () async {
+                            String testString ='testString';
+                            var url = 'http://10.0.2.2:5000/echo_call/${testString}';
+                            var response = await http.get(url);
+                            Map<String , dynamic> test_json_file= jsonDecode(response.body);
+                            print(test_json_file['param']);
+
+
+                          },child: Text('예약하기'),),
                           SizedBox(height: MediaQuery.of(context).size.height*0.2,),
 
                         ],
@@ -274,5 +287,30 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
   }
 
 
+  // Future<http.Response> fetchAlbum() async {
+  //   final response = await http
+  //       .get(Uri.parse('http://10.0.2.2:5000/echo_call/a'));
+  //   if (response.statusCode == 200) {
+  //     // If the server did return a 200 OK response,
+  //     // then parse the JSON.
+  //     return Album.fromJson(jsonDecode(response.body));
+  //   } else {
+  //     // If the server did not return a 200 OK response,
+  //     // then throw an exception.
+  //     throw Exception('Failed to load album');
+  //   }
+  // }
 
 }
+// class Album {
+//   final String param;
+//   Album({
+//     required this.param,
+//   });
+//
+//   factory Album.fromJson(Map<String, dynamic> json) {
+//     return Album(
+//       param: json['param'],
+//     );
+//   }
+// }
