@@ -46,7 +46,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
     setState(() {
       _time = newTime;
-      _start_time = _time.hour.toString()+'시'+_time.minute.toString()+'분';
+      _start_time = _time.hour.toString()+'시 '+_time.minute.toString()+'분';
     });
   }
 
@@ -122,6 +122,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
   String _start_time = '시작 시간 선택';
   int visibleRange = 7;
   String _use_time = '이용 시간 선택';
+
 
   @override
   Widget build(BuildContext context) {
@@ -257,12 +258,33 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                           ),
 
                           RaisedButton(onPressed: () async {
-                            String testString ='testString';
-                            var url = 'http://10.0.2.2:5000/echo_call/${testString}';
-                            var response = await http.get(url);
-                            Map<String , dynamic> test_json_file= jsonDecode(response.body);
-                            print(test_json_file['param']);
-
+                            if(_start_time == '시작 시간 선택'||_use_time =='이용 시간 선택'){
+                              showDialog(context: context, builder: (BuildContext context){
+                                return AlertDialog(
+                                  title: Text('이용시간 미선택'),
+                                  content:  Text('예약시간과 이용시간을 선택해 주세요'),
+                                  actions: [
+                                    new FlatButton(
+                                        child: new Text("닫기"),
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        })
+                                  ],
+                                );
+                              }
+                              );
+                            }else {
+                              _use_time = _use_time.split('분').first;
+                              List selected_time_list = _start_time.split(" ");
+                              String reservation_hour = selected_time_list[0].split('시').first;
+                              String reservation_min = selected_time_list[1].split('분').first;
+                              var url = 'http://10.0.2.2:5000/reservation/${_use_time}/${reservation_hour}/${reservation_min}';
+                              var response = await http.get(url);
+                              Map<String , dynamic> test_json_file= jsonDecode(response.body);
+                              print(response.statusCode);
+                              print(test_json_file);
+                            }
+                            
 
                           },child: Text('예약하기'),),
                           SizedBox(height: MediaQuery.of(context).size.height*0.2,),
