@@ -12,24 +12,10 @@ import 'package:simple_timetable/simple_timetable.dart';
 import 'package:flutter_timetable_view/flutter_timetable_view.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:http/http.dart' as http;
+import 'package:move_application/get_reservation_time.dart';
 
 
-class Event<T> {
-  final String id;
-  final DateTime start;
-  final DateTime end;
-  final DateTime date;
-  final T payload;
 
-  Event({
-    required this.id,
-    required this.start,
-    required this.end,
-    required this.date,
-    required this.payload,
-  });
-
-}
 class Power_Rack_1 extends StatefulWidget{
   final String day;
   Power_Rack_1({required this.day});
@@ -37,6 +23,7 @@ class Power_Rack_1 extends StatefulWidget{
   @override
   _Power_Rack_1 createState() => _Power_Rack_1();
 }
+
 class _Power_Rack_1 extends State<Power_Rack_1>{
 
 
@@ -51,19 +38,47 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
   }
 
 
-  List<TableEvent> _list()  {
-    List<TableEvent> machine_reservation_Time = [];
-    List machine_reservation_StartTime_hour = [];
-    List machine_reservation_StartTime_minute = [];
-    List machine_reservation_EndTime_hour = [];
-    List machine_reservation_EndTime_minute = [];
-    for(int i =0;i<7;i++){
-      machine_reservation_Time.add(TableEvent(
+
+
+  Future _selectMin() async {
+    Navigator.of(context).push(
+      showPicker(
+        context: context,
+        value: _time,
+        onChange: onTimeChanged,
+        minuteInterval: MinuteInterval.FIVE ,
+        maxHour: 21,
+        minHour: 17,
+        maxMinute: 55,
+        iosStylePicker: true,
+        is24HrFormat: true,
+        borderRadius: 55,
+        barrierDismissible: false,
+        displayHeader: false,
+      ),
+    );
+  }
+
+  List<TableEvent> _list(snapshot){
+    List<TableEvent> machineReservationTime = [];
+    List<dynamic> machineReservationStartTimeHour = snapshot.data.machine_reservation_StartTime_hour;
+    List<dynamic>  machineReservationStartTimeMinute = snapshot.data.machine_reservation_StartTime_minute;
+    List<dynamic>  machineReservationEndTimeHour = snapshot.data.machine_reservation_EndTime_hour;
+    List<dynamic>  machineReservationEndTimeMinute = snapshot.data.machine_reservation_EndTime_minute;
+
+    for(int i =0;i<machineReservationStartTimeHour.length.toInt();i++){
+      machineReservationTime.add(TableEvent(
         padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
         margin: EdgeInsets.zero,
         title: '',
-        start: TableEventTime(hour: i+10, minute: 0),
-        end: TableEventTime(hour: i+10, minute: visibleRange+8),
+        start: TableEventTime(
+            hour: machineReservationStartTimeHour.elementAt(i).toInt(),
+            minute: machineReservationStartTimeMinute.elementAt(i).toInt()
+        ),
+        end: TableEventTime(
+            hour: machineReservationEndTimeHour.elementAt(i).toInt(),
+            minute: machineReservationEndTimeMinute.elementAt(i).toInt()
+        ),
         textStyle: TextStyle(
           color: Colors.black,
           fontSize: 10,
@@ -90,28 +105,8 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
         decoration: BoxDecoration(color: Colors.yellow,backgroundBlendMode:backgroundBlendMode ),
       ));
     }
-    return machine_reservation_Time;
+    return machineReservationTime;
   }
-
-  Future _selectMin() async {
-    Navigator.of(context).push(
-      showPicker(
-        context: context,
-        value: _time,
-        onChange: onTimeChanged,
-        minuteInterval: MinuteInterval.FIVE ,
-        maxHour: 21,
-        minHour: 17,
-        maxMinute: 55,
-        iosStylePicker: true,
-        is24HrFormat: true,
-        borderRadius: 55,
-        barrierDismissible: false,
-        displayHeader: false,
-      ),
-    );
-  }
-
   Future<Null> _onReFresh() async {
     setState(() {});
   }
@@ -122,7 +117,6 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
   String _start_time = '시작 시간 선택';
   int visibleRange = 7;
   String _use_time = '이용 시간 선택';
-
 
   @override
   Widget build(BuildContext context) {
@@ -139,40 +133,49 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
                 child: Row(
                   children: [
+                    FutureBuilder(
+                      future: getReservation_times(),
+                      builder: (BuildContext context, AsyncSnapshot<Reservation_times> snapshot) {
+                        if (snapshot.hasData == false) {
+                          return CircularProgressIndicator();
+                        }
 
-                    Container(
-                      width: MediaQuery.of(context).size.width*0.55
-                      ,
-                      child: TimetableView(
-                        timetableStyle: TimetableStyle(
-                            timeItemTextColor: Colors.black,
-                            startHour: 10,
-                            endHour: 23,
-                            laneHeight: MediaQuery.of(context).size.height * 0.07,
-                            laneWidth: MediaQuery.of(context).size.width * 0.4,
-                            visibleDecorationBorder: true,
-                            decorationLineDashSpaceWidth: 0,
-                            decorationLineBorderColor: Colors.black,
-                            timeItemWidth: 60,
-                            timeItemHeight: 150,
-                            timelineBorderColor: Colors.black,
-                            decorationLineHeight: 150/12
-                        ),
-                        laneEventsList: [
-                          LaneEvents(
-                              lane: Lane(
-
-                                name: 'Power_Rack_1 8/'+widget.day,
-                                width:MediaQuery.of(context).size.width * 0.4,
-                                textStyle: TextStyle(color: Colors.black,),
-
-
-                              ),
-                              events: _list()
+                      return Container(
+                        width: MediaQuery.of(context).size.width*0.55
+                        ,
+                        child: TimetableView(
+                          timetableStyle: TimetableStyle(
+                              timeItemTextColor: Colors.black,
+                              startHour: 10,
+                              endHour: 23,
+                              laneHeight: MediaQuery.of(context).size.height * 0.07,
+                              laneWidth: MediaQuery.of(context).size.width * 0.4,
+                              visibleDecorationBorder: true,
+                              decorationLineDashSpaceWidth: 0,
+                              decorationLineBorderColor: Colors.black,
+                              timeItemWidth: 60,
+                              timeItemHeight: 150,
+                              timelineBorderColor: Colors.black,
+                              decorationLineHeight: 150/12
                           ),
-                        ],
-                      ),
-                    ),
+                          laneEventsList: [
+                            LaneEvents(
+                                lane: Lane(
+
+                                  name: 'Power_Rack_1 8/'+widget.day,
+                                  width:MediaQuery.of(context).size.width * 0.4,
+                                  textStyle: TextStyle(color: Colors.black,),
+
+
+                                ),
+                                events: _list(snapshot)
+                            ),
+                          ],
+                        ),
+                      );
+
+                    },),
+
                     Container(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -278,7 +281,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                               List selected_time_list = _start_time.split(" ");
                               String reservation_hour = selected_time_list[0].split('시').first;
                               String reservation_min = selected_time_list[1].split('분').first;
-                              var url = 'http://10.0.2.2:5000/reservation/${_use_time}/${reservation_hour}/${reservation_min}';
+                              var url = 'http://10.0.2.2:5000/reservation/${reservation_hour}/${reservation_min}/${_use_time}';
                               var response = await http.get(url);
                               Map<String , dynamic> test_json_file= jsonDecode(response.body);
                               print(response.statusCode);
@@ -288,6 +291,13 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
                           },child: Text('예약하기'),),
                           SizedBox(height: MediaQuery.of(context).size.height*0.2,),
+                          RaisedButton(onPressed: () async {
+                            var response = await http.get('http://10.0.2.2:5000/echo_call/');
+                            Map<String , dynamic> test_json_file= jsonDecode(response.body);
+                            print(response.statusCode);
+
+                            print(test_json_file['_StartTime_minute']);
+                          },child: Text('dd'),)
 
                         ],
                       ),
@@ -308,31 +318,4 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
     );
   }
 
-
-  // Future<http.Response> fetchAlbum() async {
-  //   final response = await http
-  //       .get(Uri.parse('http://10.0.2.2:5000/echo_call/a'));
-  //   if (response.statusCode == 200) {
-  //     // If the server did return a 200 OK response,
-  //     // then parse the JSON.
-  //     return Album.fromJson(jsonDecode(response.body));
-  //   } else {
-  //     // If the server did not return a 200 OK response,
-  //     // then throw an exception.
-  //     throw Exception('Failed to load album');
-  //   }
-  // }
-
 }
-// class Album {
-//   final String param;
-//   Album({
-//     required this.param,
-//   });
-//
-//   factory Album.fromJson(Map<String, dynamic> json) {
-//     return Album(
-//       param: json['param'],
-//     );
-//   }
-// }
