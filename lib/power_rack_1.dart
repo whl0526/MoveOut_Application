@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:move_application/appbar.dart';
+import 'package:move_application/get_member_info.dart';
 import 'package:simple_timetable/simple_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_timetable/simple_timetable.dart';
@@ -292,12 +293,13 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                           },child: Text('예약하기'),),
                           SizedBox(height: MediaQuery.of(context).size.height*0.2,),
                           RaisedButton(onPressed: () async {
-                            var response = await http.get('http://10.0.2.2:5000/echo_call/');
-                            Map<String , dynamic> test_json_file= jsonDecode(response.body);
-                            print(response.statusCode);
-
-                            print(test_json_file['_StartTime_minute']);
-                          },child: Text('dd'),)
+                            var response = await http.get('http://3.130.113.238:5000/userdata/1234');
+                            print(jsonDecode(response.body));
+                            List<dynamic> test_json_file= jsonDecode(response.body);
+                            // print(response.statusCode);
+                            print(test_json_file.asMap());
+                          },child: Text('dd'),
+                          )
 
                         ],
                       ),
