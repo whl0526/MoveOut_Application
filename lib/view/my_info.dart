@@ -4,7 +4,20 @@ import 'package:move_application/get_reservation_list.dart';
 import 'package:move_application/style/text_style.dart';
 
 
-class Info extends StatelessWidget {
+class Info extends StatefulWidget{
+  @override
+  _Info createState() => _Info();
+}
+
+
+class _Info extends State<Info> {
+  late Future<List<Reservation_list>> a;
+
+  @override
+  void initState(){
+    super.initState();
+    a= getReservationList(1234);
+  }
 
   static const List<String> _my_reservation = [
     '벤치',
@@ -16,6 +29,8 @@ class Info extends StatelessWidget {
   static const List<String> _my_class = [
 
   ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +45,11 @@ class Info extends StatelessWidget {
               margin: EdgeInsets.all(14),
               child: Text('내 예약 운동기구지롱',style: MyTextStyle(size: 20),),
             ),
-            FutureBuilder(
-                future: getReservationList(1234),
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<Reservation_list>> snapshot) {
+
+
+            FutureBuilder<List<Reservation_list>>(
+                future: a,
+                builder: (context, snapshot) {
                   if (snapshot.hasData == false) {
                     return SizedBox(
                       height: MediaQuery.of(context).size.height * 0.35,
@@ -47,6 +63,7 @@ class Info extends StatelessWidget {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (BuildContext _context, int i){
                         return ListTile(
+
                           leading: Image.asset(
                             "icons/exercise.png",color: Colors.red[700],height: 45,),
                           title: Text(snapshot.data!.elementAt(i).equipment.toString()+'     '+snapshot.data!.elementAt(i).date.toString()),

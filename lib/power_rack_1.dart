@@ -1,6 +1,5 @@
 import 'dart:collection';
 import 'dart:convert';
-
 import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -130,11 +129,114 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
           physics: AlwaysScrollableScrollPhysics(),
           child: Column(
             children: [
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height*0.1,
+                        child: Center(
+                          child: Text('시간이 들어갈 장소'),
+                        ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(width: MediaQuery.of(context).size.width*0.05,),
+                      Container(
+                        height: MediaQuery.of(context).size.height*0.1,
+                        child: Row(
+                          children: [
+                            IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {
+                              _selectMin();
+                            },),
+                            Container(
+                              child:Text(_start_time),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width*0.001,),
+                      Container(
+                        child:Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.watch_sharp, size: 30),
+                              onPressed: () async {
+                                showDialog(
+                                    context:context,
+                                    builder: (BuildContext context){
+                                      int selectedRadio = 0;
+                                      return AlertDialog(
+                                        content: StatefulBuilder(
+                                          builder: (BuildContext context, StateSetter setState){
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: List<Widget>.generate(4,(int index){
+                                                return RadioListTile<int>(
+                                                  title: Text(((index+1)*5).toString()+'분'),
+                                                  value: index,
+                                                  groupValue:selectedRadio,
+                                                  onChanged:(value) {
+                                                    setState(()=> (selectedRadio=value!)
+                                                    );
+                                                  },
+
+
+                                                );
+
+                                              }),
+                                            );
+                                          },
+                                        ),
+                                        actions: [
+                                          new FlatButton(
+                                              child: new Text("선택"),
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                                _use_time = selectedRadio.toString();
+                                                setState(() {
+                                                  if(_use_time== "0")_use_time= '5분';
+                                                  else if(_use_time == "1"){
+                                                    _use_time= '10분';
+                                                  } else if(_use_time == "2"){
+                                                    _use_time= '15분';
+                                                  } else if(_use_time == "3"){
+                                                    _use_time= '20분';
+                                                  }
+                                                });
+                                              })
+                                        ],
+                                      );
+
+                                    }
+                                );
+
+                              },
+                            ),
+                            Container(
+                              child: Text(_use_time),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width*0.05,),
+
+                    ],
+                  )
+                ],
+              ),
+
               Container(
-                height: MediaQuery.of(context).size.height * 0.85,
+                height: MediaQuery.of(context).size.height * 0.55,
 
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+
                     FutureBuilder(
                       future: getReservation_times(),
                       builder: (BuildContext context, AsyncSnapshot<Reservation_times> snapshot) {
@@ -143,10 +245,12 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                         }
 
                       return Container(
-                        width: MediaQuery.of(context).size.width*0.55
-                        ,
+                        width: MediaQuery.of(context).size.width*0.55,
+                        height: MediaQuery.of(context).size.height*0.55,
                         child: TimetableView(
                           timetableStyle: TimetableStyle(
+                            visibleTimeBorder: true,
+
                               timeItemTextColor: Colors.black,
                               startHour: 10,
                               endHour: 23,
@@ -178,142 +282,46 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
                     },),
 
-                    Container(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                        children: [
-                          SizedBox(height:MediaQuery.of(context).size.height*0.2,),
-                          Container(
-                            child: Row(
-                              children: [
-                                IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {
-                                 _selectMin();
-
-
-                                },),
-                                Container(
-                                  child:Text(_start_time),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child:Row(
-                              children: [
-                                IconButton(
-                                  icon: Icon(Icons.watch_sharp, size: 30),
-                                  onPressed: () async {
-                                    showDialog(
-                                        context:context,
-                                        builder: (BuildContext context){
-                                          int selectedRadio = 0;
-                                          return AlertDialog(
-                                            content: StatefulBuilder(
-                                              builder: (BuildContext context, StateSetter setState){
-                                                return Column(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: List<Widget>.generate(4,(int index){
-                                                    return RadioListTile<int>(
-                                                      title: Text(((index+1)*5).toString()+'분'),
-                                                      value: index,
-                                                      groupValue:selectedRadio,
-                                                      onChanged:(value) {
-                                                        setState(()=> (selectedRadio=value!)
-                                                        );
-                                                      },
-
-
-                                                    );
-
-                                                  }),
-                                                );
-                                              },
-                                            ),
-                                            actions: [
-                                              new FlatButton(
-                                                  child: new Text("선택"),
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                    _use_time = selectedRadio.toString();
-                                                    setState(() {
-                                                      if(_use_time== "0")_use_time= '5분';
-                                                      else if(_use_time == "1"){
-                                                        _use_time= '10분';
-                                                      } else if(_use_time == "2"){
-                                                        _use_time= '15분';
-                                                      } else if(_use_time == "3"){
-                                                        _use_time= '20분';
-                                                      }
-                                                    });
-                                                  })
-                                            ],
-                                          );
-
-                                        }
-                                    );
-
-                                  },
-                                ),
-                                Container(
-                                  child: Text(_use_time),
-                                ),
-                              ],
-                            ),
-                          ),
-
-                          RaisedButton(onPressed: () async {
-                            if(_start_time == '시작 시간 선택'||_use_time =='이용 시간 선택'){
-                              showDialog(context: context, builder: (BuildContext context){
-                                return AlertDialog(
-                                  title: Text('이용시간 미선택'),
-                                  content:  Text('예약시간과 이용시간을 선택해 주세요'),
-                                  actions: [
-                                    new FlatButton(
-                                        child: new Text("닫기"),
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        })
-                                  ],
-                                );
-                              }
-                              );
-                            }else {
-                              _use_time = _use_time.split('분').first;
-                              List selected_time_list = _start_time.split(" ");
-                              String reservation_hour = selected_time_list[0].split('시').first;
-                              String reservation_min = selected_time_list[1].split('분').first;
-                              var url = 'http://10.0.2.2:5000/reservation/${reservation_hour}/${reservation_min}/${_use_time}';
-                              var response = await http.get(url);
-                              Map<String , dynamic> test_json_file= jsonDecode(response.body);
-                              print(response.statusCode);
-                              print(test_json_file);
-                            }
-                            
-
-                          },child: Text('예약하기'),),
-                          SizedBox(height: MediaQuery.of(context).size.height*0.2,),
-                          FutureBuilder(future: getReservationList(1234),
-                              builder: (BuildContext context,
-                                  AsyncSnapshot<List<Reservation_list>> snapshot) {
-                                return RaisedButton(onPressed: () async {
-                                  print(snapshot.data!.first.date);
-                                },child: Text('dd'),
-                                );
-                              }
-                          ),
-
-
-                        ],
-                      ),
-                      width: MediaQuery.of(context).size.width*0.45,
-
-                    )
                   ],
                 ),
-              )
-
-
+              ),
+              Column(
+                children: [
+                 SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+                  Container(
+                    child: RaisedButton(onPressed: () async {
+                      if(_start_time == '시작 시간 선택'||_use_time =='이용 시간 선택'){
+                        showDialog(context: context, builder: (BuildContext context){
+                          return AlertDialog(
+                            title: Text('이용시간 미선택'),
+                            content:  Text('예약시간과 이용시간을 선택해 주세요'),
+                            actions: [
+                              new FlatButton(
+                                  child: new Text("닫기"),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  })
+                            ],
+                          );
+                        }
+                        );
+                      }else {
+                        _use_time = _use_time.split('분').first;
+                        List selected_time_list = _start_time.split(" ");
+                        String reservation_hour = selected_time_list[0].split('시').first;
+                        String reservation_min = selected_time_list[1].split('분').first;
+                        var url = 'http://10.0.2.2:5000/reservation/${reservation_hour}/${reservation_min}/${_use_time}';
+                        var response = await http.get(url);
+                        Map<String , dynamic> test_json_file= jsonDecode(response.body);
+                        print(response.statusCode);
+                        print(test_json_file);
+                      }
+                    },child: Text('예약하기'),
+                    ),
+                  )
+                ],
+              ),
 
             ],
           ),
