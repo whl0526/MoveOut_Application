@@ -245,17 +245,22 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                         }
 
                       return Container(
-                        width: MediaQuery.of(context).size.width*0.55,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black,width: 2)
+                        ),
+                        width: MediaQuery.of(context).size.width*0.65,
                         height: MediaQuery.of(context).size.height*0.55,
                         child: TimetableView(
                           timetableStyle: TimetableStyle(
                             visibleTimeBorder: true,
+                              cornerColor: Colors.blue,
+                              laneColor: Colors.redAccent,
 
                               timeItemTextColor: Colors.black,
                               startHour: 10,
                               endHour: 23,
                               laneHeight: MediaQuery.of(context).size.height * 0.07,
-                              laneWidth: MediaQuery.of(context).size.width * 0.4,
+                              laneWidth: MediaQuery.of(context).size.width * 0.6,
                               visibleDecorationBorder: true,
                               decorationLineDashSpaceWidth: 0,
                               decorationLineBorderColor: Colors.black,
@@ -267,7 +272,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                           laneEventsList: [
                             LaneEvents(
                                 lane: Lane(
-
+                                  backgroundColor: Colors.redAccent,
                                   name: 'Power_Rack_1 8/'+widget.day,
                                   width:MediaQuery.of(context).size.width * 0.4,
                                   textStyle: TextStyle(color: Colors.black,),
