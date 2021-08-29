@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:move_application/weight_zone.dart';
 
-import '../get_reservation_time.dart';
 class Reservation extends StatefulWidget{
   @override
   _Reservation createState() => _Reservation();

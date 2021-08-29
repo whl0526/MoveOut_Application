@@ -1,6 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:move_application/get_member_info.dart';
+import 'package:move_application/models/get_member_info.dart';
 
 import 'package:move_application/style/text_style.dart';
 

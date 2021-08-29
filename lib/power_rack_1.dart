@@ -1,20 +1,19 @@
-import 'dart:collection';
+
 import 'dart:convert';
 import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 import 'package:move_application/appbar.dart';
-import 'package:move_application/get_member_info.dart';
-import 'package:move_application/get_reservation_list.dart';
-import 'package:simple_timetable/simple_timetable.dart';
-import 'package:flutter/material.dart';
-import 'package:simple_timetable/simple_timetable.dart';
+
 import 'package:flutter_timetable_view/flutter_timetable_view.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:http/http.dart' as http;
-import 'package:move_application/get_reservation_time.dart';
+import 'package:move_application/style/text_style.dart';
+import 'package:timer_builder/timer_builder.dart';
 
+import 'models/get_reservation_time.dart';
 
 
 class Power_Rack_1 extends StatefulWidget{
@@ -134,12 +133,18 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        height: MediaQuery.of(context).size.height*0.1,
-                        child: Center(
-                          child: Text('시간이 들어갈 장소'),
-                        ),
-                      )
+                      TimerBuilder.periodic(const Duration(seconds: 1), builder: (context){
+                        DateTime now = DateTime.now();
+                        String formattedDate = DateFormat('yyyy년 MM월 dd일   kk시mm분').format(now);
+                        return Container(
+                          height: MediaQuery.of(context).size.height*0.1,
+                          child: Center(
+                            child: Text(formattedDate,style: MyTextStyle(size: 20),),
+                          ),
+                        );
+
+                      }),
+
                     ],
                   ),
                   Row(
