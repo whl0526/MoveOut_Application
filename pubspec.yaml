@@ -60,6 +60,9 @@ flutter:
     - icons/reserved.png
     - icons/reservation-icon-5.jpg
     - icons/exercise.png
+    - icons/벤치.jpg
+    - icons/파워 렉.jpg
+    - icons/유산소.jpg
     - images/moon.png
     - images/sun.png
 

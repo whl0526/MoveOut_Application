@@ -61,11 +61,30 @@ class _Info extends State<Info> {
                     height: MediaQuery.of(context).size.height * 0.35,
                     child:ListView.builder(
                       itemCount: snapshot.data!.length,
+                      scrollDirection: Axis.vertical,
                       itemBuilder: (BuildContext _context, int i){
-                        return ListTile(
 
+                        return ListTile(
+                          trailing: InkWell(onTap: (){print(snapshot.data!.elementAt(i).equipment);},
+                            autofocus: true,
+                            borderRadius:BorderRadius.all(Radius.circular(10)) ,
+                          child:
+                          Container(
+                            width: MediaQuery.of(context).size.width*0.1,
+                            height: MediaQuery.of(context).size.width*0.08,
+                            decoration: BoxDecoration(border: Border.all(width: 2,color: Colors.black),color: Colors.redAccent,borderRadius: BorderRadius.all(Radius.circular(10))),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(child: Text('취소'),
+                                    )],)],),),),
                           leading: Image.asset(
-                            "icons/exercise.png",color: Colors.red[700],height: 45,),
+                            "icons/${snapshot.data!.elementAt(i).equipment}.jpg",height: 45,),
                           title: Text(snapshot.data!.elementAt(i).equipment.toString()+'     '+snapshot.data!.elementAt(i).date.toString()),
                           subtitle: Text(snapshot.data!.elementAt(i).start_time.toString()+' ~ '+snapshot.data!.elementAt(i).end_time.toString(),style: TextStyle(fontSize: 17),),
                         );

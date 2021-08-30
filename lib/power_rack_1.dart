@@ -89,13 +89,14 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
           showDialog(context: this.context, builder: (BuildContext context){
             return AlertDialog(
               title: Text('예약시간 확인'),
-              content:  Text('${i}'+'시00분 ~ '+'${i}'+'시'+ '${visibleRange+8}'+'분'),
+              content:  Text('${machineReservationStartTimeHour.elementAt(i).toString()}시 ${machineReservationStartTimeMinute.elementAt(i).toString()}분'+ ' ~ '+'${machineReservationEndTimeHour.elementAt(i).toString()}시 ${ machineReservationEndTimeMinute.elementAt(i).toString()}분'),
               actions: [
 
                 new FlatButton(
                     child: new Text("닫기"),
                     onPressed: () {
                       Navigator.pop(context);
+                      print(DateTime.now());
                     })
               ],
             );
