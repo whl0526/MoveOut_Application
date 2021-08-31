@@ -4,20 +4,23 @@ import 'package:move_application/power_rack_1.dart';
 
 import 'appbar.dart';
 
-class weight_zone extends StatefulWidget{
+class work_out extends StatefulWidget{
+  final String space_name;
+  work_out({required this.space_name});
   @override
-  _weight_zone createState() => _weight_zone();
+  _work_out createState() => _work_out();
 
 }
 
-class _weight_zone extends State<weight_zone> {
+class _work_out extends State<work_out> {
   int Today = DateTime.now().day;
   int Tomorrow =DateTime.now().add(const Duration(days: 1)).day;
   int The_day_after_tomorrow = DateTime.now().add(const Duration(days: 2)).day;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar('웨이트'),
+      appBar: CustomAppbar(widget.space_name),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:move_application/weight_zone.dart';
+import 'package:move_application/work_out.dart';
 
 class Reservation extends StatefulWidget{
   @override
@@ -37,27 +37,27 @@ class _Reservation extends State<Reservation> {
                   InkWell(
                     onTap: () async{
                       final res = await Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => weight_zone()));
+                          MaterialPageRoute(builder: (context) => work_out(space_name:'유산소' ,)));
                     },
                     child:  buildCategory("images/treadmill.jpg", "유산소 존"),
                   ),InkWell(
                       onTap: () async{
                         final res = await Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => weight_zone()));
+                            MaterialPageRoute(builder: (context) => work_out(space_name:'중앙 웨이트')));
                       },
                     child:  buildCategory("images/bench.jpg", "중앙 웨이트 존"),
 
                   ),InkWell(
                     onTap: () async{
                       final res = await Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => weight_zone()));
+                          MaterialPageRoute(builder: (context) => work_out(space_name:'프리웨이트, 머신')));
                     },
                     child:  buildCategory("images/deadlift.jpg", "프리웨이트, 머신 존"),
 
                   ),InkWell(
                     onTap: () async{
                       final res = await Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => weight_zone()));
+                          MaterialPageRoute(builder: (context) => work_out(space_name:'하체')));
                     },
                     child:  buildCategory("images/squat.jpg", "하체 존"),
                   ),

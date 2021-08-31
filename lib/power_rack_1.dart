@@ -30,7 +30,6 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
   TimeOfDay _time = TimeOfDay.now();
 
   void onTimeChanged(TimeOfDay newTime) {
-
     setState(() {
       _time = newTime;
       _start_time = _time.hour.toString()+'시 '+_time.minute.toString()+'분';
@@ -52,14 +51,24 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
         maxMinute: 55,
         iosStylePicker: true,
         is24HrFormat: true,
-        borderRadius: 55,
-        barrierDismissible: false,
+        borderRadius: 10,
         displayHeader: false,
+        hourLabel: "시"+'\t'+'\t'+'\t',
+        minuteLabel: "분",
+        accentColor: Colors.black,
+        unselectedColor: Colors.grey,
+        cancelText: "취소",
+        okText: "설정",
+        okCancelStyle: TextStyle(fontSize:15,color: Colors.black,fontWeight: FontWeight.bold ),
+        dialogInsetPadding: EdgeInsets.all(50),
+        blurredBackground: true,
+
       ),
     );
   }
 
   List<TableEvent> _list(snapshot){
+
     List<TableEvent> machineReservationTime = [];
     List<dynamic> machineReservationStartTimeHour = snapshot.data.machine_reservation_StartTime_hour;
     List<dynamic>  machineReservationStartTimeMinute = snapshot.data.machine_reservation_StartTime_minute;
@@ -68,6 +77,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
     for(int i =0;i<machineReservationStartTimeHour.length.toInt();i++){
       machineReservationTime.add(TableEvent(
+
         padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
         margin: EdgeInsets.zero,
         title: '',
@@ -86,6 +96,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
         ),
         onTap: (){
+
           showDialog(context: this.context, builder: (BuildContext context){
             return AlertDialog(
               title: Text('예약시간 확인'),
@@ -113,8 +124,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
   }
 
   final BlendMode? backgroundBlendMode = BlendMode.darken;
-  DateTime _month = DateTime.now();
-  DateTime _initDatee = DateTime.now();
+
   String _start_time = '시작 시간 선택';
   int visibleRange = 7;
   String _use_time = '이용 시간 선택';
@@ -149,29 +159,59 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                     ],
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(width: MediaQuery.of(context).size.width*0.05,),
+
                       Container(
-                        height: MediaQuery.of(context).size.height*0.1,
+
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {
-                              _selectMin();
-                            },),
-                            Container(
-                              child:Text(_start_time),
-                            ),
+                            InkWell(
+                              child:Row(
+                                children: [
+                                  Icon(Icons.timer,size: 30),
+                                  Container(
+                                    height:MediaQuery.of(context).size.width*0.07 ,
+                                    width:MediaQuery.of(context).size.width*0.28 ,
+                                    child:FittedBox(fit: BoxFit.contain,child: Text(_start_time,textAlign: TextAlign.center))
+                                    ,
+                                  ),
+                                ],
+                              ),
+                              onTap: (){
+                                _selectMin();
+                              },
+                            )
                           ],
-                        ),
+                        )
+
+
+
+
+
                       ),
-                      SizedBox(width: MediaQuery.of(context).size.width*0.001,),
+                      SizedBox(height: MediaQuery.of(context).size.height*0.08 ,
+                      width:  MediaQuery.of(context).size.width*0.08,),
                       Container(
                         child:Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            IconButton(
-                              icon: Icon(Icons.watch_sharp, size: 30),
-                              onPressed: () async {
+                            InkWell(
+                              child: Row(
+                                children: [
+                                  Icon(Icons.watch_sharp, size: 30),
+                                  Container(
+                                      height:MediaQuery.of(context).size.width*0.07 ,
+                                      width:MediaQuery.of(context).size.width*0.28 ,
+                                    child:FittedBox(fit: BoxFit.contain,
+                                      child: Text(_use_time,textAlign: TextAlign.center,),)
+
+                                  ),
+                                ],
+                              ),
+
+                              onTap: ()async{
                                 showDialog(
                                     context:context,
                                     builder: (BuildContext context){
@@ -222,14 +262,13 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                                 );
 
                               },
-                            ),
-                            Container(
-                              child: Text(_use_time),
-                            ),
+                            )
+
+
                           ],
                         ),
                       ),
-                      SizedBox(width: MediaQuery.of(context).size.width*0.05,),
+
 
                     ],
                   )
@@ -259,9 +298,9 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                         child: TimetableView(
                           timetableStyle: TimetableStyle(
                             visibleTimeBorder: true,
+
                               cornerColor: Colors.blue,
                               laneColor: Colors.redAccent,
-
                               timeItemTextColor: Colors.black,
                               startHour: 10,
                               endHour: 23,
