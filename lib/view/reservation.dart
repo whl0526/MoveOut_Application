@@ -29,67 +29,83 @@ class _Reservation extends State<Reservation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.fromLTRB(65, 20, 65, 0),
-              child:  Row(
 
-                children: [
-                  Column(
-                    children: [
-                      // IconButton(icon: Icon(Icons.timer,size: 30), onPressed: () async {
-                      //   _selectMin();
-                      // },),  SizedBox(height: 10,),
-                      // Container(
-                      //   child: Text(_min),
-                      // ),
-                    ],
-                  )
-                ],
-              ),
+      body: Column(
+
+         // crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+
+            SizedBox(
+              height: 50,
             ),
             Container(
-              margin: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+              height:175,
+              margin: EdgeInsets.all(15),
+
+              child:ListView(
+                scrollDirection: Axis.horizontal,
                 children: [
-
                   InkWell(
-                    child:  Text('유산소'),
-                    onTap: (){},
-
-                  ),RaisedButton(
-                    onPressed: () {  },
-                    child:  Text('하체실'),
-                  ),RaisedButton(
-                    onPressed: () async{
-
+                    onTap: () async{
                       final res = await Navigator.push(context,
                           MaterialPageRoute(builder: (context) => weight_zone()));
-
                     },
-                    child:  Text('웨이트존'),
-                  ),RaisedButton(
-                    onPressed: () {  },
-                    child:  Text('머신'),
-                  ),
+                    child:  buildCategory("images/treadmill.jpg", "유산소 존"),
+                  ),InkWell(
+                      onTap: () async{
+                        final res = await Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => weight_zone()));
+                      },
+                    child:  buildCategory("images/bench.jpg", "중앙 웨이트 존"),
 
+                  ),InkWell(
+                    onTap: () async{
+                      final res = await Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => weight_zone()));
+                    },
+                    child:  buildCategory("images/deadlift.jpg", "프리웨이트, 머신 존"),
+
+                  ),InkWell(
+                    onTap: () async{
+                      final res = await Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => weight_zone()));
+                    },
+                    child:  buildCategory("images/squat.jpg", "하체 존"),
+                  ),
                 ],
               ),
             ),
-
-            
-
-
-
-
           ],
         ),
-
     );
   }
 
+    Widget buildCategory(String imageUrl, String title) {
+      return Container(
+        width: 160,
+        decoration: BoxDecoration(
+          border: Border.all(width: 1.5),
+          borderRadius: BorderRadius.circular(16),
+          color:Colors.white,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AspectRatio(
+                child: Image.asset(imageUrl, fit: BoxFit.fill,),
+                aspectRatio: 1 / 0.85,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(title),
+            ],
+          ),
+        ),
+      );
+    }
+  }
 
-}
