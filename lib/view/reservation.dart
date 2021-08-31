@@ -10,21 +10,9 @@ class Reservation extends StatefulWidget{
 
 class _Reservation extends State<Reservation> {
 
-  String _min = '아직 시간 선택 안됐음';
 
 
 
-  Future _selectMin() async {
-    TimeOfDay? pick_min =
-        await showTimePicker(
-            context: context,
-            initialTime: TimeOfDay.now()
-        );
-
-    if (pick_min != null)
-      setState(() => _min =
-          pick_min.hour.toString() + '시' + pick_min.minute.toString() + '분');
-  }
 
   @override
   Widget build(BuildContext context) {
