@@ -114,7 +114,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
   final BlendMode? backgroundBlendMode = BlendMode.darken;
   DateTime _month = DateTime.now();
-  DateTime _initDate = DateTime.now();
+  DateTime _initDatee = DateTime.now();
   String _start_time = '시작 시간 선택';
   int visibleRange = 7;
   String _use_time = '이용 시간 선택';
