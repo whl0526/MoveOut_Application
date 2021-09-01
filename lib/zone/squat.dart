@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:move_application/style/text_style.dart';
 import 'package:move_application/power_rack_1.dart';
 
-import 'appbar.dart';
+import '../appbar.dart';
 
-class work_out extends StatefulWidget{
+class squat extends StatefulWidget{
   final String space_name;
-  work_out({required this.space_name});
+  squat({required this.space_name});
   @override
-  _work_out createState() => _work_out();
+  _squat createState() => _squat();
 
 }
 
-class _work_out extends State<work_out> {
+class _squat extends State<squat> {
   int Today = DateTime.now().day;
   int Tomorrow =DateTime.now().add(const Duration(days: 1)).day;
   int The_day_after_tomorrow = DateTime.now().add(const Duration(days: 2)).day;
@@ -21,20 +21,20 @@ class _work_out extends State<work_out> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(widget.space_name),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 10,),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.6,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body:Container(
+        width: MediaQuery.of(context).size.width*1,
+        height: MediaQuery.of(context).size.height * 1,
+          padding:EdgeInsets.all(10),
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  RaisedButton(
-                      child: Text('Power Rack 1'),
-                      onPressed: ()async{
+                  Container(
+                    child: InkWell(
+                      onTap: ()async{
                         showDialog(
                             context:context,
                             builder: (BuildContext context){
@@ -58,10 +58,7 @@ class _work_out extends State<work_out> {
                                             setState(()=> (selectedRadio=value!)
                                             );
                                           },
-
-
                                         );
-
                                       }),
                                     );
                                   },
@@ -78,32 +75,98 @@ class _work_out extends State<work_out> {
                                         MaterialPageRoute(builder: (context) => Power_Rack_1(day:_selected_day,)));
 
                                   }, child: Text('선택')),
-
                                 ],
                               );
-                        }
+                            }
                         );
 
+                      },
+                      child: buildCategory("icons/파워 레그프레스.jpg", "파워 레그프레스"),
+                    ),
+                  ),InkWell(
+                    onTap: () {
+                    },
+                    child: buildCategory("icons/스탭퍼.jpg", "힙 쓰러스트"),
+                  ),
+                ],
 
-                      }
-                  ),RaisedButton(
-                      child: Text('Power Rack 2'),
-                      onPressed: (){ }
-                  ),RaisedButton(
-                      child: Text('lower body machine 1'),
-                      onPressed: (){ }
-                  ),RaisedButton(
-                      child: Text('lower body machine 2'),
-                      onPressed: (){ }
-                  ),RaisedButton(
-                      child: Text('lower body machine 3'),
-                      onPressed: (){ }
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InkWell(
+                    onTap: () {
+                    },
+                    child:  buildCategory("icons/핵 스쿼트.jpg", "핵 스쿼트"),
+                  ),InkWell(
+                    onTap: () {
+                    },
+                    child:  buildCategory("icons/파워 렉.jpg", "랙"),
                   ),
                 ],
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  InkWell(
+                    onTap: () {
+                    },
+                    child:  buildCategory("icons/핵 스쿼트.jpg", "핵 스쿼트"),
+                  ),InkWell(
+                    onTap: () {
+                    },
+                    child:  buildCategory("icons/파워 렉.jpg", "랙"),
+                  ),
+                ],
+              ),
+            ],
+
+
+
+          ),
+        ),
+
+
+
+
+
+
+
+    );
+  }
+  Widget buildCategory(String imageUrl, String title) {
+    return Container(
+     width: (MediaQuery.of(context).size.width)*0.40,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 0.2,
+          color:Colors.yellow,
+        ),
+        borderRadius: BorderRadius.circular(12.5),
+        color:Colors.white,
+        boxShadow: [
+          BoxShadow(
+            blurRadius:3,
+            offset: Offset(5,5),
+            color: Colors.grey.withOpacity(0.3),
+          ),
+          BoxShadow(
+            blurRadius:3,
+            offset: Offset(-5,-5),
+            color: Colors.grey.withOpacity(0.3),
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(3),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AspectRatio(
+              child: Image.asset(imageUrl, fit: BoxFit.fill,),
+              aspectRatio: 1 / 0.95,
             ),
-
-
+            Text(title),
           ],
         ),
       ),
