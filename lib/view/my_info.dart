@@ -65,7 +65,9 @@ class _Info extends State<Info> {
                       itemBuilder: (BuildContext _context, int i){
 
                         return ListTile(
-                          trailing: InkWell(onTap: (){print(snapshot.data!.elementAt(i).equipment);},
+                          trailing: InkWell(onTap: (){
+                            print(snapshot.data!.elementAt(i).equipment);
+                            },
                             autofocus: true,
                             borderRadius:BorderRadius.all(Radius.circular(10)) ,
                           child:
