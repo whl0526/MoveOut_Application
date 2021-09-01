@@ -11,6 +11,7 @@ import 'custom_drawer.dart';
 import 'end_drawer.dart';
 
 class HomePage extends StatefulWidget {
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -54,7 +55,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _pageOptions[selectedPage],
       bottomNavigationBar: ConvexAppBar(
-        initialActiveIndex: 0,
+        initialActiveIndex:0,
         backgroundColor: Colors.white,
         color: Colors.yellow[500],
         activeColor: Colors.yellow[700],
