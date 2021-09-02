@@ -43,7 +43,7 @@ class _Reservation extends State<Reservation> {
                       InkWell(
                         onTap: () async{
                           final res = await Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => free_weight(space_name:'우측 웨이트 존')));
+                              MaterialPageRoute(builder: (context) => free_weight(space_name:'우측 웨이트')));
                         },
                         child:  buildCategory("images/deadlift.jpg", "우측 웨이트 존"),
 

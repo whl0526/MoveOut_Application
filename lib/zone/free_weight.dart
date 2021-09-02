@@ -28,8 +28,9 @@ class _free_weight extends State<free_weight> {
             height: MediaQuery.of(context).size.height * 1,
           decoration: BoxDecoration(
             border: Border(
-              top: BorderSide(width: 3, color: Colors.blueAccent),
+              top: BorderSide(width: 10, color: Colors.white),
               right:  BorderSide(width: 3, color: Colors.blueAccent),
+              bottom: BorderSide(width: 10, color: Colors.white),
             ),
           ),
 

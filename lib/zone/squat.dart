@@ -30,6 +30,7 @@ class _squat extends State<squat> {
             border: Border(
               top: BorderSide(width: 3, color: Colors.blueAccent),
               left:  BorderSide(width: 3, color: Colors.blueAccent),
+              right:  BorderSide(width: 10, color: Colors.white),
             ),
           ),
 
