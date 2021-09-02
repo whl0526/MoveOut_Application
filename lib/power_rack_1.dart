@@ -79,9 +79,10 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
       machineReservationTime.add(TableEvent(
 
         padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-        margin: EdgeInsets.zero,
+
         title: '',
         start: TableEventTime(
+
             hour: machineReservationStartTimeHour.elementAt(i).toInt(),
             minute: machineReservationStartTimeMinute.elementAt(i).toInt()
         ),
@@ -91,10 +92,14 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
         ),
         textStyle: TextStyle(
           color: Colors.black,
-          fontSize: 10,
+          fontSize: 15,
           fontWeight: FontWeight.bold,
+          height: 1,
+
+
 
         ),
+        
         onTap: (){
 
           showDialog(context: this.context, builder: (BuildContext context){
@@ -293,37 +298,41 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.black,width: 2)
                         ),
-                        width: MediaQuery.of(context).size.width*0.65,
+                        width: MediaQuery.of(context).size.width*0.75,
                         height: MediaQuery.of(context).size.height*0.55,
                         child: TimetableView(
                           timetableStyle: TimetableStyle(
-                            visibleTimeBorder: true,
-
-                              cornerColor: Colors.blue,
+                            visibleTimeBorder: false,
                               laneColor: Colors.redAccent,
                               timeItemTextColor: Colors.black,
+
                               startHour: 10,
                               endHour: 23,
                               laneHeight: MediaQuery.of(context).size.height * 0.07,
-                              laneWidth: MediaQuery.of(context).size.width * 0.6,
+                              laneWidth: MediaQuery.of(context).size.width * 0.7,
                               visibleDecorationBorder: true,
+
                               decorationLineDashSpaceWidth: 0,
                               decorationLineBorderColor: Colors.black,
-                              timeItemWidth: 60,
-                              timeItemHeight: 150,
+                              timeItemWidth: 80,
+
+                              timeItemHeight: 300,
                               timelineBorderColor: Colors.black,
-                              decorationLineHeight: 150/12
+                              decorationLineHeight: 300/12
+
                           ),
                           laneEventsList: [
                             LaneEvents(
+
                                 lane: Lane(
                                   backgroundColor: Colors.redAccent,
                                   name: 'Power_Rack_1 8/'+widget.day,
-                                  width:MediaQuery.of(context).size.width * 0.4,
-                                  textStyle: TextStyle(color: Colors.black,),
+                                  width:MediaQuery.of(context).size.width * 0.5,
+                                  textStyle: TextStyle(color: Colors.black,)
 
 
                                 ),
+
                                 events: _list(snapshot)
                             ),
                           ],

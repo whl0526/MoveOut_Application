@@ -73,13 +73,25 @@ class _Info extends State<Info> {
 
                             return ListTile(
                               trailing: InkWell(onTap: () async {
-                                print(snapshot.data!.elementAt(i).equipment);
+                                showDialog(context: context, builder: (BuildContext context){
+                                  return AlertDialog(
+                                    content: Text('정말 취소 하시겠습니까?'),
+                                    title: Text('알림'),
+                                    buttonPadding: EdgeInsets.all(10),
 
-                                Response response = await deleteReservationList(snapshot.data!.elementAt(i).userid, snapshot.data!.elementAt(i).equipment, snapshot.data!.elementAt(i).date);
-                                if(response.statusCode == 200){
-                                 setState(() {
-                                 });
-                                }
+                                    actions: [
+                                      FlatButton(onPressed: (){Navigator.pop(context);}, child: Text('취소')),
+                                      FlatButton(onPressed: () async {
+                                        Response response = await deleteReservationList(snapshot.data!.elementAt(i).userid, snapshot.data!.elementAt(i).equipment, snapshot.data!.elementAt(i).date);
+                                        if(response.statusCode == 200){
+                                          Navigator.pop(context);
+                                          setState(() {});
+                                        }
+                                      }, child: Text('삭제'))
+                                    ],
+                                  );
+                                });
+
                               },
                                 autofocus: true,
                                 borderRadius:BorderRadius.all(Radius.circular(10)) ,
