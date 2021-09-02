@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:move_application/view/home.dart';
-import 'HomePage.dart';
+import 'view/HomePage.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {

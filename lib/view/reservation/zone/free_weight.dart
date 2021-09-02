@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:move_application/style/text_style.dart';
-import 'package:move_application/power_rack_1.dart';
+import 'package:move_application/view/reservation/power_rack_1.dart';
 
-import '../appbar.dart';
+import 'package:move_application/view/appbar.dart';
 
 class free_weight extends StatefulWidget{
   final String space_name;

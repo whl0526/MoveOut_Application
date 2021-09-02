@@ -2,7 +2,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:move_application/HomePage.dart';
+import 'package:move_application/view/HomePage.dart';
 import 'package:move_application/models/get_reservation_list.dart';
 import 'package:move_application/style/text_style.dart';
 import 'package:move_application/models/delete_reservation_list.dart';

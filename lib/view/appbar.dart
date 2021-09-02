@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:move_application/style/text_style.dart';
-import 'package:move_application/HomePage.dart';
+import 'package:move_application/view/HomePage.dart';
 
 class CustomAppbar extends AppBar{
   final String _zone_name ;

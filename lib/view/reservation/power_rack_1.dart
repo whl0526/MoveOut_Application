@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:move_application/appbar.dart';
+import 'package:move_application/view/appbar.dart';
 
 import 'package:flutter_timetable_view/flutter_timetable_view.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 import 'package:move_application/style/text_style.dart';
 import 'package:timer_builder/timer_builder.dart';
 
-import 'models/get_reservation_time.dart';
+import '../../models/get_reservation_time.dart';
 
 
 class Power_Rack_1 extends StatefulWidget{

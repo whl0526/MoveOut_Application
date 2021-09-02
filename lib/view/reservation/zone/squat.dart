@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:move_application/style/text_style.dart';
-import 'package:move_application/power_rack_1.dart';
+import 'package:move_application/view/reservation/power_rack_1.dart';
 
-import '../appbar.dart';
+import 'package:move_application/view/appbar.dart';
 
-class middle_weight extends StatefulWidget{
+class squat extends StatefulWidget{
   final String space_name;
-  middle_weight({required this.space_name});
+  squat({required this.space_name});
   @override
-  _middle_weight createState() => _middle_weight();
+  _squat createState() => _squat();
 
 }
 
-class _middle_weight extends State<middle_weight> {
+class _squat extends State<squat> {
   int Today = DateTime.now().day;
   int Tomorrow =DateTime.now().add(const Duration(days: 1)).day;
   int The_day_after_tomorrow = DateTime.now().add(const Duration(days: 2)).day;
@@ -29,6 +29,8 @@ class _middle_weight extends State<middle_weight> {
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(width: 3, color: Colors.blueAccent),
+              left:  BorderSide(width: 3, color: Colors.blueAccent),
+              right:  BorderSide(width: 10, color: Colors.white),
             ),
           ),
 
@@ -87,12 +89,12 @@ class _middle_weight extends State<middle_weight> {
                             );
 
                           },
-                          child: buildCategory("icons/인클라인 벤치.jpg", "인클라인"),
+                          child: buildCategory("icons/파워 레그프레스.jpg", "파워 레그프레스"),
                         ),
                       ),InkWell(
                         onTap: () {
                         },
-                        child: buildCategory("icons/벤치.jpg", "벤치프레스"),
+                        child: buildCategory("icons/스탭퍼.jpg", "힙 쓰러스트"),
                       ),
                     ],
 
@@ -103,11 +105,11 @@ class _middle_weight extends State<middle_weight> {
                       InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/랫풀다운.jpg", "랫 풀 다운"),
+                        child:  buildCategory("icons/핵 스쿼트.jpg", "핵 스쿼트"),
                       ),InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/시티드 로우.jpg", "시티드 로우"),
+                        child:  buildCategory("icons/파워 렉.jpg", "랙"),
                       ),
                     ],
                   ),
@@ -117,29 +119,14 @@ class _middle_weight extends State<middle_weight> {
                       InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/시티드 체스트프레스.jpg", "체스트프레스"),
+                        child:  buildCategory("icons/핵 스쿼트.jpg", "핵 스쿼트"),
                       ),InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/턱걸리 머신.jpg", "턱걸이 머신"),
+                        child:  buildCategory("icons/파워 렉.jpg", "랙"),
                       ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                        },
-                        child:  buildCategory("icons/플라이.jpg", "플라이 머신"),
-                      ),InkWell(
-                        onTap: () {
-                        },
-                        child:  buildCategory("icons/레그 익스텐션.jpg", "레그 익스텐션,컬"),
-                      ),
-                    ],
-                  ),
-
                 ],
 
 
@@ -159,7 +146,7 @@ class _middle_weight extends State<middle_weight> {
   }
   Widget buildCategory(String imageUrl, String title) {
     return Container(
-     width: (MediaQuery.of(context).size.width)*0.3,
+     width: (MediaQuery.of(context).size.width)*0.35,
       decoration: BoxDecoration(
         border: Border.all(
           width: 0.2,
@@ -181,7 +168,7 @@ class _middle_weight extends State<middle_weight> {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(3.0),
+        padding: const EdgeInsets.all(3),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

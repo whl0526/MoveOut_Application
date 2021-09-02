@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:move_application/style/text_style.dart';
-import 'package:move_application/power_rack_1.dart';
+import 'package:move_application/view/reservation/power_rack_1.dart';
 
-import '../appbar.dart';
+import 'package:move_application/view/appbar.dart';
 
-class aerobic extends StatefulWidget{
+class middle_weight extends StatefulWidget{
   final String space_name;
-  aerobic({required this.space_name});
+  middle_weight({required this.space_name});
   @override
-  _aerobic createState() => _aerobic();
+  _middle_weight createState() => _middle_weight();
 
 }
 
-class _aerobic extends State<aerobic> {
+class _middle_weight extends State<middle_weight> {
   int Today = DateTime.now().day;
   int Tomorrow =DateTime.now().add(const Duration(days: 1)).day;
   int The_day_after_tomorrow = DateTime.now().add(const Duration(days: 2)).day;
@@ -24,23 +24,21 @@ class _aerobic extends State<aerobic> {
       body:Container(
         padding:EdgeInsets.all(10),
         child: Container(
-            width: MediaQuery.of(context).size.width * 1,
+            width: MediaQuery.of(context).size.width*1,
             height: MediaQuery.of(context).size.height * 1,
-            decoration: BoxDecoration(
-              border: Border(
-                top: BorderSide(width: 3, color: Colors.blueAccent),
-                left:  BorderSide(width: 3, color: Colors.blueAccent),
-              ),
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(width: 3, color: Colors.blueAccent),
             ),
-              child: Column(
+          ),
 
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-
                         child: InkWell(
                           onTap: ()async{
                             showDialog(
@@ -89,12 +87,12 @@ class _aerobic extends State<aerobic> {
                             );
 
                           },
-                          child: buildCategory("icons/유산소.jpg", "트레드밀 1"),
+                          child: buildCategory("icons/인클라인 벤치.jpg", "인클라인"),
                         ),
                       ),InkWell(
                         onTap: () {
                         },
-                        child: buildCategory("icons/스탭퍼.jpg", "스탭퍼 1"),
+                        child: buildCategory("icons/벤치.jpg", "벤치프레스"),
                       ),
                     ],
 
@@ -105,11 +103,11 @@ class _aerobic extends State<aerobic> {
                       InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/유산소.jpg", "트레드밀 2"),
+                        child:  buildCategory("icons/랫풀다운.jpg", "랫 풀 다운"),
                       ),InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/스탭퍼.jpg", "스탭퍼 2"),
+                        child:  buildCategory("icons/시티드 로우.jpg", "시티드 로우"),
                       ),
                     ],
                   ),
@@ -119,11 +117,11 @@ class _aerobic extends State<aerobic> {
                       InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/유산소.jpg", "트레드밀 3"),
+                        child:  buildCategory("icons/시티드 체스트프레스.jpg", "체스트프레스"),
                       ),InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/싸이클.jpg", "싸이클 1"),
+                        child:  buildCategory("icons/턱걸리 머신.jpg", "턱걸이 머신"),
                       ),
                     ],
                   ),
@@ -133,11 +131,11 @@ class _aerobic extends State<aerobic> {
                       InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/유산소.jpg", "트레드밀 4"),
+                        child:  buildCategory("icons/플라이.jpg", "플라이 머신"),
                       ),InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/싸이클.jpg", "싸이클 2"),
+                        child:  buildCategory("icons/레그 익스텐션.jpg", "레그 익스텐션,컬"),
                       ),
                     ],
                   ),

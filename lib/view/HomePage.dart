@@ -1,12 +1,12 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:move_application/appbar.dart';
-import 'package:move_application/view/home.dart';
-import 'package:move_application/view/reservation.dart';
-import 'package:move_application/view/my_info.dart';
+import 'package:move_application/view/appbar.dart';
+import 'package:move_application/view/home/home.dart';
+import 'package:move_application/view/reservation/reservation.dart';
+import 'package:move_application/view/myInfo/my_info.dart';
 import 'package:move_application/style/text_style.dart';
-import 'package:move_application/appbar.dart';
+import 'package:move_application/view/appbar.dart';
 import 'end_drawer.dart';
 
 class HomePage extends StatefulWidget {

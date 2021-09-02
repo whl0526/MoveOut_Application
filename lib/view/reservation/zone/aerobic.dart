@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:move_application/style/text_style.dart';
-import 'package:move_application/power_rack_1.dart';
+import 'package:move_application/view/reservation/power_rack_1.dart';
 
-import '../appbar.dart';
+import 'package:move_application/view/appbar.dart';
 
-class squat extends StatefulWidget{
+class aerobic extends StatefulWidget{
   final String space_name;
-  squat({required this.space_name});
+  aerobic({required this.space_name});
   @override
-  _squat createState() => _squat();
+  _aerobic createState() => _aerobic();
 
 }
 
-class _squat extends State<squat> {
+class _aerobic extends State<aerobic> {
   int Today = DateTime.now().day;
   int Tomorrow =DateTime.now().add(const Duration(days: 1)).day;
   int The_day_after_tomorrow = DateTime.now().add(const Duration(days: 2)).day;
@@ -24,23 +24,23 @@ class _squat extends State<squat> {
       body:Container(
         padding:EdgeInsets.all(10),
         child: Container(
-            width: MediaQuery.of(context).size.width*1,
+            width: MediaQuery.of(context).size.width * 1,
             height: MediaQuery.of(context).size.height * 1,
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 3, color: Colors.blueAccent),
-              left:  BorderSide(width: 3, color: Colors.blueAccent),
-              right:  BorderSide(width: 10, color: Colors.white),
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(width: 3, color: Colors.blueAccent),
+                left:  BorderSide(width: 3, color: Colors.blueAccent),
+              ),
             ),
-          ),
-
               child: Column(
+
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
+
                         child: InkWell(
                           onTap: ()async{
                             showDialog(
@@ -89,12 +89,12 @@ class _squat extends State<squat> {
                             );
 
                           },
-                          child: buildCategory("icons/파워 레그프레스.jpg", "파워 레그프레스"),
+                          child: buildCategory("icons/유산소.jpg", "트레드밀 1"),
                         ),
                       ),InkWell(
                         onTap: () {
                         },
-                        child: buildCategory("icons/스탭퍼.jpg", "힙 쓰러스트"),
+                        child: buildCategory("icons/스탭퍼.jpg", "스탭퍼 1"),
                       ),
                     ],
 
@@ -105,11 +105,11 @@ class _squat extends State<squat> {
                       InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/핵 스쿼트.jpg", "핵 스쿼트"),
+                        child:  buildCategory("icons/유산소.jpg", "트레드밀 2"),
                       ),InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/파워 렉.jpg", "랙"),
+                        child:  buildCategory("icons/스탭퍼.jpg", "스탭퍼 2"),
                       ),
                     ],
                   ),
@@ -119,14 +119,29 @@ class _squat extends State<squat> {
                       InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/핵 스쿼트.jpg", "핵 스쿼트"),
+                        child:  buildCategory("icons/유산소.jpg", "트레드밀 3"),
                       ),InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/파워 렉.jpg", "랙"),
+                        child:  buildCategory("icons/싸이클.jpg", "싸이클 1"),
                       ),
                     ],
                   ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                        },
+                        child:  buildCategory("icons/유산소.jpg", "트레드밀 4"),
+                      ),InkWell(
+                        onTap: () {
+                        },
+                        child:  buildCategory("icons/싸이클.jpg", "싸이클 2"),
+                      ),
+                    ],
+                  ),
+
                 ],
 
 
@@ -146,7 +161,7 @@ class _squat extends State<squat> {
   }
   Widget buildCategory(String imageUrl, String title) {
     return Container(
-     width: (MediaQuery.of(context).size.width)*0.35,
+     width: (MediaQuery.of(context).size.width)*0.3,
       decoration: BoxDecoration(
         border: Border.all(
           width: 0.2,
@@ -168,7 +183,7 @@ class _squat extends State<squat> {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(3),
+        padding: const EdgeInsets.all(3.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

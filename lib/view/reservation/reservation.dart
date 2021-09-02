@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:move_application/zone/free_weight.dart';
-import 'package:move_application/zone/middle_weight.dart';
-import 'package:move_application/zone/squat.dart';
+import 'package:move_application/view/reservation/zone/free_weight.dart';
+import 'package:move_application/view/reservation/zone/middle_weight.dart';
+import 'package:move_application/view/reservation/zone/squat.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:move_application/zone/aerobic.dart';
+import 'package:move_application/view/reservation/zone/aerobic.dart';
 
 class Reservation extends StatefulWidget{
   @override
