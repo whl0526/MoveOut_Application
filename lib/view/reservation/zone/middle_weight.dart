@@ -23,15 +23,8 @@ class _middle_weight extends State<middle_weight> {
       appBar: CustomAppbar(widget.space_name),
       body:Container(
         padding:EdgeInsets.all(10),
-        child: Container(
             width: MediaQuery.of(context).size.width*1,
             height: MediaQuery.of(context).size.height * 1,
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 3, color: Colors.blueAccent),
-            ),
-          ),
-
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -135,7 +128,7 @@ class _middle_weight extends State<middle_weight> {
                       ),InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/레그 익스텐션.jpg", "레그 익스텐션,컬"),
+                        child:  buildCategory("icons/레그 익스텐션.jpg", "레그 익스텐션 & 컬"),
                       ),
                     ],
                   ),
@@ -147,7 +140,6 @@ class _middle_weight extends State<middle_weight> {
               ),
             ),
 
-      ),
 
 
 
@@ -159,7 +151,7 @@ class _middle_weight extends State<middle_weight> {
   }
   Widget buildCategory(String imageUrl, String title) {
     return Container(
-     width: (MediaQuery.of(context).size.width)*0.3,
+     width: (MediaQuery.of(context).size.width)*0.28,
       decoration: BoxDecoration(
         border: Border.all(
           width: 0.2,

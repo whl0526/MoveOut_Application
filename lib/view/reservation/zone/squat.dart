@@ -23,17 +23,8 @@ class _squat extends State<squat> {
       appBar: CustomAppbar(widget.space_name),
       body:Container(
         padding:EdgeInsets.all(10),
-        child: Container(
             width: MediaQuery.of(context).size.width*1,
             height: MediaQuery.of(context).size.height * 1,
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 3, color: Colors.blueAccent),
-              left:  BorderSide(width: 3, color: Colors.blueAccent),
-              right:  BorderSide(width: 10, color: Colors.white),
-            ),
-          ),
-
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -119,7 +110,7 @@ class _squat extends State<squat> {
                       InkWell(
                         onTap: () {
                         },
-                        child:  buildCategory("icons/핵 스쿼트.jpg", "핵 스쿼트"),
+                        child:  buildCategory("icons/핵 스쿼트.jpg", "V 스쿼트"),
                       ),InkWell(
                         onTap: () {
                         },
@@ -133,15 +124,6 @@ class _squat extends State<squat> {
 
               ),
             ),
-
-      ),
-
-
-
-
-
-
-
     );
   }
   Widget buildCategory(String imageUrl, String title) {

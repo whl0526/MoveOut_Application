@@ -82,6 +82,15 @@ flutter:
       fonts :
         - asset: font/BMHANNAPro.ttf
           weight : 700
+    - family: Roboto
+      fonts:
+        - asset: font/Roboto-Light.ttf
+          weight : 700
+    - family: NotoSansKR-Regular
+      fonts:
+        - asset: font/NotoSansKR-Regular.otf
+          weight: 700
+
 
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

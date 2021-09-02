@@ -1,7 +1,5 @@
-import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:move_application/models/get_member_info.dart';
-
 import 'package:move_application/style/text_style.dart';
 
 
@@ -105,7 +103,7 @@ class home extends StatelessWidget{
                           children: [
                             Container(
                               width: MediaQuery.of(context).size.width * 0.8,
-                              height: MediaQuery.of(context).size.height*0.07,
+                              height: MediaQuery.of(context).size.height*0.09,
                               decoration: BoxDecoration(
                                   border:Border.all(
                                       width: 2, color: Colors.black

@@ -23,17 +23,9 @@ class _aerobic extends State<aerobic> {
       appBar: CustomAppbar(widget.space_name),
       body:Container(
         padding:EdgeInsets.all(10),
-        child: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: MediaQuery.of(context).size.height * 1,
-            decoration: BoxDecoration(
-              border: Border(
-                top: BorderSide(width: 3, color: Colors.blueAccent),
-                left:  BorderSide(width: 3, color: Colors.blueAccent),
-              ),
-            ),
               child: Column(
-
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                 Row(
@@ -146,7 +138,7 @@ class _aerobic extends State<aerobic> {
 
 
 
-              ),
+
             ),
 
       ),
@@ -161,7 +153,7 @@ class _aerobic extends State<aerobic> {
   }
   Widget buildCategory(String imageUrl, String title) {
     return Container(
-     width: (MediaQuery.of(context).size.width)*0.3,
+     width: (MediaQuery.of(context).size.width)*0.28,
       decoration: BoxDecoration(
         border: Border.all(
           width: 0.2,

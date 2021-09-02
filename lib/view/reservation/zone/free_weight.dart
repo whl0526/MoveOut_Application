@@ -23,18 +23,8 @@ class _free_weight extends State<free_weight> {
       appBar: CustomAppbar(widget.space_name),
       body:Container(
         padding:EdgeInsets.all(10),
-        child: Container(
             width: MediaQuery.of(context).size.width * 1,
             height: MediaQuery.of(context).size.height * 1,
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(width: 10, color: Colors.white),
-              right:  BorderSide(width: 3, color: Colors.blueAccent),
-              bottom: BorderSide(width: 10, color: Colors.white),
-            ),
-          ),
-
-
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -135,7 +125,6 @@ class _free_weight extends State<free_weight> {
 
               ),
             ),
-      ),
 
 
 
