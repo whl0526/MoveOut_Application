@@ -50,7 +50,7 @@ class _Info extends State<Info> {
               children: <Widget>[
                 Container(
                   margin: EdgeInsets.all(14),
-                  child: Text('내 예약 운동기구지',style: MyTextStyle(size: 20),),
+                  child: Text('내 예약 운동기구',style: MyTextStyle(size: 20),),
                 ),
 
 

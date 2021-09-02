@@ -107,9 +107,9 @@ class home extends StatelessWidget{
                               width: MediaQuery.of(context).size.width * 0.8,
                               height: MediaQuery.of(context).size.height*0.07,
                               decoration: BoxDecoration(
-                                  border:
-                                  Border.all(
-                                      width: 2, color: Colors.black),
+                                  border:Border.all(
+                                      width: 2, color: Colors.black
+                                  ),
                                   color: Colors.yellow.shade300,
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(20),

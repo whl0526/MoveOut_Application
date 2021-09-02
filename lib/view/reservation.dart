@@ -22,7 +22,7 @@ class _Reservation extends State<Reservation> {
     return Scaffold(
       body: Container(
           child:Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -40,19 +40,22 @@ class _Reservation extends State<Reservation> {
                           },
                         child:  buildCategory("images/bench.jpg", "중앙 웨이트 존"),
                       ),
+                      InkWell(
+                        onTap: () async{
+                          final res = await Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => free_weight(space_name:'우측 웨이트 존')));
+                        },
+                        child:  buildCategory("images/deadlift.jpg", "우측 웨이트 존"),
+
+                      ),
                     ],
                   ),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: () async{
-                      final res = await Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => free_weight(space_name:'프리웨이트, 머신')));
-                    },
-                    child:  buildCategory("images/deadlift.jpg", "프리웨이트, 머신 존"),
-
-                  ),InkWell(
                     onTap: () async{
                       final res = await Navigator.push(context,
                           MaterialPageRoute(builder: (context) => squat(space_name:'하체')));
@@ -69,7 +72,7 @@ class _Reservation extends State<Reservation> {
 
     Widget buildCategory(String imageUrl, String title) {
       return Container(
-        width: (MediaQuery.of(context).size.width)*0.42,
+        width: (MediaQuery.of(context).size.width)*0.31,
         decoration: BoxDecoration(
           border: Border.all(
               width: 0.2,
