@@ -60,12 +60,13 @@ class _Info extends State<Info> {
                       if (snapshot.hasData == false) {
                         return SizedBox(
                           height: MediaQuery.of(context).size.height * 0.35,
-
                         );
-
                       }
                       return Container(
                         height: MediaQuery.of(context).size.height * 0.35,
+                        decoration: BoxDecoration(
+                          color:Colors.white,
+                        ),
                         child:ListView.builder(
                           itemCount: snapshot.data!.length,
                           scrollDirection: Axis.vertical,
