@@ -165,9 +165,9 @@ class home extends StatelessWidget{
                                         Text('현재 이용자 수',style: TextStyle(color: Colors.black,
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold),),
-                                        Text('N / 코로나 가능 인원수',style: TextStyle(color: Colors.black,
+                                        Text('N / 코로나 가능 인원수',style: TextStyle(
                                             fontSize: 15,
-                                            fontFamily: 'BMHANNAPro',
+                                            color: Colors.black,
                                             fontWeight: FontWeight.bold))
                                       ],
                                     ),
