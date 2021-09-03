@@ -42,9 +42,10 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {
               _scaffoldkey.currentState!.openEndDrawer();
             },
-            icon: Icon(Icons.doorbell_sharp),
-            color: Colors.black,
-            iconSize: 35,
+            icon: Image.asset(
+              'images/alarm.png',
+              color:Colors.black,
+            ),
           )
         ],
         centerTitle: true,
@@ -59,12 +60,19 @@ class _HomePageState extends State<HomePage> {
         color: Colors.yellow[500],
         activeColor: Colors.yellow[700],
         elevation: 3,
-        curveSize: 100,// 동그라미를 감싸는 커브 각도
-        top: -30,// 동그라미 사이즈
+        curveSize: 120,// 동그라미를 감싸는 커브 각도
+        top: -35,// 동그라미 사이즈
         height: 40,// 탭 높이
         items: [
           TabItem(
-            icon: Icons.home,
+                  icon: Image.asset(
+              "images/home.png",
+              color: Colors.yellow[500],
+              ),activeIcon: Image.asset(
+              "images/home.png",
+            color: Colors.white,
+            scale: 6.1,
+           )
           ),
           TabItem(
               icon: Image.asset(
@@ -73,11 +81,16 @@ class _HomePageState extends State<HomePage> {
             scale: 30,
           ),activeIcon: Image.asset(
             "icons/reservation-icon-5.jpg",
-
             color: Colors.white,
             scale: 30,)
           ),
-          TabItem(icon: Icons.person),
+          TabItem(icon: Image.asset(
+            'images/human.png',
+            color: Colors.yellow[500],
+          ),activeIcon: Image.asset(
+            'images/human.png',
+            color: Colors.white,
+            )),
 
         ],
         onTap: (int index){

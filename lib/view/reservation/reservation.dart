@@ -40,20 +40,11 @@ class _Reservation extends State<Reservation> {
                           },
                         child:  buildCategory("images/bench.jpg", "중앙 웨이트 존"),
                       ),
-                      InkWell(
-                        onTap: () async{
-                          final res = await Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => free_weight(space_name:'우측 웨이트')));
-                        },
-                        child:  buildCategory("images/deadlift.jpg", "우측 웨이트 존"),
-
-                      ),
                     ],
                   ),
               SizedBox(height: MediaQuery.of(context).size.height*0.02),
               Row(
-
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   InkWell(
                     onTap: () async{
@@ -61,6 +52,14 @@ class _Reservation extends State<Reservation> {
                           MaterialPageRoute(builder: (context) => squat(space_name:'하체')));
                     },
                     child:  buildCategory("images/squat.jpg", "하체 존"),
+                  ),
+                  InkWell(
+                    onTap: () async{
+                      final res = await Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => free_weight(space_name:'우측 웨이트')));
+                    },
+                    child:  buildCategory("images/deadlift.jpg", "우측 웨이트 존"),
+
                   ),
                 ],
               ),
@@ -72,7 +71,7 @@ class _Reservation extends State<Reservation> {
 
     Widget buildCategory(String imageUrl, String title) {
       return Container(
-        width: (MediaQuery.of(context).size.width)*0.31,
+        width: (MediaQuery.of(context).size.width)*0.41,
         decoration: BoxDecoration(
           border: Border.all(
               width: 0.2,
