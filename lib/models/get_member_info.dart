@@ -32,11 +32,11 @@ Future<Member_info> getMemberInfo(memberId) async{
 
   //받은 데이터정보를 필요한 형태로 저장한다.
   memberInfo = Member_info(
-    end_date: data1[0]["end_date"],
-    enrollment: data1[0]["enrollment"],
-    start_date: data1[0]["start_date"],
-    user_name: data1[0]["user_name"],
-    userid:data1[0]["userid"]
+    end_date: data1["end_date"],
+    enrollment: data1["enrollment"],
+    start_date: data1["start_date"],
+    user_name: data1["user_name"],
+    userid:data1["userid"]
   );
   return memberInfo;
 }

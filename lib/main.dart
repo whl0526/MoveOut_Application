@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         // include country code too
       ],
       theme: ThemeData(
-        fontFamily: 'NotoSansKR-Regular',
+        fontFamily: 'Pretendard-Medium',
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),

@@ -123,8 +123,6 @@ class _Info extends State<Info> {
 
 
 
-
-
                 Container(
                   margin: EdgeInsets.all(14),
                   child: Text('내 수업시간',style: MyTextStyle(size: 20),),
