@@ -1,16 +1,15 @@
 
-import 'dart:convert';
 import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
+
 import 'package:move_application/models/post_machine_reservation.dart';
 import 'package:move_application/view/appbar.dart';
 
 import 'package:flutter_timetable_view/flutter_timetable_view.dart';
 import 'package:day_night_time_picker/day_night_time_picker.dart';
-import 'package:http/http.dart' as http;
 import 'package:move_application/style/text_style.dart';
 import 'package:timer_builder/timer_builder.dart';
 
@@ -382,13 +381,12 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                         print(reservation_hour+':'+reservation_min);
                         print( Time_variable.hour.toString()+':'+Time_variable.minute.toString());
 
-                        /*postMachineReservation(
+                        postMachineReservation(
                             1234.toString(),
                             '${widget.date.toString().split(" ").first.toString()}',
                             '$reservation_hour'+':'+'$reservation_min',
-                            'Time_variable.hour.toString()'+':'+'Time_variable.minute.toString()');*/
+                            Time_variable.hour.toString()+':'+Time_variable.minute.toString());
 
-                        postMachineReservation("1234","2021-09-04","17:30","17:40");
 
 
                       }
