@@ -13,9 +13,9 @@ class squat extends StatefulWidget{
 }
 
 class _squat extends State<squat> {
-  int Today = DateTime.now().day;
-  int Tomorrow =DateTime.now().add(const Duration(days: 1)).day;
-  int The_day_after_tomorrow = DateTime.now().add(const Duration(days: 2)).day;
+  DateTime Today = DateTime.now();
+  DateTime Tomorrow =DateTime.now().add(const Duration(days: 1));
+  DateTime The_day_after_tomorrow = DateTime.now().add(const Duration(days: 2));
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +46,9 @@ class _squat extends State<squat> {
                                           mainAxisSize: MainAxisSize.min,
                                           children: List<Widget>.generate(3,(int index){
                                             String Title= '';
-                                            if(index == 0) Title = Today.toString();
-                                            else if(index == 1) Title = Tomorrow.toString();
-                                            else if(index == 2) Title = The_day_after_tomorrow.toString();
+                                            if(index == 0) Title = Today.day.toString();
+                                            else if(index == 1) Title = Tomorrow.day.toString();
+                                            else if(index == 2) Title = The_day_after_tomorrow.day.toString();
                                             return RadioListTile<int>(
                                               title: Text(Title+'일'),
                                               value: index,
@@ -65,13 +65,13 @@ class _squat extends State<squat> {
                                     actions: [
                                       FlatButton(onPressed: (){ Navigator.pop(context);}, child: Text('닫기')),
                                       FlatButton(onPressed: () async {
-                                        String _selected_day='';
-                                        if(selectedRadio == 0) _selected_day = Today.toString();
-                                        else if(selectedRadio == 1) _selected_day = Tomorrow.toString();
-                                        else if(selectedRadio == 2) _selected_day = The_day_after_tomorrow.toString();
+                                        late DateTime _selected_day;
+                                        if(selectedRadio == 0) _selected_day = Today;
+                                        else if(selectedRadio == 1) _selected_day = Tomorrow;
+                                        else if(selectedRadio == 2) _selected_day = The_day_after_tomorrow;
                                         Navigator.pop(context);
                                         final res = await Navigator.push(context,
-                                            MaterialPageRoute(builder: (context) => Power_Rack_1(day:_selected_day,)));
+                                            MaterialPageRoute(builder: (context) => Power_Rack_1(date:_selected_day,)));
 
                                       }, child: Text('선택')),
                                     ],

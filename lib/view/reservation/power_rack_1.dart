@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
+import 'package:move_application/models/post_machine_reservation.dart';
 import 'package:move_application/view/appbar.dart';
 
 import 'package:flutter_timetable_view/flutter_timetable_view.dart';
@@ -17,8 +18,8 @@ import '../../models/get_reservation_time.dart';
 
 
 class Power_Rack_1 extends StatefulWidget{
-  final String day;
-  Power_Rack_1({required this.day});
+  final DateTime date;
+  Power_Rack_1({required this.date});
 
   @override
   _Power_Rack_1 createState() => _Power_Rack_1();
@@ -26,8 +27,8 @@ class Power_Rack_1 extends StatefulWidget{
 
 class _Power_Rack_1 extends State<Power_Rack_1>{
 
-
   TimeOfDay _time = TimeOfDay.now();
+ //List<String> selected_date = widget.date.split("-");
 
   void onTimeChanged(TimeOfDay newTime) {
     setState(() {
@@ -326,7 +327,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
                                 lane: Lane(
                                   backgroundColor: Colors.redAccent,
-                                  name: 'Power_Rack_1 8/'+widget.day,
+                                  name: 'Power_Rack_1 '+widget.date.month.toString()+'/'+widget.date.day.toString(),
                                   width:MediaQuery.of(context).size.width * 0.5,
                                   textStyle: TextStyle(color: Colors.black,)
 
@@ -370,11 +371,26 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                         List selected_time_list = _start_time.split(" ");
                         String reservation_hour = selected_time_list[0].split('시').first;
                         String reservation_min = selected_time_list[1].split('분').first;
-                        var url = 'http://10.0.2.2:5000/reservation/${reservation_hour}/${reservation_min}/${_use_time}';
-                        var response = await http.get(url);
-                        Map<String , dynamic> test_json_file= jsonDecode(response.body);
-                        print(response.statusCode);
-                        print(test_json_file);
+
+                        TimeOfDay seltime = TimeOfDay(hour: int.parse(reservation_hour), minute:  int.parse(reservation_min));
+                        DateTime Time_variable = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, seltime.hour, seltime.minute);
+                        Time_variable = Time_variable.add(Duration(minutes: int.parse(_use_time)) );
+                        print(Time_variable.minute.toString());
+
+                        print(DateFormat.yMd().format(DateTime.now()).toString());
+                        print(widget.date.toString().split(" ").first);
+                        print(reservation_hour+':'+reservation_min);
+                        print( Time_variable.hour.toString()+':'+Time_variable.minute.toString());
+
+                        /*postMachineReservation(
+                            1234.toString(),
+                            '${widget.date.toString().split(" ").first.toString()}',
+                            '$reservation_hour'+':'+'$reservation_min',
+                            'Time_variable.hour.toString()'+':'+'Time_variable.minute.toString()');*/
+
+                        postMachineReservation("1234","2021-09-04","17:30","17:40");
+
+
                       }
                     },child: Text('예약하기'),
                     ),
