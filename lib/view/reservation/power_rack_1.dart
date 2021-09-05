@@ -3,6 +3,7 @@ import 'package:day_night_time_picker/lib/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 
 import 'package:move_application/models/post_machine_reservation.dart';
@@ -27,7 +28,6 @@ class Power_Rack_1 extends StatefulWidget{
 class _Power_Rack_1 extends State<Power_Rack_1>{
 
   TimeOfDay _time = TimeOfDay.now();
- //List<String> selected_date = widget.date.split("-");
 
   void onTimeChanged(TimeOfDay newTime) {
     setState(() {
@@ -70,25 +70,27 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
   List<TableEvent> _list(snapshot){
 
     List<TableEvent> machineReservationTime = [];
-    List<dynamic> machineReservationStartTimeHour = snapshot.data.machine_reservation_StartTime_hour;
-    List<dynamic>  machineReservationStartTimeMinute = snapshot.data.machine_reservation_StartTime_minute;
-    List<dynamic>  machineReservationEndTimeHour = snapshot.data.machine_reservation_EndTime_hour;
-    List<dynamic>  machineReservationEndTimeMinute = snapshot.data.machine_reservation_EndTime_minute;
 
-    for(int i =0;i<machineReservationStartTimeHour.length.toInt();i++){
+
+
+    /*List<String> machineReservationStartTimeHour = snapshot.data.machine_reservation_StartTime_hour;
+    List<String>  machineReservationStartTimeMinute = snapshot.data.machine_reservation_StartTime_minute;
+    List<String>  machineReservationEndTimeHour = snapshot.data.machine_reservation_EndTime_hour;
+    List<String>  machineReservationEndTimeMinute = snapshot.data.machine_reservation_EndTime_minute;*/
+
+    for(int i =0;i<snapshot.data.length;i++){
       machineReservationTime.add(TableEvent(
 
         padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
 
         title: '',
         start: TableEventTime(
-
-            hour: machineReservationStartTimeHour.elementAt(i).toInt(),
-            minute: machineReservationStartTimeMinute.elementAt(i).toInt()
+            hour: int.parse(snapshot.data[i].machine_reservation_StartTime_hour),
+            minute: int.parse(snapshot.data[i].machine_reservation_StartTime_minute)
         ),
         end: TableEventTime(
-            hour: machineReservationEndTimeHour.elementAt(i).toInt(),
-            minute: machineReservationEndTimeMinute.elementAt(i).toInt()
+            hour: int.parse(snapshot.data[i].machine_reservation_EndTime_hour),
+            minute: int.parse(snapshot.data[i].machine_reservation_EndTime_minute)
         ),
         textStyle: TextStyle(
           color: Colors.black,
@@ -105,7 +107,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
           showDialog(context: this.context, builder: (BuildContext context){
             return AlertDialog(
               title: Text('예약시간 확인'),
-              content:  Text('${machineReservationStartTimeHour.elementAt(i).toString()}시 ${machineReservationStartTimeMinute.elementAt(i).toString()}분'+ ' ~ '+'${machineReservationEndTimeHour.elementAt(i).toString()}시 ${ machineReservationEndTimeMinute.elementAt(i).toString()}분'),
+              content:  Text('${snapshot.data[i].machine_reservation_StartTime_hour}시 ${snapshot.data[i].machine_reservation_StartTime_minute}분'+ ' ~ '+'${snapshot.data[i].machine_reservation_EndTime_hour}시 ${snapshot.data[i].machine_reservation_EndTime_minute}분'),
               actions: [
 
                 new FlatButton(
@@ -288,8 +290,8 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                   children: [
 
                     FutureBuilder(
-                      future: getReservation_times(),
-                      builder: (BuildContext context, AsyncSnapshot<Reservation_times> snapshot) {
+                      future: getReservation_times(DateFormat('yyyy-MM-dd').format(widget.date).toString()),
+                      builder: (BuildContext context, AsyncSnapshot<List<Reservation_times>> snapshot) {
                         if (snapshot.hasData == false) {
                           return CircularProgressIndicator();
                         }
@@ -306,7 +308,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                               laneColor: Colors.redAccent,
                               timeItemTextColor: Colors.black,
 
-                              startHour: 10,
+                              startHour: 17,
                               endHour: 23,
                               laneHeight: MediaQuery.of(context).size.height * 0.07,
                               laneWidth: MediaQuery.of(context).size.width * 0.7,
@@ -350,6 +352,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                  SizedBox(height: MediaQuery.of(context).size.height*0.04,),
                   Container(
                     child: RaisedButton(onPressed: () async {
+
                       if(_start_time == '시작 시간 선택'||_use_time =='이용 시간 선택'){
                         showDialog(context: context, builder: (BuildContext context){
                           return AlertDialog(
@@ -365,7 +368,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                           );
                         }
                         );
-                      }else {
+                      }else  {
                         _use_time = _use_time.split('분').first;
                         List selected_time_list = _start_time.split(" ");
                         String reservation_hour = selected_time_list[0].split('시').first;
@@ -388,8 +391,8 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                             Time_variable.hour.toString()+':'+Time_variable.minute.toString());
 
 
-
                       }
+
                     },child: Text('예약하기'),
                     ),
                   )

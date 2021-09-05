@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
+
 
 
 Future<Response> postMachineReservation(String userid,String date,String start_time,String end_time) async{
@@ -13,7 +15,10 @@ Future<Response> postMachineReservation(String userid,String date,String start_t
       },
       body: jsonEncode({"userid" : userid,"date" : date,"start_time" : start_time,"end_time" : end_time})
       );//필요 api 호출
+
+
   print(response.statusCode);
   print(response.body);
+
   return response;
 }
