@@ -389,7 +389,24 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                             '${widget.date.toString().split(" ").first.toString()}',
                             '$reservation_hour'+':'+'$reservation_min',
                             Time_variable.hour.toString()+':'+Time_variable.minute.toString());
+                        setState(() {});
 
+                        showDialog(context: context, builder: (BuildContext context){
+                          return AlertDialog(
+                            title: Text('완료 메세지'),
+                            content:  Text('예약완료'),
+                            actions: [
+
+                              new FlatButton(
+                                  child: new Text("확인"),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    print(DateTime.now());
+                                  })
+                            ],
+                          );
+                        }
+                        );
 
                       }
 
