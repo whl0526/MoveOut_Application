@@ -2,6 +2,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:move_application/style/red_container.dart';
 import 'package:move_application/view/HomePage.dart';
 import 'package:move_application/models/get_reservation_list.dart';
 import 'package:move_application/style/text_style.dart';
@@ -73,7 +74,8 @@ class _Info extends State<Info> {
                           itemBuilder: (BuildContext _context, int i){
 
                             return ListTile(
-                              trailing: InkWell(onTap: () async {
+                              trailing:
+                              RedRoundedActionButton(text:'취소', callback: () async {
                                 showDialog(context: context, builder: (BuildContext context){
                                   return AlertDialog(
                                     content: Text('정말 취소 하시겠습니까?'),
@@ -93,24 +95,9 @@ class _Info extends State<Info> {
                                   );
                                 });
 
-                              },
-                                autofocus: true,
-                                borderRadius:BorderRadius.all(Radius.circular(10)) ,
-                                child:
-                                Container(
-                                  width: MediaQuery.of(context).size.width*0.1,
-                                  height: MediaQuery.of(context).size.width*0.08,
-                                  decoration: BoxDecoration(border: Border.all(width: 2,color: Colors.black),color: Colors.redAccent,borderRadius: BorderRadius.all(Radius.circular(10))),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          Container(child: Text('취소'),
-                                          )],)],),),),
+                              }, botton_height: 0.007,
+                                  botton_width: 0.03, font_size:18,
+                                  botton_color: Colors.redAccent),
                               leading: Image.asset(
                                 "icons/${snapshot.data!.elementAt(i).equipment}.jpg",height: 45,),
                               title: Text(snapshot.data!.elementAt(i).equipment.toString()+'     '+snapshot.data!.elementAt(i).date.toString()),

@@ -7,6 +7,7 @@ import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 
 import 'package:move_application/models/post_machine_reservation.dart';
+import 'package:move_application/style/red_container.dart';
 import 'package:move_application/view/appbar.dart';
 
 import 'package:flutter_timetable_view/flutter_timetable_view.dart';
@@ -157,7 +158,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                         return Container(
                           height: MediaQuery.of(context).size.height*0.1,
                           child: Center(
-                            child: Text(formattedDate,style: MyTextStyle(size: 20),),
+                            child: Text(formattedDate,style: TextStyle(fontSize: 20),),
                           ),
                         );
 
@@ -349,9 +350,10 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
               ),
               Column(
                 children: [
-                 SizedBox(height: MediaQuery.of(context).size.height*0.04,),
-                  Container(
-                    child: RaisedButton(onPressed: () async {
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
+                  RedRoundedActionButton(
+                    text: "예약하기",
+                    callback: () async {
 
                       if(_start_time == '시작 시간 선택'||_use_time =='이용 시간 선택'){
                         showDialog(context: context, builder: (BuildContext context){
@@ -410,9 +412,12 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
                       }
 
-                    },child: Text('예약하기'),
-                    ),
-                  )
+                    },
+                    botton_height: 0.02,
+                    botton_width: 0.05,
+                    font_size: 18,
+                    botton_color: Colors.redAccent,
+                  ),
                 ],
               ),
 
