@@ -176,16 +176,21 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             InkWell(
-                              child:Row(
-                                children: [
-                                  Icon(Icons.timer,size: 30),
-                                  Container(
-                                    height:MediaQuery.of(context).size.width*0.07 ,
-                                    width:MediaQuery.of(context).size.width*0.28 ,
-                                    child:FittedBox(fit: BoxFit.contain,child: Text(_start_time,textAlign: TextAlign.center))
-                                    ,
-                                  ),
-                                ],
+
+                              child:Container(
+                                padding: EdgeInsets.all(3),
+                                decoration: BoxDecoration(border: Border.all(width: 1),borderRadius: BorderRadius.circular(10)),
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.timer,size: 30),
+                                    Container(
+                                      height:MediaQuery.of(context).size.width*0.08 ,
+                                      width:MediaQuery.of(context).size.width*0.28 ,
+                                      child:FittedBox(fit: BoxFit.contain,child: Text(_start_time,textAlign: TextAlign.center))
+                                      ,
+                                    ),
+                                  ],
+                                ),
                               ),
                               onTap: (){
                                 _selectMin();
@@ -200,80 +205,84 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
 
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height*0.08 ,
-                      width:  MediaQuery.of(context).size.width*0.08,),
+                      width:  MediaQuery.of(context).size.width*0.05,),
                       Container(
-                        child:Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            InkWell(
-                              child: Row(
-                                children: [
-                                  Icon(Icons.watch_sharp, size: 30),
-                                  Container(
-                                      height:MediaQuery.of(context).size.width*0.07 ,
-                                      width:MediaQuery.of(context).size.width*0.28 ,
-                                    child:FittedBox(fit: BoxFit.contain,
-                                      child: Text(_use_time,textAlign: TextAlign.center,),)
+                        child:Container(
+                          padding: EdgeInsets.all(3),
+                          decoration: BoxDecoration(border: Border.all(width: 1),borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              InkWell(
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.watch_sharp, size: 30),
+                                    Container(
+                                        height:MediaQuery.of(context).size.width*0.07 ,
+                                        width:MediaQuery.of(context).size.width*0.28 ,
+                                        child:FittedBox(fit: BoxFit.contain,
+                                          child: Text(_use_time,textAlign: TextAlign.center,),)
 
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                  ],
+                                ),
 
-                              onTap: ()async{
-                                showDialog(
-                                    context:context,
-                                    builder: (BuildContext context){
-                                      int selectedRadio = 0;
-                                      return AlertDialog(
-                                        content: StatefulBuilder(
-                                          builder: (BuildContext context, StateSetter setState){
-                                            return Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: List<Widget>.generate(4,(int index){
-                                                return RadioListTile<int>(
-                                                  title: Text(((index+1)*5).toString()+'분'),
-                                                  value: index,
-                                                  groupValue:selectedRadio,
-                                                  onChanged:(value) {
-                                                    setState(()=> (selectedRadio=value!)
-                                                    );
-                                                  },
-
-
-                                                );
-
-                                              }),
-                                            );
-                                          },
-                                        ),
-                                        actions: [
-                                          new FlatButton(
-                                              child: new Text("선택"),
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                                _use_time = selectedRadio.toString();
-                                                setState(() {
-                                                  if(_use_time== "0")_use_time= '5분';
-                                                  else if(_use_time == "1"){
-                                                    _use_time= '10분';
-                                                  } else if(_use_time == "2"){
-                                                    _use_time= '15분';
-                                                  } else if(_use_time == "3"){
-                                                    _use_time= '20분';
-                                                  }
-                                                });
-                                              })
-                                        ],
-                                      );
-
-                                    }
-                                );
-
-                              },
-                            )
+                                onTap: ()async{
+                                  showDialog(
+                                      context:context,
+                                      builder: (BuildContext context){
+                                        int selectedRadio = 0;
+                                        return AlertDialog(
+                                          content: StatefulBuilder(
+                                            builder: (BuildContext context, StateSetter setState){
+                                              return Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: List<Widget>.generate(4,(int index){
+                                                  return RadioListTile<int>(
+                                                    title: Text(((index+1)*5).toString()+'분'),
+                                                    value: index,
+                                                    groupValue:selectedRadio,
+                                                    onChanged:(value) {
+                                                      setState(()=> (selectedRadio=value!)
+                                                      );
+                                                    },
 
 
-                          ],
+                                                  );
+
+                                                }),
+                                              );
+                                            },
+                                          ),
+                                          actions: [
+                                            new FlatButton(
+                                                child: new Text("선택"),
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  _use_time = selectedRadio.toString();
+                                                  setState(() {
+                                                    if(_use_time== "0")_use_time= '5분';
+                                                    else if(_use_time == "1"){
+                                                      _use_time= '10분';
+                                                    } else if(_use_time == "2"){
+                                                      _use_time= '15분';
+                                                    } else if(_use_time == "3"){
+                                                      _use_time= '20분';
+                                                    }
+                                                  });
+                                                })
+                                          ],
+                                        );
+
+                                      }
+                                  );
+
+                                },
+                              )
+
+
+                            ],
+                          ),
                         ),
                       ),
 
