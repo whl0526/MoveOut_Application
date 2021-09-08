@@ -379,12 +379,6 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                         TimeOfDay seltime = TimeOfDay(hour: int.parse(reservation_hour), minute:  int.parse(reservation_min));
                         DateTime Time_variable = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, seltime.hour, seltime.minute);
                         Time_variable = Time_variable.add(Duration(minutes: int.parse(_use_time)) );
-                        print(Time_variable.minute.toString());
-
-                        print(DateFormat.yMd().format(DateTime.now()).toString());
-                        print(widget.date.toString().split(" ").first);
-                        print(reservation_hour+':'+reservation_min);
-                        print( Time_variable.hour.toString()+':'+Time_variable.minute.toString());
 
                         postMachineReservation(
                             1234.toString(),
