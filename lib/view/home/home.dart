@@ -1,12 +1,14 @@
+import 'package:ej_selector/ej_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:move_application/models/get_member_info.dart';
 import 'package:move_application/style/text_style.dart';
-
+import 'package:fialogs/fialogs.dart';
 
 class home extends StatelessWidget{
 
 
   Widget build(BuildContext context){
+
     return Scaffold(
       body:FutureBuilder(
         future: getMemberInfo(1234),builder:(BuildContext context,
@@ -211,6 +213,7 @@ class home extends StatelessWidget{
                                 ),
                               ),
                             ),
+
                           ],
                         )
                       ],
