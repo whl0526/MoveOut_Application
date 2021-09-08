@@ -1,8 +1,8 @@
-import 'package:ej_selector/ej_selector.dart';
+
 import 'package:flutter/material.dart';
 import 'package:move_application/models/get_member_info.dart';
 import 'package:move_application/style/text_style.dart';
-import 'package:fialogs/fialogs.dart';
+
 
 class home extends StatelessWidget{
 
