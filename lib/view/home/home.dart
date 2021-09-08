@@ -1,13 +1,33 @@
-import 'package:ej_selector/ej_selector.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:move_application/models/get_member_info.dart';
 import 'package:move_application/style/text_style.dart';
-import 'package:fialogs/fialogs.dart';
 
-class home extends StatelessWidget{
+class home extends StatefulWidget{
+  @override
+  _home createState() => _home();
+}
+
+
+class _home extends State<home>{
 
 
   Widget build(BuildContext context){
+    String _value = '아직 날짜 선택 안됐음';
+
+    Future _selectDate() async {
+
+      DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: DateTime.now().add(Duration(days: 2)),
+        initialEntryMode: DatePickerEntryMode.calendarOnly,
+
+
+      );
+      if(picked != null) setState(() => _value = picked.toString());
+    }
 
     return Scaffold(
       body:FutureBuilder(
@@ -213,11 +233,15 @@ class home extends StatelessWidget{
                                 ),
                               ),
                             ),
-
                           ],
                         )
                       ],
-                    )
+                    ),
+                    
+                    RaisedButton(onPressed: ()async {
+                      _selectDate();
+
+                    })
                   ],
                 ),
               ),

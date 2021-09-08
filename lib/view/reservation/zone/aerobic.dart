@@ -43,6 +43,7 @@ class _aerobic extends State<aerobic> {
                                     title: Text('예약 날짜 선택'),
                                     content: StatefulBuilder(
                                       builder: (BuildContext context,StateSetter setState){
+
                                         return Column(
                                           mainAxisSize: MainAxisSize.min,
                                           children: List<Widget>.generate(3,(int index){
@@ -53,6 +54,7 @@ class _aerobic extends State<aerobic> {
                                             return RadioListTile<int>(
                                               title: Text(Title+'일'),
                                               value: index,
+
                                               groupValue:selectedRadio,
                                               onChanged:(value) {
                                                 setState(()=> (selectedRadio=value!)
