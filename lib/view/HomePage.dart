@@ -62,8 +62,8 @@ class _HomePageState extends State<HomePage> {
         activeColor: Colors.white,
         elevation: 3,
         curveSize: 150,// 동그라미를 감싸는 커브 각도
-        top: -16,// 동그라미 사이즈
-        height: 41,// 탭 높이
+        top: 0,// 동그라미 사이즈
+        height: 45,// 탭 높이
         items: [
           TabItem(
                   icon: Image.asset(
