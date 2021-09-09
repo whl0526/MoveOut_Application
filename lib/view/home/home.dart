@@ -128,7 +128,7 @@ class home extends StatelessWidget{
                               height: MediaQuery.of(context).size.height*0.15,
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                  width: 1,
+                                  width: 0.5,
                                   color:Colors.yellow,
                                 ),
                                 borderRadius: BorderRadius.circular(12.5),
@@ -232,7 +232,7 @@ class home extends StatelessWidget{
                               height: MediaQuery.of(context).size.height*0.15,
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                  width: 1,
+                                  width: 0.5,
                                   color:Colors.yellow,
                                 ),
                                 borderRadius: BorderRadius.circular(12.5),
@@ -263,7 +263,7 @@ class home extends StatelessWidget{
                                         Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
                                             fontSize: 12,
                                            ),),
-                                        Text('/   코로나 N단계 수용가능 인원수',style: TextStyle(
+                                        Text('   코로나 N단계 수용가능 인원수',style: TextStyle(
                                             fontSize: 12,
                                             color: Colors.black54,
                                             ))
@@ -360,7 +360,7 @@ class home extends StatelessWidget{
                               width: MediaQuery.of(context).size.width * 0.9,
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                  width: 1,
+                                  width: 0.5,
                                   color:Colors.yellow,
                                 ),
                                 borderRadius: BorderRadius.circular(12.5),

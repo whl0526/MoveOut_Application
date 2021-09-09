@@ -139,21 +139,21 @@ class _free_weight extends State<free_weight> {
      width: (MediaQuery.of(context).size.width)*0.35,
       decoration: BoxDecoration(
         border: Border.all(
-          width: 0.2,
+          width: 0.3,
           color:Colors.yellow,
         ),
         borderRadius: BorderRadius.circular(12.5),
         color:Colors.white,
         boxShadow: [
           BoxShadow(
-            blurRadius:3,
+            blurRadius:25,
             offset: Offset(5,5),
-            color: Colors.grey.withOpacity(0.3),
+            color: Colors.grey.withOpacity(0.2),
           ),
           BoxShadow(
-            blurRadius:3,
+            blurRadius:25,
             offset: Offset(-5,-5),
-            color: Colors.grey.withOpacity(0.3),
+            color: Colors.grey.withOpacity(0.2),
           ),
         ],
       ),

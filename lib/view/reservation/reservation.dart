@@ -32,13 +32,13 @@ class _Reservation extends State<Reservation> {
                           final res = await Navigator.push(context,
                               MaterialPageRoute(builder: (context) => aerobic(space_name:'유산소' ,)));
                         },
-                        child:  buildCategory("images/treadmill.jpg", "유산소 존"),
+                        child:  buildCategory("images/treadmill-removebg-preview.png", "유산소 존"),
                       ),InkWell(
                           onTap: () async{
                             final res = await Navigator.push(context,
                                 MaterialPageRoute(builder: (context) => middle_weight(space_name:'중앙 웨이트')));
                           },
-                        child:  buildCategory("images/bench.jpg", "중앙 웨이트 존"),
+                        child:  buildCategory("images/bench5.png", "중앙 웨이트 존"),
                       ),
                     ],
                   ),
@@ -51,14 +51,14 @@ class _Reservation extends State<Reservation> {
                       final res = await Navigator.push(context,
                           MaterialPageRoute(builder: (context) => squat(space_name:'하체')));
                     },
-                    child:  buildCategory("images/squat.jpg", "하체 존"),
+                    child:  buildCategory("images/squat3.png", "하체 존"),
                   ),
                   InkWell(
                     onTap: () async{
                       final res = await Navigator.push(context,
                           MaterialPageRoute(builder: (context) => free_weight(space_name:'우측 웨이트')));
                     },
-                    child:  buildCategory("images/deadlift.jpg", "우측 웨이트 존"),
+                    child:  buildCategory("images/deadlift-removebg-preview.png", "우측 웨이트 존"),
 
                   ),
                 ],
@@ -74,26 +74,26 @@ class _Reservation extends State<Reservation> {
         width: (MediaQuery.of(context).size.width)*0.41,
         decoration: BoxDecoration(
           border: Border.all(
-              width: 0.2,
+              width: 0.5,
               color:Colors.yellow,
           ),
           borderRadius: BorderRadius.circular(12.5),
           color:Colors.white,
           boxShadow: [
             BoxShadow(
-              blurRadius:3,
+              blurRadius:35,
               offset: Offset(5,5),
               color: Colors.grey.withOpacity(0.2),
             ),
             BoxShadow(
-              blurRadius:3,
+              blurRadius:35,
               offset: Offset(-5,-5),
               color: Colors.grey.withOpacity(0.2),
             ),
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(4.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -104,7 +104,9 @@ class _Reservation extends State<Reservation> {
               SizedBox(
                 height:MediaQuery.of(context).size.height/50,
               ),
-              Text(title),
+              Text(title,style: TextStyle(
+                  color: Colors.black54,
+              ),),
             ],
           ),
         ),
