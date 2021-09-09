@@ -20,40 +20,59 @@ class home extends StatelessWidget{
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: CircularProgressIndicator(color: Colors.black,),
+                  child: CircularProgressIndicator(color: Colors.yellow[500],),
                 )
               ],
             )
-
           );
         }
         return Container(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+          color: Colors.white12,
+          height: MediaQuery.of(context).size.height * 0.75,
+          child:SingleChildScrollView(
+            physics: AlwaysScrollableScrollPhysics(),
+
           child:Column(
             children: <Widget>[
               Container(
-
-                color: Colors.white,
+                //color: Colors.white,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.height * 0.32,
+                      margin:const EdgeInsets.only(top: 15),
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      width: MediaQuery.of(context).size.width*1,
                       decoration: BoxDecoration(
-                        color: Colors.yellow[300],
+                         // border: Border.all(
+                          //width: 1,
+                         // color:Colors.white,
+                       //  ),
+                        borderRadius: BorderRadius.circular(12.5),
+                        color:Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius:35,
+                            offset: Offset(5,5),
+                            color: Colors.grey.withOpacity(0.1),
+                          ),
+                          BoxShadow(
+                            blurRadius:35,
+                            offset: Offset(-5,-5),
+                            color: Colors.grey.withOpacity(0.1),
+                          ),
+                        ],
                       ),
 
                       child: Row(
-
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width*0.5,
+                            width: MediaQuery.of(context).size.width*0.4,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  height:
-                                  MediaQuery.of(context).size.height * 0.2,
+                                  height: MediaQuery.of(context).size.height * 0.18,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
@@ -64,12 +83,8 @@ class home extends StatelessWidget{
                             ),
                           ),
                           Container(
-
-                            width: MediaQuery.of(context).size.width*0.4,
-
-
+                            width: MediaQuery.of(context).size.width*0.45,
                             child: Column(
-
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
@@ -78,118 +93,218 @@ class home extends StatelessWidget{
                                       fontWeight: FontWeight.bold,
                                       fontSize: 35),
                                 ),
-                                SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+                                SizedBox(height: MediaQuery.of(context).size.height*0.015,),
                                 FittedBox(
 
                                   fit: BoxFit.cover,
                                   child: Text(
-                                    '회원번호 : '+snapshot.data!.userid ,style: TextStyle(fontSize:25, fontWeight: FontWeight.bold,),
+                                    '#'+snapshot.data!.userid ,
+                                    style: TextStyle(
+                                      fontSize:20,
+                                      color:Colors.black54,
+                                      ),
                                   ),
                                 )
                               ],
                             ),
                           ),
-                          Container(
-                            width: MediaQuery.of(context).size.width*0.1,
-                          )
                         ],
                       ),
                     ),
 
+
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.06),
+                        height: MediaQuery.of(context).size.height * 0.02),
                     Row(
+
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Column(
+
                           children: [
                             Container(
-                              width: MediaQuery.of(context).size.width * 0.8,
-                              height: MediaQuery.of(context).size.height*0.09,
-                              decoration: BoxDecoration(
-                                  border:Border.all(
-                                      width: 2, color: Colors.black
-                                  ),
-                                  color: Colors.yellow.shade300,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      topRight: Radius.circular(20))),
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(15, 5, 50, 5),
+                              padding: EdgeInsets.zero,
 
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'WELLSFIT . 웰스핏',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
+                              width: MediaQuery.of(context).size.width * 0.9,
+                              height: MediaQuery.of(context).size.height*0.265,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 1,
+                                  color:Colors.yellow,
                                 ),
+                                borderRadius: BorderRadius.circular(12.5),
+                                color:Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius:35,
+                                    offset: Offset(5,5),
+                                    color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                  BoxShadow(
+                                    blurRadius:35,
+                                    offset: Offset(-5,-5),
+                                    color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                ],
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(7),
+                                child:Column(
+                                  children: [
+                                     Row(
+
+                                      children: [
+                                        Container(
+
+                                          width: MediaQuery.of(context).size.width*0.4,
+                                          height: MediaQuery.of(context).size.height*0.2,
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                height: MediaQuery.of(context).size.height * 0.2,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  image: DecorationImage(
+                                                    image: AssetImage("images/wellsfit.png"),
+                                                  ),
+                                                ),
+                                    ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: MediaQuery.of(context).size.width*0.4,
+                                          height: MediaQuery.of(context).size.height*0.2,
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                '이용중인 헬스장',
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.black54,)
+                                                ,
+                                              ),
+                                              SizedBox(height: MediaQuery.of(context).size.height*0.015,),
+                                              FittedBox(
+                                                fit: BoxFit.cover,
+                                                child: Text(
+                                                  'WELLS FIT',style: TextStyle(fontSize:20, fontWeight: FontWeight.bold,),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          child:Column(
+                                            children: [
+                                              Text(
+                                                snapshot.data!.start_date+' ~ '+snapshot.data!.end_date,
+                                                style: TextStyle(
+                                                    color: Colors.redAccent,
+                                                    fontSize: 18,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+
+
+                                   ),
+                                  ],
+                                )
+
+
                               ),
                             ),
                             Container(
-                              height: MediaQuery.of(context).size.height*0.12,
-                              width: MediaQuery.of(context).size.width * 0.8,
+                              margin:const EdgeInsets.only(top: 10),
+                              height: MediaQuery.of(context).size.height*0.19,
+                              width: MediaQuery.of(context).size.width * 0.9,
                               decoration: BoxDecoration(
-                                border: Border(
-                                  right: BorderSide(width: 2, color: Colors.black),
-                                  left:  BorderSide(width: 2, color: Colors.black),
+                                border: Border.all(
+                                  width: 1,
+                                  color:Colors.yellow,
                                 ),
-                                color: Colors.yellow.shade300,
-
+                                borderRadius: BorderRadius.circular(12.5),
+                                color:Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius:35,
+                                    offset: Offset(5,5),
+                                    color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                  BoxShadow(
+                                    blurRadius:35,
+                                    offset: Offset(-5,-5),
+                                    color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                ],
                               ),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                               mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
                                     padding:
-                                    EdgeInsets.fromLTRB(15, 5, 15, 5),
-                                    child: Text(
-                                      snapshot.data!.start_date+' ~ '+snapshot.data!.end_date,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                    EdgeInsets.fromLTRB(15, 5, 15, 5),
+                                    EdgeInsets.fromLTRB(40, 10, 40, 10),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text('현재 이용자 수',style: TextStyle(color: Colors.black,
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold),),
-                                        Text('N / 코로나 가능 인원수',style: TextStyle(
+                                        Text('/    코로나 가능 인원수',style: TextStyle(
                                             fontSize: 15,
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold))
                                       ],
                                     ),
-                                  )
+
+                                  ),
+                                  Row(
+                                    children: [
+                                      Container(
+
+                                      )
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
                             Container(
-                              height:70,
-                              width: MediaQuery.of(context).size.width * 0.8,
+                              margin:const EdgeInsets.only(top: 10),
+                              height: MediaQuery.of(context).size.height*0.19,
+                              width: MediaQuery.of(context).size.width * 0.9,
                               decoration: BoxDecoration(
-                                  border: Border.all(
-                                      width: 2, color: Colors.black),
-                                  color: Colors.yellow.shade300,
-                                  borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(20),
-                                      bottomLeft: Radius.circular(20))
+                                border: Border.all(
+                                  width: 1,
+                                  color:Colors.yellow,
+                                ),
+                                borderRadius: BorderRadius.circular(12.5),
+                                color:Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius:35,
+                                    offset: Offset(5,5),
+                                    color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                  BoxShadow(
+                                    blurRadius:35,
+                                    offset: Offset(-5,-5),
+                                    color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                ],
                               ),
                               child: Padding(
-                                padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                                padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -220,8 +335,11 @@ class home extends StatelessWidget{
                     )
                   ],
                 ),
-              ),
+          ),
+
+
             ],
+        ),
           ),
         );
       } ,)

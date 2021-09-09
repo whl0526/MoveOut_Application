@@ -83,12 +83,12 @@ class _Reservation extends State<Reservation> {
             BoxShadow(
               blurRadius:3,
               offset: Offset(5,5),
-              color: Colors.grey.withOpacity(0.3),
+              color: Colors.grey.withOpacity(0.2),
             ),
             BoxShadow(
               blurRadius:3,
               offset: Offset(-5,-5),
-              color: Colors.grey.withOpacity(0.3),
+              color: Colors.grey.withOpacity(0.2),
             ),
           ],
         ),
