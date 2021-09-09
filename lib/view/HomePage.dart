@@ -59,11 +59,11 @@ class _HomePageState extends State<HomePage> {
         initialActiveIndex:0,
         backgroundColor: Colors.white,
         color: Colors.yellow[500],
-        activeColor: Colors.yellow[700],
+        activeColor: Colors.white,
         elevation: 3,
-        curveSize: 120,// 동그라미를 감싸는 커브 각도
-        top: -35,// 동그라미 사이즈
-        height: 40,// 탭 높이
+        curveSize: 150,// 동그라미를 감싸는 커브 각도
+        top: -16,// 동그라미 사이즈
+        height: 41,// 탭 높이
         items: [
           TabItem(
                   icon: Image.asset(
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.grey[500],
               ),activeIcon: Image.asset(
               "images/home.png",
-            color: Colors.white,
+            color: Colors.yellow,
             scale: 6.1,
            )
           ),
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
             scale: 30,
           ),activeIcon: Image.asset(
             "icons/reservation-icon-5.jpg",
-            color: Colors.white,
+            color: Colors.yellow,
             scale: 30,)
           ),
           TabItem(icon: Image.asset(
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.grey[500],
           ),activeIcon: Image.asset(
             'images/human.png',
-            color: Colors.white,
+            color: Colors.yellow,
             scale: 6.1,
             )),
 

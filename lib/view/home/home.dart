@@ -28,7 +28,7 @@ class home extends StatelessWidget{
         }
         return Container(
           color: Colors.white12,
-          height: MediaQuery.of(context).size.height * 0.75,
+          height: MediaQuery.of(context).size.height * 0.8,
           child:SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
 
@@ -40,7 +40,6 @@ class home extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin:const EdgeInsets.only(top: 15),
                       height: MediaQuery.of(context).size.height * 0.2,
                       width: MediaQuery.of(context).size.width*1,
                       decoration: BoxDecoration(
@@ -48,7 +47,10 @@ class home extends StatelessWidget{
                           //width: 1,
                          // color:Colors.white,
                        //  ),
-                        borderRadius: BorderRadius.circular(12.5),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(22),
+                          bottomRight: Radius.circular(22),
+                        ),
                         color:Colors.white,
                         boxShadow: [
                           BoxShadow(
@@ -67,12 +69,12 @@ class home extends StatelessWidget{
                       child: Row(
                         children: [
                           Container(
-                            width: MediaQuery.of(context).size.width*0.4,
+                            width: MediaQuery.of(context).size.width*0.45,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  height: MediaQuery.of(context).size.height * 0.18,
+                                  height: MediaQuery.of(context).size.height * 0.175,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
@@ -83,19 +85,17 @@ class home extends StatelessWidget{
                             ),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width*0.45,
+                            width: MediaQuery.of(context).size.width*0.4,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   snapshot.data!.user_name,
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold,
                                       fontSize: 35),
                                 ),
                                 SizedBox(height: MediaQuery.of(context).size.height*0.015,),
                                 FittedBox(
-
                                   fit: BoxFit.cover,
                                   child: Text(
                                     '#'+snapshot.data!.userid ,
@@ -114,19 +114,18 @@ class home extends StatelessWidget{
 
 
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02),
-                    Row(
+                        height: MediaQuery.of(context).size.height * 0.04),
 
+                   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////1번째 박스
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Column(
-
                           children: [
                             Container(
                               padding: EdgeInsets.zero,
-
                               width: MediaQuery.of(context).size.width * 0.9,
-                              height: MediaQuery.of(context).size.height*0.265,
+                              height: MediaQuery.of(context).size.height*0.15,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   width: 1,
@@ -155,16 +154,18 @@ class home extends StatelessWidget{
 
                                       children: [
                                         Container(
-
-                                          width: MediaQuery.of(context).size.width*0.4,
-                                          height: MediaQuery.of(context).size.height*0.2,
+                                          width: MediaQuery.of(context).size.width*0.39,
                                           child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.start,
                                             children: [
+                                              Text(
+                                                '이용중인 헬스장',
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.black54,),
+                                              ),
                                               Container(
-                                                height: MediaQuery.of(context).size.height * 0.2,
+                                                height: MediaQuery.of(context).size.height * 0.099,
                                                 decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
                                                   image: DecorationImage(
                                                     image: AssetImage("images/wellsfit.png"),
                                                   ),
@@ -174,60 +175,61 @@ class home extends StatelessWidget{
                                           ),
                                         ),
                                         Container(
-                                          width: MediaQuery.of(context).size.width*0.4,
-                                          height: MediaQuery.of(context).size.height*0.2,
+                                          width: MediaQuery.of(context).size.width*0.45,
                                           child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              Text(
-                                                '이용중인 헬스장',
-                                                style: TextStyle(
-                                                  fontSize: 18,
-                                                  color: Colors.black54,)
-                                                ,
-                                              ),
-                                              SizedBox(height: MediaQuery.of(context).size.height*0.015,),
                                               FittedBox(
                                                 fit: BoxFit.cover,
-                                                child: Text(
-                                                  'WELLS FIT',style: TextStyle(fontSize:20, fontWeight: FontWeight.bold,),
-                                                ),
-                                              )
+                                                child:   Text(
+                                                  snapshot.data!.start_date+' ~ '+snapshot.data!.end_date,
+                                                  style: TextStyle(
+                                                    color: Colors.redAccent,
+                                                    fontSize: 15,
+                                                  ),
+                                              ),
+
+                                              ),
+                                              SizedBox(
+                                                  height: MediaQuery.of(context).size.height * 0.009),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              '남은기간 : ',
+                                              style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.black,),
+                                            ),
+                                            Text(
+                                              ' XX ',
+                                              style: TextStyle(
+                                                fontSize:15,
+                                                color: Colors.redAccent,)
+                                              ,
+                                            ),
+                                            Text(
+                                              '일',
+                                              style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.black,)
+                                              ,
+                                            ),
+                                          ],
+                                        ),
+
                                             ],
                                           ),
                                         ),
                                       ],
                                     ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          child:Column(
-                                            children: [
-                                              Text(
-                                                snapshot.data!.start_date+' ~ '+snapshot.data!.end_date,
-                                                style: TextStyle(
-                                                    color: Colors.redAccent,
-                                                    fontSize: 18,
-                                                    ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-
-
-                                   ),
                                   ],
                                 )
-
-
                               ),
                             ),
                             Container(
-                              margin:const EdgeInsets.only(top: 10),
-                              height: MediaQuery.of(context).size.height*0.19,
+                              margin:const EdgeInsets.only(top: 12),
                               width: MediaQuery.of(context).size.width * 0.9,
+                              height: MediaQuery.of(context).size.height*0.15,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   width: 1,
@@ -254,34 +256,107 @@ class home extends StatelessWidget{
                                 children: [
                                   Padding(
                                     padding:
-                                    EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                    EdgeInsets.fromLTRB(43, 10, 18, 7),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text('현재 이용자 수',style: TextStyle(color: Colors.black,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),),
-                                        Text('/    코로나 가능 인원수',style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold))
+                                        Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
+                                            fontSize: 12,
+                                           ),),
+                                        Text('/   코로나 N단계 수용가능 인원수',style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.black54,
+                                            ))
                                       ],
                                     ),
-
                                   ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
                                       Container(
 
-                                      )
+                                        width: MediaQuery.of(context).size.width * 0.125,
+                                        height: MediaQuery.of(context).size.height*0.075,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            width: 1.5,
+                                            color: Colors.redAccent,
+                                          ),
+                                          borderRadius: BorderRadius.circular(100),
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius:35,
+                                              offset: Offset(5,5),
+                                              color: Colors.grey.withOpacity(0.01),
+                                            ),
+                                            BoxShadow(
+                                              blurRadius:35,
+                                              offset: Offset(-5,-5),
+                                              color: Colors.grey.withOpacity(0.01),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children:[
+                                            Text('N',textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 20,
+                                              ),
+                                            ),
+
+                                          ],
+                                        ),
+                                        ),
+
+
+
+                                      Container(
+                                        width: MediaQuery.of(context).size.width * 0.125,
+                                        height: MediaQuery.of(context).size.height*0.075,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            width: 1.5,
+                                            color: Colors.redAccent,
+                                          ),
+                                          borderRadius: BorderRadius.circular(100),
+                                          color: Colors.white,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius:35,
+                                              offset: Offset(5,5),
+                                              color: Colors.grey.withOpacity(0.01),
+                                            ),
+                                            BoxShadow(
+                                              blurRadius:35,
+                                              offset: Offset(-5,-5),
+                                              color: Colors.grey.withOpacity(0.01),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children:[
+                                            Text('N',textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 20,
+                                              ),
+                                            ),
+
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ],
                               ),
                             ),
                             Container(
-                              margin:const EdgeInsets.only(top: 10),
-                              height: MediaQuery.of(context).size.height*0.19,
+                              margin:const EdgeInsets.only(top: 12),
+                              height: MediaQuery.of(context).size.height*0.15,
                               width: MediaQuery.of(context).size.width * 0.9,
                               decoration: BoxDecoration(
                                 border: Border.all(
@@ -304,24 +379,69 @@ class home extends StatelessWidget{
                                 ],
                               ),
                               child: Padding(
-                                padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
+                                padding: EdgeInsets.fromLTRB(43, 10, 40, 7),
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'PT (김태엽T)',
 
-                                      style: MyTextStyle(size: 20),
-                                    ),
-                                    SizedBox(height: MediaQuery.of(context).size.height*0.005,),
+                                      style:TextStyle(
+                                      color: Colors.black54,
+                                      fontSize: 12,
+                                    ),),
+                                    SizedBox(height: MediaQuery.of(context).size.height*0.01,),
                                     Row(
+
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text('07 - 23',style: MyTextStyle(size: 15),),
-                                        Text( '하체수업                     ',style: MyTextStyle(size: 15),),
-                                        Text(
-                                          'n/15회',style: MyTextStyle(size: 15),),
+                                        Text('9 - 10 (금)',style:TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                        ),
+                                        ),
+                                        Text( '하체수업',style:TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                        ),
+                                        ),
+                                        Container(
+                                          width: MediaQuery.of(context).size.width * 0.125,
+                                          height: MediaQuery.of(context).size.height*0.075,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              width: 1.5,
+                                              color: Colors.redAccent,
+                                            ),
+                                            borderRadius: BorderRadius.circular(100),
+                                            color: Colors.white,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius:35,
+                                                offset: Offset(5,5),
+                                                color: Colors.grey.withOpacity(0.01),
+                                              ),
+                                              BoxShadow(
+                                                blurRadius:35,
+                                                offset: Offset(-5,-5),
+                                                color: Colors.grey.withOpacity(0.01),
+                                              ),
+                                            ],
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children:[
+                                              Text('N/15',textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 16,
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ],
