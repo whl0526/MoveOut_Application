@@ -40,6 +40,7 @@ class _aerobic extends State<aerobic> {
                                 builder: (BuildContext context){
                                   int selectedRadio = 0;
                                   return AlertDialog(
+
                                     title: Text('예약 날짜 선택'),
                                     content: StatefulBuilder(
                                       builder: (BuildContext context,StateSetter setState){

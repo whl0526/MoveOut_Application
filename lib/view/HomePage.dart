@@ -55,6 +55,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _pageOptions[selectedPage],
       bottomNavigationBar: ConvexAppBar(
+
         initialActiveIndex:0,
         backgroundColor: Colors.white,
         color: Colors.yellow[500],
