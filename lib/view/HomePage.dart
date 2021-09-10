@@ -69,17 +69,19 @@ class _HomePageState extends State<HomePage> {
                   icon: Image.asset(
               "images/home.png",
               color: Colors.grey[500],
+                    scale: 6,
               ),activeIcon: Image.asset(
               "images/home.png",
             color: Colors.yellow,
             scale: 6.1,
-           )
+          ),
+
           ),
           TabItem(
               icon: Image.asset(
             "icons/reservation-icon-5.jpg",
             color: Colors.grey[500],
-            scale: 30,
+            scale: 42,
           ),activeIcon: Image.asset(
             "icons/reservation-icon-5.jpg",
             color: Colors.yellow,

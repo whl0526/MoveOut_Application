@@ -46,73 +46,132 @@ class _Info extends State<Info> {
           physics: AlwaysScrollableScrollPhysics(),
           child: Container(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.all(14),
-                  child: Text('내 예약 운동기구',style: MyTextStyle(size: 20),),
-                ),
 
-
-                FutureBuilder<List<Reservation_list>>(
-                    future:getReservationList(1234),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData == false) {
-                        return SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.35,
-                        );
-                      }
-                      return Container(
-                        height: MediaQuery.of(context).size.height * 0.35,
-                        decoration: BoxDecoration(
-                          color:Colors.white,
+                  width: MediaQuery.of(context).size.width*0.95,
+                  margin: EdgeInsets.all(10),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 0.5,
+                        color: Colors.yellow,
+                      ),
+                      borderRadius: BorderRadius.circular(12.5),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius:30,
+                          offset: Offset(5,5),
+                          color: Colors.grey.withOpacity(0.1),
                         ),
-                        child:ListView.builder(
-                          itemCount: snapshot.data!.length,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (BuildContext _context, int i){
+                        BoxShadow(
+                          blurRadius:30,
+                          offset: Offset(-5,-5),
+                          color: Colors.grey.withOpacity(0.1),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                              children: [
+                                Text('예약 기구',
+                                  style:TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 15,
+                                  ),),
+                              ],
+                            ),
+                        ),
+                        FutureBuilder<List<Reservation_list>>(
+                            future:getReservationList(1234),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData == false) {
+                                return SizedBox(
+                                  height: MediaQuery.of(context).size.height * 0.36,
+                                );
+                              }
+                              return Container(
+                                height: MediaQuery.of(context).size.height * 0.36,
+                                decoration: BoxDecoration(
+                                  color:Colors.white,
+                                ),
+                                child:ListView.builder(
+                                  itemCount: snapshot.data!.length,
+                                  scrollDirection: Axis.vertical,
+                                  itemBuilder: (BuildContext _context, int i){
 
-                            return ListTile(
-                              trailing:
-                              RedRoundedActionButton(text:'취소', callback: () async {
-                                showDialog(context: context, builder: (BuildContext context){
-                                  return AlertDialog(
-                                    content: Text('정말 취소 하시겠습니까?'),
-                                    title: Text('알림'),
-                                    buttonPadding: EdgeInsets.all(10),
+                                    return ListTile(
+                                      trailing:
+                                      RedRoundedActionButton(text:'취소', callback: () async {
+                                        showDialog(context: context, builder: (BuildContext context){
+                                          return AlertDialog(
+                                            content: Text('예약 취소 하시겠습니까?',textAlign: TextAlign.center,),
+                                            title: Text('알림'),
+                                            buttonPadding: EdgeInsets.all(10),
 
-                                    actions: [
-                                      FlatButton(onPressed: (){Navigator.pop(context);}, child: Text('취소')),
-                                      FlatButton(onPressed: () async {
-                                        Response response = await deleteReservationList(snapshot.data!.elementAt(i).userid, snapshot.data!.elementAt(i).equipment, snapshot.data!.elementAt(i).date);
-                                        if(response.statusCode == 200){
-                                          Navigator.pop(context);
-                                          setState(() {});
-                                        }
-                                      }, child: Text('삭제'))
-                                    ],
-                                  );
-                                });
+                                            actions: [
+                                              FlatButton(onPressed: (){Navigator.pop(context);}, child: Text('창 닫기')),
+                                              FlatButton(onPressed: () async {
+                                                Response response = await deleteReservationList(snapshot.data!.elementAt(i).userid, snapshot.data!.elementAt(i).equipment, snapshot.data!.elementAt(i).date);
+                                                if(response.statusCode == 200){
+                                                  Navigator.pop(context);
+                                                  setState(() {});
+                                                }
+                                              }, child: Text('확인'))
+                                            ],
+                                          );
+                                        });
 
-                              }, botton_height: 0.007,
-                                  botton_width: 0.03, font_size:18,
-                                  botton_color: Colors.redAccent),
-                              leading: Image.asset(
-                                "icons/${snapshot.data!.elementAt(i).equipment}.jpg",height: 45,),
-                              title: Text(snapshot.data!.elementAt(i).equipment.toString()+'     '+snapshot.data!.elementAt(i).date.toString()),
-                              subtitle: Text(snapshot.data!.elementAt(i).start_time.toString()+' ~ '+snapshot.data!.elementAt(i).end_time.toString(),style: TextStyle(fontSize: 17),),
-                            );
-                          },
-                        ) ,
-                      );
-                    }),
+                                      }, botton_height: 0.007,
+                                          botton_width: 0.025, font_size:13,
+                                          botton_color: Colors.white12,),
+                                      leading: Image.asset(
+                                        "icons/${snapshot.data!.elementAt(i).equipment}.jpg",height: 55,),
+                                      title: Text(snapshot.data!.elementAt(i).equipment.toString()+'     '+snapshot.data!.elementAt(i).date.toString()),
+                                      subtitle: Text(snapshot.data!.elementAt(i).start_time.toString()+' ~ '+snapshot.data!.elementAt(i).end_time.toString(),style:TextStyle(
+                                        color: Colors.redAccent,
+                                        fontSize: 15.5,
+                                      ),),
+                                    );
+                                  },
+                                ) ,
+                              );
+                            }),
+
+                      ],
+                    ),
+
+                  ),
+
+                ),
+                SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02),
+
+
 
 
 
                 Container(
-                  margin: EdgeInsets.all(14),
-                  child: Text('내 수업시간',style: MyTextStyle(size: 20),),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 23.0),
+                        child: Row(
+                          children: [
+                            Text('수업일지',style:TextStyle(
+                              color: Colors.black54,
+                              fontSize: 15,
+                            ),),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Column(
                   children: [
@@ -125,7 +184,7 @@ class _Info extends State<Info> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('예정되어있는 수업이 없습니다!',textAlign: TextAlign.center,style: TextStyle(fontSize: 23),)
+                          Text('예정된 수업이 없습니다.',textAlign: TextAlign.center,style: TextStyle(fontSize: 21),)
                         ],
                       ),
                     )
@@ -134,7 +193,7 @@ class _Info extends State<Info> {
                       child: ListView.builder(
                         itemCount: _my_reservation.length,
                         itemBuilder: (BuildContext _context, int i){
-                          if(_my_class.isEmpty)return Text('예정된 수업이 없습니다 ㅠ');
+                          if(_my_class.isEmpty)return Text('예정된 수업이 없습니다');
                           return ListTile(
                             leading: Image.asset(
                               "icons/exercise.png",color: Colors.red[700],height: 45,),
@@ -145,7 +204,7 @@ class _Info extends State<Info> {
                       ),
                     ) ,
                   ],
-                )
+                ),
               ],
             ),
           ),

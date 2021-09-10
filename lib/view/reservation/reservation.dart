@@ -71,7 +71,7 @@ class _Reservation extends State<Reservation> {
 
     Widget buildCategory(String imageUrl, String title) {
       return Container(
-        width: (MediaQuery.of(context).size.width)*0.41,
+        width: (MediaQuery.of(context).size.width)*0.37,
         decoration: BoxDecoration(
           border: Border.all(
               width: 0.5,

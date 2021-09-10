@@ -256,17 +256,35 @@ class home extends StatelessWidget{
                                 children: [
                                   Padding(
                                     padding:
-                                    EdgeInsets.fromLTRB(43, 10, 18, 7),
+                                    EdgeInsets.fromLTRB(44, 10, 18, 10),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
                                             fontSize: 12,
                                            ),),
-                                        Text('   코로나 N단계 수용가능 인원수',style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.black54,
-                                            ))
+                                        Container(
+                                          child:Row(
+                                            children: [
+                                              Text('   코로나 ',style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.black54,
+                                              ),
+                                              ),
+                                              Text('N',style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.redAccent,
+                                              ),
+                                              ),
+                                              Text('단계 수용가능 인원수',style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.black54,
+                                              ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+
                                       ],
                                     ),
                                   ),
@@ -379,33 +397,52 @@ class home extends StatelessWidget{
                                 ],
                               ),
                               child: Padding(
-                                padding: EdgeInsets.fromLTRB(43, 10, 40, 7),
+                                padding: EdgeInsets.fromLTRB(35, 10, 20, 10),
                                 child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      'PT (김태엽T)',
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'PT (김태엽T)',
+                                          style:TextStyle(
+                                            color: Colors.black54,
+                                            fontSize: 12,
+                                          ),),
+                                        SizedBox(width: MediaQuery.of(context).size.width * 0.084),
+                                        Text(
+                                          '수업내용',
+                                          style:TextStyle(
+                                            color: Colors.black54,
+                                            fontSize: 12,
+                                          ),),
+                                        SizedBox(width: MediaQuery.of(context).size.width * 0.07),
+                                        Text(
+                                          '남은 횟수 / 수업 횟수',
+                                          style:TextStyle(
+                                            color: Colors.black54,
+                                            fontSize: 12,
+                                          ),),
 
-                                      style:TextStyle(
-                                      color: Colors.black54,
-                                      fontSize: 12,
-                                    ),),
+
+                                      ],),
+                                    
+
                                     SizedBox(height: MediaQuery.of(context).size.height*0.01,),
                                     Row(
-
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
                                         Text('9 - 10 (금)',style:TextStyle(
                                           color: Colors.black,
                                           fontSize: 15,
                                         ),
                                         ),
+                                        SizedBox(width: MediaQuery.of(context).size.width * 0.07),
                                         Text( '하체수업',style:TextStyle(
                                           color: Colors.black,
                                           fontSize: 15,
                                         ),
                                         ),
+                                        SizedBox(width: MediaQuery.of(context).size.width * 0.122),
                                         Container(
                                           width: MediaQuery.of(context).size.width * 0.125,
                                           height: MediaQuery.of(context).size.height*0.075,
