@@ -389,29 +389,79 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
                         DateTime Time_variable = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, seltime.hour, seltime.minute);
                         Time_variable = Time_variable.add(Duration(minutes: int.parse(_use_time)) );
 
-                        postMachineReservation(
+
+                        Future<Reservation_msg> a =postMachineReservation(
                             1234.toString(),
                             '${widget.date.toString().split(" ").first.toString()}',
                             '$reservation_hour'+':'+'$reservation_min',
                             Time_variable.hour.toString()+':'+Time_variable.minute.toString());
+
                         setState(() {});
+                        a.then((val) {
+                          // int가 나오면 해당 값을 출력
+                          showDialog(context: context, builder: (BuildContext context){
+                            return AlertDialog(
+                              title: Text('완료 메세지'),
+                              content:  Text('예약완료'),
+                              actions: [
 
-                        showDialog(context: context, builder: (BuildContext context){
-                          return AlertDialog(
-                            title: Text('완료 메세지'),
-                            content:  Text('예약완료'),
-                            actions: [
-
-                              new FlatButton(
-                                  child: new Text("확인"),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    print(DateTime.now());
-                                  })
-                            ],
+                                new FlatButton(
+                                    child: new Text("확인"),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      print(DateTime.now());
+                                    })
+                              ],
+                            );
+                          }
                           );
-                        }
-                        );
+                          print('val: $val');
+                        }).catchError((error) {
+                          // error가 해당 에러를 출력
+                          late String error_msg;
+                          if(error == 'overlap'){error_msg = '이미 예약된 시간입니다';}
+                          else if(error == 'overlap_today'){error_msg = '오늘 이미 예약한 기구입니다';}
+                          else if(error == 'overlap_user'){error_msg = '다른 운동기구 예약시간과 중복됩니다';}
+
+
+
+                          showDialog(context: context, builder: (BuildContext context){
+                            return AlertDialog(
+
+                              title: Text('완료 메세지'),
+                              content:  Text(error_msg),
+                              actions: [
+
+                                new FlatButton(
+                                    child: new Text("확인"),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      print(DateTime.now());
+                                    })
+                              ],
+                            );
+                          }
+                          );
+                          print('error: $error');
+                        });
+
+
+                        // showDialog(context: context, builder: (BuildContext context){
+                        //   return AlertDialog(
+                        //     title: Text('완료 메세지'),
+                        //     content:  Text('예약완료'),
+                        //     actions: [
+                        //
+                        //       new FlatButton(
+                        //           child: new Text("확인"),
+                        //           onPressed: () {
+                        //             Navigator.pop(context);
+                        //             print(DateTime.now());
+                        //           })
+                        //     ],
+                        //   );
+                        // }
+                        // );
 
                       }
 
