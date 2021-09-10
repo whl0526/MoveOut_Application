@@ -301,7 +301,7 @@ class home extends StatelessWidget{
                                             color: Colors.redAccent,
                                           ),
                                           borderRadius: BorderRadius.circular(100),
-                                          color: Colors.white,
+                                          color: Colors.white60,
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius:35,
@@ -340,7 +340,7 @@ class home extends StatelessWidget{
                                             color: Colors.redAccent,
                                           ),
                                           borderRadius: BorderRadius.circular(100),
-                                          color: Colors.white,
+                                          color: Colors.white60,
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius:35,
