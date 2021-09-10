@@ -58,7 +58,7 @@ class _Info extends State<Info> {
                         width: 0.5,
                         color: Colors.yellow,
                       ),
-                      borderRadius: BorderRadius.circular(12.5),
+                      borderRadius: BorderRadius.circular(5),
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
