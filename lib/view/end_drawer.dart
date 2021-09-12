@@ -10,7 +10,8 @@ class CustomEndDrawer extends Drawer {
     '욥',
     'ha',
     'ho',
-    'he'
+    'he',
+    '뭐로바꿀까'
   ];
   @override
   Widget build(BuildContext context) {
