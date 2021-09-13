@@ -104,7 +104,6 @@ class _Info extends State<Info> {
                                   itemCount: snapshot.data!.length,
                                   scrollDirection: Axis.vertical,
                                   itemBuilder: (BuildContext _context, int i){
-
                                     return ListTile(
                                       trailing:
                                       RedRoundedActionButton(text:'취소', callback: () async {

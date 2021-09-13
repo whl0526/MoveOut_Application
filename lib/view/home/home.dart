@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:move_application/models/get_member_info.dart';
+import 'package:move_application/style/red_container.dart';
 import 'package:move_application/style/text_style.dart';
 
 
@@ -398,6 +399,7 @@ class home extends StatelessWidget{
                               ),
                               child: Padding(
                                 padding: EdgeInsets.fromLTRB(35, 10, 20, 10),
+
                                 child: Column(
                                   children: [
                                     Row(
@@ -424,6 +426,8 @@ class home extends StatelessWidget{
                                           ),),
 
 
+
+                                      
                                       ],),
                                     
 
@@ -479,6 +483,63 @@ class home extends StatelessWidget{
                                             ],
                                           ),
                                         ),
+
+                                        RedRoundedActionButton(text: '더 보기',
+                                            callback: (){
+                                          showDialog(context: context, builder: (BuildContext context){
+                                            return AlertDialog(
+                                              contentPadding: EdgeInsets.only(top: 10.0),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:  BorderRadius.all(Radius.circular(30)),
+                                              ),
+
+                                              backgroundColor: Colors.white,
+                                              titleTextStyle: TextStyle(color: Colors.black,fontSize: 20),
+                                              title: Text('나의 PT정보'),
+                                              content:
+                                              Container(
+                                                width: MediaQuery.of(context).size.width,
+                                                child:Column(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+
+                                                    ListView.builder(
+                                                      padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                                                        shrinkWrap: true,
+                                                        itemCount: 2,
+                                                        itemBuilder: (BuildContext context,int i){
+                                                          return ListTile(
+                                                            
+                                                            title: Text('dd'),
+                                                            onTap: (){print('aa');},
+
+                                                          );
+                                                        }),
+
+                                                    Container(
+                                                      height: MediaQuery.of(context).size.height *0.1,
+
+                                                        decoration: BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius: BorderRadius.only(
+                                                              bottomLeft: Radius.circular(32.0),
+                                                              bottomRight: Radius.circular(32.0)),
+                                                        ),
+                                                    )
+                                                  ],
+                                                )
+                                                ,
+                                              ),
+
+
+                                            );
+                                          });
+                                          }
+                                          , botton_height:0.008, botton_width: 0.01, font_size: 9, botton_color: Colors.white12) ,
+
+
+
+
                                       ],
                                     ),
                                   ],
