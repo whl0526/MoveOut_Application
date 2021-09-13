@@ -398,7 +398,7 @@ class home extends StatelessWidget{
                                 ],
                               ),
                               child: Padding(
-                                padding: EdgeInsets.fromLTRB(35, 10, 20, 10),
+                                padding: EdgeInsets.fromLTRB(35, 10, 0, 10),
 
                                 child: Column(
                                   children: [
@@ -461,12 +461,12 @@ class home extends StatelessWidget{
                                               BoxShadow(
                                                 blurRadius:35,
                                                 offset: Offset(5,5),
-                                                color: Colors.grey.withOpacity(0.01),
+                                                color: Colors.grey.withOpacity(0.1),
                                               ),
                                               BoxShadow(
                                                 blurRadius:35,
                                                 offset: Offset(-5,-5),
-                                                color: Colors.grey.withOpacity(0.01),
+                                                color: Colors.grey.withOpacity(0.1),
                                               ),
                                             ],
                                           ),
@@ -484,17 +484,17 @@ class home extends StatelessWidget{
                                           ),
                                         ),
 
-                                        RedRoundedActionButton(text: '더 보기',
+                                        RedRoundedActionButton(text: '더보기',
                                             callback: (){
                                           showDialog(context: context, builder: (BuildContext context){
                                             return AlertDialog(
                                               contentPadding: EdgeInsets.only(top: 10.0),
                                               shape: RoundedRectangleBorder(
-                                                borderRadius:  BorderRadius.all(Radius.circular(30)),
+                                                borderRadius:  BorderRadius.all(Radius.circular(12.5)),
                                               ),
 
                                               backgroundColor: Colors.white,
-                                              titleTextStyle: TextStyle(color: Colors.black,fontSize: 20),
+                                              titleTextStyle: TextStyle(color: Colors.black,fontSize: 15),
                                               title: Text('나의 PT정보'),
                                               content:
                                               Container(
@@ -518,7 +518,6 @@ class home extends StatelessWidget{
 
                                                     Container(
                                                       height: MediaQuery.of(context).size.height *0.1,
-
                                                         decoration: BoxDecoration(
                                                           color: Colors.white,
                                                           borderRadius: BorderRadius.only(
