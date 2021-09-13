@@ -410,14 +410,14 @@ class home extends StatelessWidget{
                                             color: Colors.black54,
                                             fontSize: 12,
                                           ),),
-                                        SizedBox(width: MediaQuery.of(context).size.width * 0.084),
+                                        SizedBox(width: MediaQuery.of(context).size.width * 0.092),
                                         Text(
                                           '수업내용',
                                           style:TextStyle(
                                             color: Colors.black54,
                                             fontSize: 12,
                                           ),),
-                                        SizedBox(width: MediaQuery.of(context).size.width * 0.07),
+                                        SizedBox(width: MediaQuery.of(context).size.width * 0.068),
                                         Text(
                                           '남은 횟수 / 수업 횟수',
                                           style:TextStyle(
