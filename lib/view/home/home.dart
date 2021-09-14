@@ -333,22 +333,22 @@ class home extends StatelessWidget{
                                          RichText(
                                                 text: TextSpan(
                                                   text: '코로나',style: TextStyle(
-                                                  fontSize: 12.5,
+                                                  fontSize: 12.4,
                                                   color: Colors.black54,
                                                  ),
                                                   children: <TextSpan>[
                                                     TextSpan(text: 'N',style: TextStyle(
-                                                      fontSize: 12.5,
+                                                      fontSize: 12.4,
                                                       color: Colors.redAccent,
                                                     )),
                                                     TextSpan(
                                                       text: '단계',style: TextStyle(
-                                                      fontSize: 12.5,
+                                                      fontSize: 12.4,
                                                       color: Colors.black54,
                                                     )
                                                     ),
                                                     TextSpan(text: '수용가능 인원수',style: TextStyle(
-                                                      fontSize: 12.5,
+                                                      fontSize: 12.4,
                                                       color: Colors.black54,
                                                     ),
                                                     ),
