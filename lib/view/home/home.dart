@@ -92,7 +92,7 @@ class home extends StatelessWidget{
                                 Text(
                                   snapshot.data!.user_name,
                                   style: TextStyle(
-                                      fontSize: 35),
+                                      fontSize: 35,letterSpacing: 1.5),
                                 ),
                                 SizedBox(height: MediaQuery.of(context).size.height*0.015,),
                                 FittedBox(
