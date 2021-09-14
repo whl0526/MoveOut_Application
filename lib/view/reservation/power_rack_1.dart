@@ -64,6 +64,7 @@ class _Power_Rack_1 extends State<Power_Rack_1>{
         dialogInsetPadding: EdgeInsets.all(50),
         blurredBackground: true,
 
+
       ),
     );
   }

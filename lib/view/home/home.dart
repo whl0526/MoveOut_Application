@@ -29,7 +29,7 @@ class home extends StatelessWidget{
         }
         return Container(
           color: Colors.white12,
-          height: MediaQuery.of(context).size.height * 0.8,
+          height: MediaQuery.of(context).size.height,
           child:SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
 
@@ -42,7 +42,6 @@ class home extends StatelessWidget{
                   children: [
                     Container(
                       height: MediaQuery.of(context).size.height * 0.2,
-                      width: MediaQuery.of(context).size.width*1,
                       decoration: BoxDecoration(
                          // border: Border.all(
                           //width: 1,
@@ -115,9 +114,9 @@ class home extends StatelessWidget{
 
 
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.04),
+                        height: MediaQuery.of(context).size.height * 0.045),
 
-                   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////1번째 박스
+                   //1번째 박스
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -126,7 +125,7 @@ class home extends StatelessWidget{
                             Container(
                               padding: EdgeInsets.zero,
                               width: MediaQuery.of(context).size.width * 0.9,
-                              height: MediaQuery.of(context).size.height*0.15,
+                              height: MediaQuery.of(context).size.height*0.17,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   width: 0.5,
@@ -150,9 +149,10 @@ class home extends StatelessWidget{
                               child: Padding(
                                 padding: EdgeInsets.all(7),
                                 child:Column(
+
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                      Row(
-
                                       children: [
                                         Container(
                                           width: MediaQuery.of(context).size.width*0.39,
@@ -227,10 +227,13 @@ class home extends StatelessWidget{
                                 )
                               ),
                             ),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+
+
+                            //2번째 박스
                             Container(
-                              margin:const EdgeInsets.only(top: 12),
                               width: MediaQuery.of(context).size.width * 0.9,
-                              height: MediaQuery.of(context).size.height*0.15,
+                              height: MediaQuery.of(context).size.height*0.17,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   width: 0.5,
@@ -251,202 +254,31 @@ class home extends StatelessWidget{
                                   ),
                                 ],
                               ),
-                              child: Column(
-                               mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+
+
+                              child: Row(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Padding(
-                                    padding:
-                                    EdgeInsets.fromLTRB(44, 10, 18, 10),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                                  Container(
+                                    width:MediaQuery.of(context).size.width*0.4,
+
+                                    child: Column(
+
+                                      mainAxisAlignment: MainAxisAlignment.center,
+
                                       children: [
-                                        Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
-                                            fontSize: 12,
-                                           ),),
                                         Container(
-                                          child:Row(
-                                            children: [
-                                              Text('   코로나 ',style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.black54,
-                                              ),
-                                              ),
-                                              Text('N',style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.redAccent,
-                                              ),
-                                              ),
-                                              Text('단계 수용가능 인원수',style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.black54,
-                                              ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
 
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Container(
-
-                                        width: MediaQuery.of(context).size.width * 0.125,
-                                        height: MediaQuery.of(context).size.height*0.075,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            width: 1.5,
-                                            color: Colors.redAccent,
-                                          ),
-                                          borderRadius: BorderRadius.circular(100),
-                                          color: Colors.white60,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius:35,
-                                              offset: Offset(5,5),
-                                              color: Colors.grey.withOpacity(0.01),
-                                            ),
-                                            BoxShadow(
-                                              blurRadius:35,
-                                              offset: Offset(-5,-5),
-                                              color: Colors.grey.withOpacity(0.01),
-                                            ),
-                                          ],
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children:[
-                                            Text('N',textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20,
-                                              ),
-                                            ),
-
-                                          ],
-                                        ),
-                                        ),
-
-
-
-                                      Container(
-                                        width: MediaQuery.of(context).size.width * 0.125,
-                                        height: MediaQuery.of(context).size.height*0.075,
-                                        decoration: BoxDecoration(
-                                          border: Border.all(
-                                            width: 1.5,
-                                            color: Colors.redAccent,
-                                          ),
-                                          borderRadius: BorderRadius.circular(100),
-                                          color: Colors.white60,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius:35,
-                                              offset: Offset(5,5),
-                                              color: Colors.grey.withOpacity(0.01),
-                                            ),
-                                            BoxShadow(
-                                              blurRadius:35,
-                                              offset: Offset(-5,-5),
-                                              color: Colors.grey.withOpacity(0.01),
-                                            ),
-                                          ],
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children:[
-                                            Text('N',textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 20,
-                                              ),
-                                            ),
-
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin:const EdgeInsets.only(top: 12),
-                              height: MediaQuery.of(context).size.height*0.15,
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 0.5,
-                                  color:Colors.yellow,
-                                ),
-                                borderRadius: BorderRadius.circular(12.5),
-                                color:Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius:35,
-                                    offset: Offset(5,5),
-                                    color: Colors.grey.withOpacity(0.2),
-                                  ),
-                                  BoxShadow(
-                                    blurRadius:35,
-                                    offset: Offset(-5,-5),
-                                    color: Colors.grey.withOpacity(0.2),
-                                  ),
-                                ],
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(35, 10, 0, 10),
-
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'PT (김태엽T)',
-                                          style:TextStyle(
-                                            color: Colors.black54,
+                                          child: Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
                                             fontSize: 12,
                                           ),),
-                                        SizedBox(width: MediaQuery.of(context).size.width * 0.092),
-                                        Text(
-                                          '수업내용',
-                                          style:TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 12,
-                                          ),),
-                                        SizedBox(width: MediaQuery.of(context).size.width * 0.068),
-                                        Text(
-                                          '남은 횟수 / 수업 횟수',
-                                          style:TextStyle(
-                                            color: Colors.black54,
-                                            fontSize: 12,
-                                          ),),
+                                        ),
 
 
+                                        SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
-                                      
-                                      ],),
-                                    
-
-                                    SizedBox(height: MediaQuery.of(context).size.height*0.01,),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Text('9 - 10 (금)',style:TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 15,
-                                        ),
-                                        ),
-                                        SizedBox(width: MediaQuery.of(context).size.width * 0.07),
-                                        Text( '하체수업',style:TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 15,
-                                        ),
-                                        ),
-                                        SizedBox(width: MediaQuery.of(context).size.width * 0.122),
                                         Container(
                                           width: MediaQuery.of(context).size.width * 0.125,
                                           height: MediaQuery.of(context).size.height*0.075,
@@ -455,28 +287,29 @@ class home extends StatelessWidget{
                                               width: 1.5,
                                               color: Colors.redAccent,
                                             ),
-                                            borderRadius: BorderRadius.circular(100),
-                                            color: Colors.white,
+                                            shape: BoxShape.circle,
+                                            color: Colors.white60,
                                             boxShadow: [
                                               BoxShadow(
                                                 blurRadius:35,
                                                 offset: Offset(5,5),
-                                                color: Colors.grey.withOpacity(0.1),
+                                                color: Colors.grey.withOpacity(0.01),
                                               ),
                                               BoxShadow(
                                                 blurRadius:35,
                                                 offset: Offset(-5,-5),
-                                                color: Colors.grey.withOpacity(0.1),
+                                                color: Colors.grey.withOpacity(0.01),
                                               ),
                                             ],
                                           ),
+
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children:[
-                                              Text('N/15',textAlign: TextAlign.center,
+                                              Text('N',textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 16,
+                                                  fontSize: 20,
                                                 ),
                                               ),
 
@@ -484,7 +317,280 @@ class home extends StatelessWidget{
                                           ),
                                         ),
 
-                                        RedRoundedActionButton(text: '더보기',
+
+                                      ],
+                                    ),
+                                  ),
+
+                                  Container(
+
+                                    width:MediaQuery.of(context).size.width*0.4,
+                                    child: Column(
+
+                                      mainAxisAlignment: MainAxisAlignment.center,
+
+                                      children: [
+
+                                         RichText(
+                                                text: TextSpan(
+                                                  text: '코로나',style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.black54,
+                                                 ),
+                                                  children: <TextSpan>[
+                                                    TextSpan(text: 'N',style: TextStyle(
+                                                      fontSize: 12,
+                                                      color: Colors.redAccent,
+                                                    )),
+                                                    TextSpan(
+                                                      text: '단계',style: TextStyle(
+                                                      fontSize: 12,
+                                                      color: Colors.black54,
+                                                    )
+                                                    ),
+                                                    TextSpan(text: '수용가능 인원수',style: TextStyle(
+                                                      fontSize: 12,
+                                                      color: Colors.black54,
+                                                    ),
+                                                    ),
+
+                                                  ]
+                                                ),
+
+                                              ),
+
+
+
+
+                                        SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+
+                                        Container(
+                                          width: MediaQuery.of(context).size.width * 0.125,
+                                          height: MediaQuery.of(context).size.height*0.075,
+                                          decoration: BoxDecoration(
+                                            border: Border.all(
+                                              width: 1.5,
+                                              color: Colors.redAccent,
+                                            ),
+                                            shape: BoxShape.circle,
+                                            color: Colors.white60,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius:35,
+                                                offset: Offset(5,5),
+                                                color: Colors.grey.withOpacity(0.01),
+                                              ),
+                                              BoxShadow(
+                                                blurRadius:35,
+                                                offset: Offset(-5,-5),
+                                                color: Colors.grey.withOpacity(0.01),
+                                              ),
+                                            ],
+                                          ),
+
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children:[
+                                              Text('N',textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 20,
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+
+                            SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+
+                            //3번째 박스
+                            Container(
+                              height: MediaQuery.of(context).size.height*0.17,
+                              width: MediaQuery.of(context).size.width * 0.9,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 0.5,
+                                  color:Colors.yellow,
+                                ),
+                                borderRadius: BorderRadius.circular(12.5),
+                                color:Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius:35,
+                                    offset: Offset(5,5),
+                                    color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                  BoxShadow(
+                                    blurRadius:35,
+                                    offset: Offset(-5,-5),
+                                    color: Colors.grey.withOpacity(0.2),
+                                  ),
+                                ],
+                              ),
+
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          height: MediaQuery.of(context).size.height*0.056,
+                                          child:Column(
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: [
+                                              Text(
+                                                'PT (김태엽T)',
+                                                style:TextStyle(
+                                                  color: Colors.black54,
+                                                  fontSize: 12,
+
+                                                ),),
+                                            ],
+                                          )
+
+                                        ),
+                                        Container(
+                                          height: MediaQuery.of(context).size.height*0.1,
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text('9 - 10 (금)',style:TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 15,
+                                              ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+
+                                      ],
+                                    ),
+                                  ),
+
+                                  Container(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                            height: MediaQuery.of(context).size.height*0.056,
+                                            child:Column(
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  '수업내용',
+                                                  style:TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 12,
+
+                                                  ),),
+                                              ],
+                                            )
+
+                                        ),
+                                        Container(
+                                          height: MediaQuery.of(context).size.height*0.1,
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text('하체수업',style:TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 15,
+                                              ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+
+                                      ],
+                                    ),
+                                  ),
+
+                                  Container(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                            height: MediaQuery.of(context).size.height*0.056,
+                                            child:Column(
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  '남은 횟수 / 수업 횟수',
+                                                  style:TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 12,
+
+                                                  ),),
+                                              ],
+                                            )
+
+                                        ),
+                                        Container(
+                                          height: MediaQuery.of(context).size.height*0.1,
+                                          child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+
+
+                                              Container(
+                                                width: MediaQuery.of(context).size.width * 0.125,
+                                                height: MediaQuery.of(context).size.height*0.075,
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    width: 1.5,
+                                                    color: Colors.redAccent,
+                                                  ),
+                                                  shape: BoxShape.circle,
+                                                  color: Colors.white60,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius:35,
+                                                      offset: Offset(5,5),
+                                                      color: Colors.grey.withOpacity(0.01),
+                                                    ),
+                                                    BoxShadow(
+                                                      blurRadius:35,
+                                                      offset: Offset(-5,-5),
+                                                      color: Colors.grey.withOpacity(0.01),
+                                                    ),
+                                                  ],
+                                                ),
+
+                                                child: Column(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children:[
+                                                    Text('N/15',textAlign: TextAlign.center,
+                                                      style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 20,
+                                                      ),
+                                                    ),
+
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        )
+
+                                      ],
+                                    ),
+                                  ),
+
+
+
+
+                                  /* RedRoundedActionButton(text: '더보기',
                                             callback: (){
                                           showDialog(context: context, builder: (BuildContext context){
                                             return AlertDialog(
@@ -509,7 +615,7 @@ class home extends StatelessWidget{
                                                         itemCount: 2,
                                                         itemBuilder: (BuildContext context,int i){
                                                           return ListTile(
-                                                            
+
                                                             title: Text('dd'),
                                                             onTap: (){print('aa');},
 
@@ -534,15 +640,17 @@ class home extends StatelessWidget{
                                             );
                                           });
                                           }
-                                          , botton_height:0.008, botton_width: 0.01, font_size: 9, botton_color: Colors.white12) ,
+                                          , botton_height:0.008,
+                                            botton_width: 0.01,
+                                            font_size: 9,
+                                            botton_color: Colors.white12),*/
 
 
 
 
-                                      ],
-                                    ),
-                                  ],
-                                ),
+
+
+                                ],
                               ),
                             ),
 
