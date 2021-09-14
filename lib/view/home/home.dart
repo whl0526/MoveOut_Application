@@ -125,7 +125,7 @@ class home extends StatelessWidget{
                             Container(
                               padding: EdgeInsets.zero,
                               width: MediaQuery.of(context).size.width * 0.9,
-                              height: MediaQuery.of(context).size.height*0.17,
+                              height: MediaQuery.of(context).size.height*0.16,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   width: 0.5,
@@ -161,11 +161,11 @@ class home extends StatelessWidget{
                                               Text(
                                                 '이용중인 헬스장',
                                                 style: TextStyle(
-                                                  fontSize: 12,
+                                                  fontSize: 12.5,
                                                   color: Colors.black54,),
                                               ),
                                               Container(
-                                                height: MediaQuery.of(context).size.height * 0.099,
+                                                height: MediaQuery.of(context).size.height * 0.1,
                                                 decoration: BoxDecoration(
                                                   image: DecorationImage(
                                                     image: AssetImage("images/wellsfit.png"),
@@ -185,7 +185,7 @@ class home extends StatelessWidget{
                                                   snapshot.data!.start_date+' ~ '+snapshot.data!.end_date,
                                                   style: TextStyle(
                                                     color: Colors.redAccent,
-                                                    fontSize: 15,
+                                                    fontSize: 15.5,
                                                   ),
                                               ),
 
@@ -198,20 +198,20 @@ class home extends StatelessWidget{
                                             Text(
                                               '남은기간 : ',
                                               style: TextStyle(
-                                                fontSize: 13,
+                                                fontSize: 13.5,
                                                 color: Colors.black,),
                                             ),
                                             Text(
                                               ' XX ',
                                               style: TextStyle(
-                                                fontSize:15,
+                                                fontSize:15.5,
                                                 color: Colors.redAccent,)
                                               ,
                                             ),
                                             Text(
                                               '일',
                                               style: TextStyle(
-                                                fontSize: 13,
+                                                fontSize: 13.5,
                                                 color: Colors.black,)
                                               ,
                                             ),
@@ -227,13 +227,13 @@ class home extends StatelessWidget{
                                 )
                               ),
                             ),
-                            SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.025,),
 
 
                             //2번째 박스
                             Container(
                               width: MediaQuery.of(context).size.width * 0.9,
-                              height: MediaQuery.of(context).size.height*0.17,
+                              height: MediaQuery.of(context).size.height*0.16,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   width: 0.5,
@@ -257,7 +257,7 @@ class home extends StatelessWidget{
 
 
                               child: Row(
-                               mainAxisAlignment: MainAxisAlignment.center,
+                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
 
@@ -272,12 +272,12 @@ class home extends StatelessWidget{
                                         Container(
 
                                           child: Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
-                                            fontSize: 12,
+                                            fontSize: 12.5,
                                           ),),
                                         ),
 
 
-                                        SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+                                        SizedBox(height: MediaQuery.of(context).size.height*0.016,),
 
                                         Container(
                                           width: MediaQuery.of(context).size.width * 0.125,
@@ -309,7 +309,7 @@ class home extends StatelessWidget{
                                               Text('N',textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 20,
+                                                  fontSize: 20.5,
                                                 ),
                                               ),
 
@@ -323,8 +323,7 @@ class home extends StatelessWidget{
                                   ),
 
                                   Container(
-
-                                    width:MediaQuery.of(context).size.width*0.4,
+                                    width:MediaQuery.of(context).size.width*0.45,
                                     child: Column(
 
                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -334,22 +333,22 @@ class home extends StatelessWidget{
                                          RichText(
                                                 text: TextSpan(
                                                   text: '코로나',style: TextStyle(
-                                                  fontSize: 12,
+                                                  fontSize: 12.5,
                                                   color: Colors.black54,
                                                  ),
                                                   children: <TextSpan>[
                                                     TextSpan(text: 'N',style: TextStyle(
-                                                      fontSize: 12,
+                                                      fontSize: 12.5,
                                                       color: Colors.redAccent,
                                                     )),
                                                     TextSpan(
                                                       text: '단계',style: TextStyle(
-                                                      fontSize: 12,
+                                                      fontSize: 12.5,
                                                       color: Colors.black54,
                                                     )
                                                     ),
                                                     TextSpan(text: '수용가능 인원수',style: TextStyle(
-                                                      fontSize: 12,
+                                                      fontSize: 12.5,
                                                       color: Colors.black54,
                                                     ),
                                                     ),
@@ -362,7 +361,7 @@ class home extends StatelessWidget{
 
 
 
-                                        SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+                                        SizedBox(height: MediaQuery.of(context).size.height*0.016,),
 
                                         Container(
                                           width: MediaQuery.of(context).size.width * 0.125,
@@ -394,7 +393,7 @@ class home extends StatelessWidget{
                                               Text('N',textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 20,
+                                                  fontSize: 20.5,
                                                 ),
                                               ),
 
@@ -409,11 +408,11 @@ class home extends StatelessWidget{
                               ),
                             ),
 
-                            SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.025,),
 
                             //3번째 박스
                             Container(
-                              height: MediaQuery.of(context).size.height*0.17,
+                              height: MediaQuery.of(context).size.height*0.16,
                               width: MediaQuery.of(context).size.width * 0.9,
                               decoration: BoxDecoration(
                                 border: Border.all(
@@ -444,7 +443,7 @@ class home extends StatelessWidget{
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
                                         Container(
-                                          height: MediaQuery.of(context).size.height*0.056,
+                                          height: MediaQuery.of(context).size.height*0.044,
                                           child:Column(
                                             mainAxisAlignment: MainAxisAlignment.end,
                                             children: [
@@ -452,21 +451,22 @@ class home extends StatelessWidget{
                                                 'PT (김태엽T)',
                                                 style:TextStyle(
                                                   color: Colors.black54,
-                                                  fontSize: 12,
+                                                  fontSize: 12.5,
 
                                                 ),),
                                             ],
                                           )
 
                                         ),
+                                        SizedBox(height: MediaQuery.of(context).size.height*0.01,),
                                         Container(
-                                          height: MediaQuery.of(context).size.height*0.1,
+                                          height: MediaQuery.of(context).size.height*0.08,
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Text('9 - 10 (금)',style:TextStyle(
                                                 color: Colors.black,
-                                                fontSize: 15,
+                                                fontSize: 15.5,
                                               ),
                                               ),
                                             ],
@@ -482,7 +482,7 @@ class home extends StatelessWidget{
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
                                         Container(
-                                            height: MediaQuery.of(context).size.height*0.056,
+                                            height: MediaQuery.of(context).size.height*0.044,
                                             child:Column(
                                               mainAxisAlignment: MainAxisAlignment.end,
                                               children: [
@@ -490,21 +490,22 @@ class home extends StatelessWidget{
                                                   '수업내용',
                                                   style:TextStyle(
                                                     color: Colors.black54,
-                                                    fontSize: 12,
+                                                    fontSize: 12.5,
 
                                                   ),),
                                               ],
                                             )
 
                                         ),
+                                        SizedBox(height: MediaQuery.of(context).size.height*0.01,),
                                         Container(
-                                          height: MediaQuery.of(context).size.height*0.1,
+                                          height: MediaQuery.of(context).size.height*0.08,
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Text('하체수업',style:TextStyle(
                                                 color: Colors.black,
-                                                fontSize: 15,
+                                                fontSize: 15.5,
                                               ),
                                               ),
                                             ],
@@ -520,7 +521,7 @@ class home extends StatelessWidget{
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
                                         Container(
-                                            height: MediaQuery.of(context).size.height*0.056,
+                                            height: MediaQuery.of(context).size.height*0.044,
                                             child:Column(
                                               mainAxisAlignment: MainAxisAlignment.end,
                                               children: [
@@ -528,15 +529,16 @@ class home extends StatelessWidget{
                                                   '남은 횟수 / 수업 횟수',
                                                   style:TextStyle(
                                                     color: Colors.black54,
-                                                    fontSize: 12,
+                                                    fontSize: 12.5,
 
                                                   ),),
                                               ],
                                             )
 
                                         ),
+                                        SizedBox(height: MediaQuery.of(context).size.height*0.01,),
                                         Container(
-                                          height: MediaQuery.of(context).size.height*0.1,
+                                          height: MediaQuery.of(context).size.height*0.08,
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
@@ -566,13 +568,15 @@ class home extends StatelessWidget{
                                                   ],
                                                 ),
 
+
                                                 child: Column(
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children:[
+
                                                     Text('N/15',textAlign: TextAlign.center,
                                                       style: TextStyle(
                                                         color: Colors.black,
-                                                        fontSize: 20,
+                                                        fontSize: 16,
                                                       ),
                                                     ),
 
