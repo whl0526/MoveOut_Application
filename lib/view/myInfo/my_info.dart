@@ -49,7 +49,7 @@ class _Info extends State<Info> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-
+                  height: MediaQuery.of(context).size.height * 0.43,
                   width: MediaQuery.of(context).size.width*0.95,
                   margin: EdgeInsets.all(10),
                   child: Container(

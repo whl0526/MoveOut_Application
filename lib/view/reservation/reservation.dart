@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:move_application/view/reservation/zone/free_weight.dart';
 import 'package:move_application/view/reservation/zone/middle_weight.dart';
 import 'package:move_application/view/reservation/zone/squat.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:move_application/view/reservation/zone/aerobic.dart';
 
 class Reservation extends StatefulWidget{
@@ -13,13 +12,88 @@ class Reservation extends StatefulWidget{
 
 class _Reservation extends State<Reservation> {
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*Scaffold(
       body: Container(
           child:Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -114,3 +188,4 @@ class _Reservation extends State<Reservation> {
     }
   }
 
+*/
