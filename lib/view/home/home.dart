@@ -272,7 +272,7 @@ class home extends StatelessWidget{
                                         Container(
 
                                           child: Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
-                                            fontSize: 12.5,
+                                            fontSize: 12.8,
                                           ),),
                                         ),
 
@@ -337,7 +337,7 @@ class home extends StatelessWidget{
                                                   color: Colors.black54,
                                                  ),
                                                   children: <TextSpan>[
-                                                    TextSpan(text: 'N',style: TextStyle(
+                                                    TextSpan(text: ' N',style: TextStyle(
                                                       fontSize: 12.4,
                                                       color: Colors.redAccent,
                                                     )),
@@ -347,7 +347,7 @@ class home extends StatelessWidget{
                                                       color: Colors.black54,
                                                     )
                                                     ),
-                                                    TextSpan(text: '수용가능 인원수',style: TextStyle(
+                                                    TextSpan(text: ' 수용가능 인원수',style: TextStyle(
                                                       fontSize: 12.4,
                                                       color: Colors.black54,
                                                     ),
