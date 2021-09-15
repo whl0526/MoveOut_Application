@@ -260,152 +260,192 @@ class home extends StatelessWidget{
 
 
                               child: Row(
-                               mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+
                                 children: [
 
+
+
+
                                   Container(
-                                    width:MediaQuery.of(context).size.width*0.4,
+                                    width: MediaQuery.of(context).size.width*0.89,
 
-                                    child: Column(
-
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                    child: Row(
 
                                       children: [
-                                        Container(
-
-                                          child: Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
-                                            fontSize: 12.8,
-                                          ),),
-                                        ),
-
-
-                                        SizedBox(height: MediaQuery.of(context).size.height*0.016,),
 
                                         Container(
-                                          width: MediaQuery.of(context).size.width * 0.125,
-                                          height: MediaQuery.of(context).size.height*0.075,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                              width: 1.5,
-                                              color: Colors.redAccent,
-                                            ),
-                                            shape: BoxShape.circle,
-                                            color: Colors.white60,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius:35,
-                                                offset: Offset(5,5),
-                                                color: Colors.grey.withOpacity(0.01),
-                                              ),
-                                              BoxShadow(
-                                                blurRadius:35,
-                                                offset: Offset(-5,-5),
-                                                color: Colors.grey.withOpacity(0.01),
+                                          child: Row(
+
+                                            children: [
+
+                                              Container(
+
+                                                width: MediaQuery.of(context).size.width*0.445,
+
+                                                child: Container(
+
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+
+                                                    children: [
+                                                      Container(
+                                                        child: Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
+                                                          fontSize: 12.8,
+                                                        ),),
+                                                      ),
+
+
+                                                      SizedBox(height: MediaQuery.of(context).size.height*0.016,),
+
+                                                      Container(
+                                                        width: MediaQuery.of(context).size.width * 0.125,
+                                                        height: MediaQuery.of(context).size.height*0.075,
+                                                        decoration: BoxDecoration(
+                                                          border: Border.all(
+                                                            width: 1.5,
+                                                            color: Colors.redAccent,
+                                                          ),
+                                                          shape: BoxShape.circle,
+                                                          color: Colors.white60,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius:35,
+                                                              offset: Offset(5,5),
+                                                              color: Colors.grey.withOpacity(0.01),
+                                                            ),
+                                                            BoxShadow(
+                                                              blurRadius:35,
+                                                              offset: Offset(-5,-5),
+                                                              color: Colors.grey.withOpacity(0.01),
+                                                            ),
+                                                          ],
+                                                        ),
+
+                                                        child: Column(
+                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                          children:[
+                                                            Text('N',textAlign: TextAlign.center,
+                                                              style: TextStyle(
+                                                                color: Colors.black,
+                                                                fontSize: 20.5,
+                                                              ),
+                                                            ),
+
+                                                          ],
+                                                        ),
+                                                      ),
+
+
+                                                    ],
+                                                  ),
+                                                )
+
+
                                               ),
                                             ],
                                           ),
+                                        ),
 
-                                          child: Column(
+                                        Container(
+                                          width:MediaQuery.of(context).size.width*0.445,
+                                          child: Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
-                                            children:[
-                                              Text('N',textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 20.5,
+                                            children: [
+                                              Container(
+
+                                                width: MediaQuery.of(context).size.width*0.4,
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+
+                                                  children: [
+
+                                                    RichText(
+                                                      text: TextSpan(
+                                                          text: '코로나',style: TextStyle(
+                                                        fontSize: 12.5,
+                                                        color: Colors.black54,
+                                                      ),
+                                                          children: <TextSpan>[
+                                                            TextSpan(text: ' N',style: TextStyle(
+                                                              fontSize: 12.5,
+                                                              color: Colors.redAccent,
+                                                            )),
+                                                            TextSpan(
+                                                                text: '단계',style: TextStyle(
+                                                              fontSize: 12.5,
+                                                              color: Colors.black54,
+                                                            )
+                                                            ),
+                                                            TextSpan(text: ' 수용가능 인원수',style: TextStyle(
+                                                              fontSize: 12.5,
+                                                              color: Colors.black54,
+                                                            ),
+                                                            ),
+
+                                                          ]
+                                                      ),
+
+                                                    ),
+
+
+
+
+                                                    SizedBox(height: MediaQuery.of(context).size.height*0.016,),
+
+                                                    Container(
+                                                      width: MediaQuery.of(context).size.width * 0.125,
+                                                      height: MediaQuery.of(context).size.height*0.075,
+                                                      decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                          width: 1.5,
+                                                          color: Colors.redAccent,
+                                                        ),
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.white60,
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            blurRadius:35,
+                                                            offset: Offset(5,5),
+                                                            color: Colors.grey.withOpacity(0.01),
+                                                          ),
+                                                          BoxShadow(
+                                                            blurRadius:35,
+                                                            offset: Offset(-5,-5),
+                                                            color: Colors.grey.withOpacity(0.01),
+                                                          ),
+                                                        ],
+                                                      ),
+
+                                                      child: Column(
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children:[
+                                                          Text('N',textAlign: TextAlign.center,
+                                                            style: TextStyle(
+                                                              color: Colors.black,
+                                                              fontSize: 20.5,
+                                                            ),
+                                                          ),
+
+                                                        ],
+                                                      ),
+                                                    ),
+
+
+                                                  ],
                                                 ),
                                               ),
-
                                             ],
                                           ),
                                         ),
-
 
                                       ],
                                     ),
                                   ),
 
-                                  Container(
-                                    width:MediaQuery.of(context).size.width*0.45,
-                                    child: Column(
-
-                                      mainAxisAlignment: MainAxisAlignment.center,
-
-                                      children: [
-
-                                         RichText(
-                                                text: TextSpan(
-                                                  text: '코로나',style: TextStyle(
-                                                  fontSize: 12.5,
-                                                  color: Colors.black54,
-                                                 ),
-                                                  children: <TextSpan>[
-                                                    TextSpan(text: ' N',style: TextStyle(
-                                                      fontSize: 12.5,
-                                                      color: Colors.redAccent,
-                                                    )),
-                                                    TextSpan(
-                                                      text: '단계',style: TextStyle(
-                                                      fontSize: 12.5,
-                                                      color: Colors.black54,
-                                                    )
-                                                    ),
-                                                    TextSpan(text: ' 수용가능 인원수',style: TextStyle(
-                                                      fontSize: 12.5,
-                                                      color: Colors.black54,
-                                                    ),
-                                                    ),
-
-                                                  ]
-                                                ),
-
-                                              ),
 
 
-
-
-                                        SizedBox(height: MediaQuery.of(context).size.height*0.016,),
-
-                                        Container(
-                                          width: MediaQuery.of(context).size.width * 0.125,
-                                          height: MediaQuery.of(context).size.height*0.075,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                              width: 1.5,
-                                              color: Colors.redAccent,
-                                            ),
-                                            shape: BoxShape.circle,
-                                            color: Colors.white60,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius:35,
-                                                offset: Offset(5,5),
-                                                color: Colors.grey.withOpacity(0.01),
-                                              ),
-                                              BoxShadow(
-                                                blurRadius:35,
-                                                offset: Offset(-5,-5),
-                                                color: Colors.grey.withOpacity(0.01),
-                                              ),
-                                            ],
-                                          ),
-
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children:[
-                                              Text('N',textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize: 20.5,
-                                                ),
-                                              ),
-
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
 
                                 ],
                               ),
