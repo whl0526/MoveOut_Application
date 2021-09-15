@@ -92,7 +92,10 @@ class home extends StatelessWidget{
                                 Text(
                                   snapshot.data!.user_name,
                                   style: TextStyle(
-                                      fontSize: 35,letterSpacing: 1.5),
+                                      fontSize: 32,
+                                    letterSpacing: 1.5,
+
+                                  ),
                                 ),
                                 SizedBox(height: MediaQuery.of(context).size.height*0.015,),
                                 FittedBox(
@@ -114,7 +117,7 @@ class home extends StatelessWidget{
 
 
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.045),
+                        height: MediaQuery.of(context).size.height * 0.035),
 
                    //1번째 박스
                     Row(
@@ -227,7 +230,7 @@ class home extends StatelessWidget{
                                 )
                               ),
                             ),
-                            SizedBox(height: MediaQuery.of(context).size.height*0.025,),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
 
                             //2번째 박스
@@ -333,22 +336,22 @@ class home extends StatelessWidget{
                                          RichText(
                                                 text: TextSpan(
                                                   text: '코로나',style: TextStyle(
-                                                  fontSize: 12.4,
+                                                  fontSize: 12.5,
                                                   color: Colors.black54,
                                                  ),
                                                   children: <TextSpan>[
                                                     TextSpan(text: ' N',style: TextStyle(
-                                                      fontSize: 12.4,
+                                                      fontSize: 12.5,
                                                       color: Colors.redAccent,
                                                     )),
                                                     TextSpan(
                                                       text: '단계',style: TextStyle(
-                                                      fontSize: 12.4,
+                                                      fontSize: 12.5,
                                                       color: Colors.black54,
                                                     )
                                                     ),
                                                     TextSpan(text: ' 수용가능 인원수',style: TextStyle(
-                                                      fontSize: 12.4,
+                                                      fontSize: 12.5,
                                                       color: Colors.black54,
                                                     ),
                                                     ),
@@ -408,7 +411,7 @@ class home extends StatelessWidget{
                               ),
                             ),
 
-                            SizedBox(height: MediaQuery.of(context).size.height*0.025,),
+                            SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
                             //3번째 박스
                             Container(

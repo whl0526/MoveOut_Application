@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
       key: _scaffoldkey,
       endDrawer: CustomEndDrawer(),
       appBar: AppBar(
-
+        toolbarHeight: MediaQuery.of(context).size.height*0.095,
         title: Text(
           '비켜',
           style: TitleStyle,
@@ -48,14 +48,13 @@ class _HomePageState extends State<HomePage> {
             ),
           )
         ],
-        centerTitle: true,
+        centerTitle: false,
         backgroundColor: Colors.white,
         shadowColor: null,
         elevation: 0.0,
       ),
       body: _pageOptions[selectedPage],
       bottomNavigationBar: ConvexAppBar(
-
         initialActiveIndex:0,
         backgroundColor: Colors.white,
         color: Colors.yellow[500],
@@ -63,7 +62,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 3,
         curveSize: 150,// 동그라미를 감싸는 커브 각도
         top: 0,// 동그라미 사이즈
-        height: 45,// 탭 높이
+        height: MediaQuery.of(context).size.height*0.075,// 탭 높이
         items: [
           TabItem(
                   icon: Image.asset(
