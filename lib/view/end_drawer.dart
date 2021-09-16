@@ -10,7 +10,6 @@ class CustomEndDrawer extends Drawer {
     '욥',
     'ha',
     'ho',
-    '안현진',
     '뭐로바꿀까',
   ];
   @override
