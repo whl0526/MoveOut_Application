@@ -9,5 +9,7 @@ Future<Response> deleteReservationList(memberId,machineName,reservationDate) asy
   Response response;//http request의 결과 즉 api 호출의 결과를 받기 위한 변수
   response = await http.delete(apiAddr);
   print('아직이지롱');
+  print('아직이지롱');
+
   return response;
 }
