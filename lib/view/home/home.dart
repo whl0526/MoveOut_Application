@@ -228,6 +228,7 @@ class home extends StatelessWidget{
                                 )
                               ),
                             ),
+
                             SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
 
@@ -259,6 +260,7 @@ class home extends StatelessWidget{
 
                               child: Row(
                                 children: [
+
 
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.1,),
 
@@ -371,9 +373,18 @@ class home extends StatelessWidget{
                                 ],
                               ),
 
-                              child: Row(
+                              child:
+                              snapshot.data!.enrollment != "PT"
+                                  ?  Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('예정된 수업이 없습니다.')
+                                ],
+                              )
+                              : Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
+
                                   Container(
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.start,
@@ -433,7 +444,9 @@ class home extends StatelessWidget{
                                             )
 
                                         ),
+
                                         SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+
                                         Container(
                                           height: MediaQuery.of(context).size.height*0.08,
                                           child: Column(
@@ -473,6 +486,7 @@ class home extends StatelessWidget{
 
                                         ),
                                         SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+
                                         Container(
                                           height: MediaQuery.of(context).size.height*0.08,
                                           child: Column(
@@ -509,7 +523,7 @@ class home extends StatelessWidget{
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children:[
 
-                                                    Text('N/15',textAlign: TextAlign.center,
+                                                    Text(snapshot.data!.remaining+'/'+snapshot.data!.allcount,textAlign: TextAlign.center,
                                                       style: TextStyle(
                                                         color: Colors.black,
                                                         fontSize: 16,
@@ -591,7 +605,8 @@ class home extends StatelessWidget{
 
 
                                 ],
-                              ),
+                              )
+
                             ),
 
                           ],

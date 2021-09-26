@@ -192,7 +192,6 @@ class _Info extends State<Info> {
                       child: ListView.builder(
                         itemCount: _my_reservation.length,
                         itemBuilder: (BuildContext _context, int i){
-                          if(_my_class.isEmpty)return Text('예정된 수업이 없습니다');
                           return ListTile(
                             leading: Image.asset(
                               "icons/exercise.png",color: Colors.red[700],height: 45,),
