@@ -185,7 +185,7 @@ class home extends StatelessWidget{
                                                 child:   Text(
                                                   snapshot.data!.start_date+' ~ '+snapshot.data!.end_date,
                                                   style: TextStyle(
-                                                    color: Colors.redAccent,
+                                                    color: Colors.black,
                                                     fontSize: 15.5,
                                                   ),
                                               ),
@@ -374,7 +374,7 @@ class home extends StatelessWidget{
                               ),
 
                               child:
-                              snapshot.data!.enrollment != "PT"
+                              snapshot.data!.remaining == "0"
                                   ?  Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -411,7 +411,7 @@ class home extends StatelessWidget{
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              Text('9 - 10 (금)',style:TextStyle(
+                                              Text(snapshot.data!.ptdate,style:TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 15.5,
                                               ),
@@ -452,7 +452,7 @@ class home extends StatelessWidget{
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              Text('하체수업',style:TextStyle(
+                                              Text(snapshot.data!.ptinfo+'수업',style:TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 15.5,
                                               ),

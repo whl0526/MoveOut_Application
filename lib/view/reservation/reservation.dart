@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:move_application/models/get_pt_list.dart';
 import 'package:move_application/view/reservation/zone/free_weight.dart';
 import 'package:move_application/view/reservation/zone/middle_weight.dart';
 import 'package:move_application/view/reservation/zone/squat.dart';
@@ -15,7 +16,18 @@ class _Reservation extends State<Reservation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body:FutureBuilder(
+        future: getPtList(1234), 
+        builder: (BuildContext context, AsyncSnapshot<List<Pt_history>> snapshot) {  
+          return Container(
+            child: FlatButton(onPressed: (){
+              print(snapshot.data!.length);
+            }, child: Text('d'),),
+          );
+        },)
 
+   
+    
     );
   }
 }
