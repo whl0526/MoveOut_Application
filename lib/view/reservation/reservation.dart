@@ -20,9 +20,9 @@ class _Reservation extends State<Reservation> {
         future: getPtList(1234), 
         builder: (BuildContext context, AsyncSnapshot<List<Pt_history>> snapshot) {  
           return Container(
-            child: FlatButton(onPressed: (){
-              print(snapshot.data!.length);
-            }, child: Text('d'),),
+            child: RaisedButton(onPressed: (){
+              print(snapshot.data!.first.Pkey);
+            }, ),
           );
         },)
 

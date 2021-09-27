@@ -45,10 +45,19 @@ Future<List<Pt_history>> getPtList(memberId) async{
   response = await http.get(apiAddr);//필요 api 호출
   data1 = json.decode(response.body);//받은 정보를 json형태로 decode
 
-  List<Pt_history> pt_history = data1["history"];
+  print(data1["history"].elementAt(3));
+  print('d');
+  List<Pt_history> pt_history = [];
+  for(int i=0;i<data1["history"].length;i++){
+    pt_history.add(
+       Pt_history(
+           Pkey: data1["history"].elementAt(i)["기본키"],
+           PtDay:  data1["history"].elementAt(i)["시간"],
+           StartTime:  data1["history"].elementAt(i)["수업 내용"],
+           ClassContent:  data1["history"].elementAt(i)["시작 시간"],
+           TrainerName:  data1["history"].elementAt(i)["트레이너"])
+    );
 
-  print(pt_history.length);
-  print(data1["history"]);
-
+  }
   return pt_history;
 }
