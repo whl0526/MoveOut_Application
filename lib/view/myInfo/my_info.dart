@@ -2,6 +2,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:move_application/models/get_pt_list.dart';
 import 'package:move_application/style/red_container.dart';
 import 'package:move_application/view/HomePage.dart';
 import 'package:move_application/models/get_reservation_list.dart';
@@ -34,7 +35,7 @@ class _Info extends State<Info> {
     '레그 익스텐션',
   ];
   static const List<String> _my_class = [
-
+    'awd'
   ];
 
   @override
@@ -154,7 +155,6 @@ class _Info extends State<Info> {
 
 
 
-
                 Container(
                   child: Column(
                     children: [
@@ -172,37 +172,57 @@ class _Info extends State<Info> {
                     ],
                   ),
                 ),
-                Column(
-                  children: [
-                    _my_class.isEmpty
-                        ? Container(
-                      margin: EdgeInsets.all(10),
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.2,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text('예정된 수업이 없습니다.',textAlign: TextAlign.center,style: TextStyle(fontSize: 21),)
-                        ],
-                      ),
-                    )
-                        :Container(
-                      height: MediaQuery.of(context).size.height * 0.2,
-                      child: ListView.builder(
-                        itemCount: _my_reservation.length,
-                        itemBuilder: (BuildContext _context, int i){
-                          return ListTile(
-                            leading: Image.asset(
-                              "icons/exercise.png",color: Colors.red[700],height: 45,),
-                            title: Text(_my_reservation[i],),
-                            subtitle: Text('n시 m분 ~ n시 m분',style: TextStyle(fontSize: 17),),
-                          );
-                        },
-                      ),
-                    ) ,
-                  ],
-                ),
+                FutureBuilder(
+                  future : getPtList(1234),
+                  builder: (BuildContext context, AsyncSnapshot<List<Pt_history>> snapshot)
+                  {
+                    if (snapshot.hasData == false) {
+                      return Container(
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Center(
+
+                                child: CircularProgressIndicator(color: Colors.yellow[500],),
+                              )
+                            ],
+                          )
+                      );
+                    }
+                    return Column(
+                      children: [
+                        snapshot.data!.length == 0
+                            ? Container(
+                          margin: EdgeInsets.all(10),
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text('예정된 수업이 없습니다.',textAlign: TextAlign.center,style: TextStyle(fontSize: 21),)
+                            ],
+                          ),
+                        )
+                            :Container(
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          child: ListView.builder(
+                            itemCount: _my_reservation.length,
+                            itemBuilder: (BuildContext _context, int i){
+                              return ListTile(
+                                leading: Image.asset(
+                                  "icons/exercise.png",color: Colors.red[700],height: 45,),
+                                title: Text(snapshot.data!.elementAt(i).ClassContent+' 운동'),
+                                subtitle: Text(snapshot.data!.elementAt(i).PtDay+' '+snapshot.data!.elementAt(i).StartTime+' ~ ',style: TextStyle(fontSize: 17),),
+                                onTap: (){},
+                              );
+                            },
+                          ),
+                        ) ,
+                      ],
+                    );
+                  },),
               ],
             ),
           ),
