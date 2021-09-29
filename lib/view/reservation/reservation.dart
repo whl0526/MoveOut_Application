@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:move_application/models/get_pt_info.dart';
 import 'package:move_application/models/get_pt_list.dart';
 import 'package:move_application/view/reservation/zone/free_weight.dart';
 import 'package:move_application/view/reservation/zone/middle_weight.dart';
@@ -21,7 +22,7 @@ class _Reservation extends State<Reservation> {
         builder: (BuildContext context, AsyncSnapshot<List<Pt_history>> snapshot) {  
           return Container(
             child: RaisedButton(onPressed: (){
-              print(snapshot.data!.first.Pkey);
+              getPtInfo(1);
             }, ),
           );
         },)

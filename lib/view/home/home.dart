@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:move_application/models/get_member_info.dart';
+import 'package:move_application/models/get_pt_info.dart';
 import 'package:move_application/style/red_container.dart';
 import 'package:move_application/style/text_style.dart';
 
@@ -542,62 +543,68 @@ class home extends StatelessWidget{
                                   ),
 
 
+                                   FutureBuilder(future: getPtInfo(snapshot.data!.key),
+                                     builder: (BuildContext context, AsyncSnapshot<List<Pt_Info>> snapshot) {
+
+                                     return RedRoundedActionButton(text: '수업내용',
+                                         callback: (){
+                                           showDialog(context: context, builder: (BuildContext context){
+                                             return AlertDialog(
+                                               contentPadding: EdgeInsets.only(top: 10.0),
+                                               shape: RoundedRectangleBorder(
+                                                 borderRadius:  BorderRadius.all(Radius.circular(12.5)),
+                                               ),
+
+                                               backgroundColor: Colors.white,
+                                               titleTextStyle: TextStyle(color: Colors.black,fontSize: 15),
+                                               title: Text('나의 PT정보'),
+                                               content:
+                                               Container(
+                                                 width: MediaQuery.of(context).size.width,
+                                                 child:Column(
+                                                   mainAxisSize: MainAxisSize.min,
+                                                   children: [
+
+                                                     ListView.builder(
+                                                         padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                                                         shrinkWrap: true,
+                                                         itemCount: snapshot.data!.length,
+                                                         itemBuilder: (BuildContext context,int i){
+                                                           return ListTile(
+                                                             title: Text(snapshot.data!.elementAt(i).ExserciseContent),
+
+                                                             subtitle: Text('세트 :'+snapshot.data!.elementAt(i).Set+' 횟수 :'+snapshot.data!.elementAt(i).Count),
+                                                           );
+                                                         }),
+
+                                                     Container(
+                                                       height: MediaQuery.of(context).size.height *0.1,
+                                                       decoration: BoxDecoration(
+                                                         color: Colors.white,
+                                                         borderRadius: BorderRadius.only(
+                                                             bottomLeft: Radius.circular(32.0),
+                                                             bottomRight: Radius.circular(32.0)),
+                                                       ),
+                                                     )
+                                                   ],
+                                                 )
+                                                 ,
+                                               ),
 
 
-                                  /* RedRoundedActionButton(text: '더보기',
-                                            callback: (){
-                                          showDialog(context: context, builder: (BuildContext context){
-                                            return AlertDialog(
-                                              contentPadding: EdgeInsets.only(top: 10.0),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:  BorderRadius.all(Radius.circular(12.5)),
-                                              ),
-
-                                              backgroundColor: Colors.white,
-                                              titleTextStyle: TextStyle(color: Colors.black,fontSize: 15),
-                                              title: Text('나의 PT정보'),
-                                              content:
-                                              Container(
-                                                width: MediaQuery.of(context).size.width,
-                                                child:Column(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-
-                                                    ListView.builder(
-                                                      padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                                                        shrinkWrap: true,
-                                                        itemCount: 2,
-                                                        itemBuilder: (BuildContext context,int i){
-                                                          return ListTile(
-
-                                                            title: Text('dd'),
-                                                            onTap: (){print('aa');},
-
-                                                          );
-                                                        }),
-
-                                                    Container(
-                                                      height: MediaQuery.of(context).size.height *0.1,
-                                                        decoration: BoxDecoration(
-                                                          color: Colors.white,
-                                                          borderRadius: BorderRadius.only(
-                                                              bottomLeft: Radius.circular(32.0),
-                                                              bottomRight: Radius.circular(32.0)),
-                                                        ),
-                                                    )
-                                                  ],
-                                                )
-                                                ,
-                                              ),
+                                             );
+                                           });
+                                         }
+                                         , botton_height:0.008,
+                                         botton_width: 0.01,
+                                         font_size: 9,
+                                         botton_color: Colors.white12);
+                                   },),
 
 
-                                            );
-                                          });
-                                          }
-                                          , botton_height:0.008,
-                                            botton_width: 0.01,
-                                            font_size: 9,
-                                            botton_color: Colors.white12),*/
+
+
+
 
 
 
