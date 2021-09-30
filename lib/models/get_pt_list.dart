@@ -45,7 +45,6 @@ Future<List<Pt_history>> getPtList(memberId) async{
   response = await http.get(apiAddr);//필요 api 호출
   data1 = json.decode(response.body);//받은 정보를 json형태로 decode
 
-  print(data1["history"].elementAt(3));
   List<Pt_history> pt_history = [];
   for(int i=0;i<data1["history"].length;i++){
     pt_history.add(

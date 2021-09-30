@@ -546,21 +546,30 @@ class home extends StatelessWidget{
                                    FutureBuilder(future: getPtInfo(snapshot.data!.key),
                                      builder: (BuildContext context, AsyncSnapshot<List<Pt_Info>> snapshot) {
 
-                                     return RedRoundedActionButton(text: '수업내용',
+                                     return RedRoundedActionButton(
+                                         text: '수업내용',
                                          callback: (){
                                            showDialog(context: context, builder: (BuildContext context){
+
                                              return AlertDialog(
-                                               contentPadding: EdgeInsets.only(top: 10.0),
+                                               contentPadding: EdgeInsets.only(top: 10.0,bottom: 10),
+
                                                shape: RoundedRectangleBorder(
                                                  borderRadius:  BorderRadius.all(Radius.circular(12.5)),
                                                ),
+                                               actions: [
+                                                 FlatButton(onPressed: (){
+                                                   Navigator.pop(context);
+                                                 }, child: Text('닫기'))
+                                               ],
 
                                                backgroundColor: Colors.white,
                                                titleTextStyle: TextStyle(color: Colors.black,fontSize: 15),
                                                title: Text('나의 PT정보'),
+
                                                content:
                                                Container(
-                                                 width: MediaQuery.of(context).size.width,
+                                                 width: double.minPositive,
                                                  child:Column(
                                                    mainAxisSize: MainAxisSize.min,
                                                    children: [
@@ -568,24 +577,19 @@ class home extends StatelessWidget{
                                                      ListView.builder(
                                                          padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
                                                          shrinkWrap: true,
+
                                                          itemCount: snapshot.data!.length,
+
                                                          itemBuilder: (BuildContext context,int i){
+
                                                            return ListTile(
                                                              title: Text(snapshot.data!.elementAt(i).ExserciseContent),
-
                                                              subtitle: Text('세트 :'+snapshot.data!.elementAt(i).Set+' 횟수 :'+snapshot.data!.elementAt(i).Count),
+
                                                            );
                                                          }),
 
-                                                     Container(
-                                                       height: MediaQuery.of(context).size.height *0.1,
-                                                       decoration: BoxDecoration(
-                                                         color: Colors.white,
-                                                         borderRadius: BorderRadius.only(
-                                                             bottomLeft: Radius.circular(32.0),
-                                                             bottomRight: Radius.circular(32.0)),
-                                                       ),
-                                                     )
+
                                                    ],
                                                  )
                                                  ,

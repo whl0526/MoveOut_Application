@@ -42,7 +42,6 @@ Future<List<Pt_Info>> getPtInfo(PtPKey) async{
           Count: data1.elementAt(i)["횟수"])
     );
   }
-  print(pt_info.length);
 
   return pt_info;
 }
