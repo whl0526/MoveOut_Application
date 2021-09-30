@@ -212,7 +212,7 @@ class _Info extends State<Info> {
                             itemBuilder: (BuildContext _context, int i){
                               return ListTile(
                                 leading: Image.asset(
-                                  "icons/exercise.png",color: Colors.red[700],height: 45,),
+                                  "icons/${snapshot.data!.elementAt(i).ClassContent}.png",height: 45,),
                                 title: Text(snapshot.data!.elementAt(i).ClassContent+' 운동'),
                                 subtitle: Text(snapshot.data!.elementAt(i).PtDay+' '+snapshot.data!.elementAt(i).StartTime+' ~ ',style: TextStyle(fontSize: 17),),
                                 onTap: (){},
