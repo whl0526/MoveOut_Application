@@ -122,7 +122,8 @@ class _Info extends State<Info> {
                                             actions: [
                                               FlatButton(onPressed: (){Navigator.pop(context);}, child: Text('창 닫기')),
                                               FlatButton(onPressed: () async {
-                                                Response response = await deleteReservationList(snapshot.data!.elementAt(i).userid, snapshot.data!.elementAt(i).equipment, snapshot.data!.elementAt(i).date);
+                                                Response response = await deleteReservationList(
+                                                    snapshot.data!.elementAt(i).userid, snapshot.data!.elementAt(i).equipment, snapshot.data!.elementAt(i).date);
                                                 if(response.statusCode == 200){
                                                   Navigator.pop(context);
                                                   setState(() {});
@@ -213,19 +214,28 @@ class _Info extends State<Info> {
                             :Container(
                           height: MediaQuery.of(context).size.height * 0.25,
                           child: ListView.builder(
-                            itemCount: _my_reservation.length,
+                            itemCount: snapshot.data!.length,
                             itemBuilder: (BuildContext _context, int i){
                               return FutureBuilder(future: getPtInfo(snapshot.data!.elementAt(i).Pkey), builder: (BuildContext context, AsyncSnapshot<List<Pt_Info>> snapshot_Pkey) {
-
                                 return ListTile(
                                   leading: Image.asset(
                                     "icons/${snapshot.data!.elementAt(i).ClassContent}.png",height: 45,),
                                   title: Text(snapshot.data!.elementAt(i).ClassContent+' 운동'),
                                   subtitle: Text(snapshot.data!.elementAt(i).PtDay+' '+snapshot.data!.elementAt(i).StartTime+' ~ ',style: TextStyle(fontSize: 17),),
-                                  onTap: (){
-                                    print(snapshot_Pkey.data!.elementAt(0).Set);
-                                    print(snapshot.data!.elementAt(i).Pkey);
-                                  },
+                                  trailing: RaisedButton(
+                                    onPressed: (){
+                                      for(int z=0;z< snapshot_Pkey.data!.length;z++){
+
+                                        print('세트 :'+snapshot_Pkey.data!.elementAt(z).Set);
+
+                                        print('횟수 :'+snapshot_Pkey.data!.elementAt(z).Count);
+
+                                        print('운동부위 :'+snapshot_Pkey.data!.elementAt(z).ExserciseContent);
+
+                                      }
+                                    },
+                                  ),
+
                                 );
                               },);
 
