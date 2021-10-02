@@ -2,12 +2,17 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:move_application/models/get_pt_info.dart';
 import 'package:move_application/models/get_pt_list.dart';
 import 'package:move_application/style/red_container.dart';
 import 'package:move_application/view/HomePage.dart';
 import 'package:move_application/models/get_reservation_list.dart';
 import 'package:move_application/style/text_style.dart';
 import 'package:move_application/models/delete_reservation_list.dart';
+
+import 'dart:convert';
+import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 class Info extends StatefulWidget{
   @override
@@ -210,13 +215,20 @@ class _Info extends State<Info> {
                           child: ListView.builder(
                             itemCount: _my_reservation.length,
                             itemBuilder: (BuildContext _context, int i){
-                              return ListTile(
-                                leading: Image.asset(
-                                  "icons/${snapshot.data!.elementAt(i).ClassContent}.png",height: 45,),
-                                title: Text(snapshot.data!.elementAt(i).ClassContent+' 운동'),
-                                subtitle: Text(snapshot.data!.elementAt(i).PtDay+' '+snapshot.data!.elementAt(i).StartTime+' ~ ',style: TextStyle(fontSize: 17),),
-                                onTap: (){},
-                              );
+                              return FutureBuilder(future: getPtInfo(snapshot.data!.elementAt(i).Pkey), builder: (BuildContext context, AsyncSnapshot<List<Pt_Info>> snapshot_Pkey) {
+
+                                return ListTile(
+                                  leading: Image.asset(
+                                    "icons/${snapshot.data!.elementAt(i).ClassContent}.png",height: 45,),
+                                  title: Text(snapshot.data!.elementAt(i).ClassContent+' 운동'),
+                                  subtitle: Text(snapshot.data!.elementAt(i).PtDay+' '+snapshot.data!.elementAt(i).StartTime+' ~ ',style: TextStyle(fontSize: 17),),
+                                  onTap: (){
+                                    print(snapshot_Pkey.data!.elementAt(0).Set);
+                                    print(snapshot.data!.elementAt(i).Pkey);
+                                  },
+                                );
+                              },);
+
                             },
                           ),
                         ) ,
