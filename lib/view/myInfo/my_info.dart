@@ -222,18 +222,68 @@ class _Info extends State<Info> {
                                     "icons/${snapshot.data!.elementAt(i).ClassContent}.png",height: 45,),
                                   title: Text(snapshot.data!.elementAt(i).ClassContent+' 운동'),
                                   subtitle: Text(snapshot.data!.elementAt(i).PtDay+' '+snapshot.data!.elementAt(i).StartTime+' ~ ',style: TextStyle(fontSize: 17),),
-                                  trailing: RaisedButton(
-                                    onPressed: (){
-                                      for(int z=0;z< snapshot_Pkey.data!.length;z++){
+                                  trailing: RedRoundedActionButton(
+                                    text: '상세보기',
+                                    callback: (){
+                                      showDialog(context: context, builder: (BuildContext context) {
 
-                                        print('세트 :'+snapshot_Pkey.data!.elementAt(z).Set);
+                                        return AlertDialog(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:  BorderRadius.all(Radius.circular(12.5)),
+                                            ),
+                                            actions: [
+                                              FlatButton(onPressed: (){
+                                                Navigator.pop(context);
+                                              }, child: Text('닫기'))
+                                            ],
+                                          contentPadding: EdgeInsets.only(top: 10.0,bottom: 10),
 
-                                        print('횟수 :'+snapshot_Pkey.data!.elementAt(z).Count);
+                                          title: Text('PT 상세내용'),
 
-                                        print('운동부위 :'+snapshot_Pkey.data!.elementAt(z).ExserciseContent);
+                                          content: Container(
+                                            width: double.minPositive,
 
-                                      }
+                                            child:Column(
+
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+
+                                                ListView.builder(
+
+                                                  itemCount: snapshot_Pkey.data!.length, //4
+                                                  shrinkWrap: true,
+                                                  itemBuilder: (BuildContext context, int index) {
+
+                                                    return ListTile(
+                                                      title: Text('운동부위 :'+snapshot_Pkey.data!.elementAt(index).ExserciseContent),
+                                                      subtitle: Text('세트 :'+snapshot_Pkey.data!.elementAt(index).Set+'횟수 :'+snapshot_Pkey.data!.elementAt(index).Count),
+                                                    );
+                                                  },
+                                                )
+                                              ],
+                                            ),
+                                          )
+
+                                        );
+                                      },
+                                      );
+                                      print(snapshot_Pkey.data!.length);
+
+
+                                      // for(int z=0;z< snapshot_Pkey.data!.length;z++){
+                                      //
+                                      //   print('세트 :'+snapshot_Pkey.data!.elementAt(z).Set);
+                                      //
+                                      //   print('횟수 :'+snapshot_Pkey.data!.elementAt(z).Count);
+                                      //
+                                      //   print('운동부위 :'+snapshot_Pkey.data!.elementAt(z).ExserciseContent);
+                                      //
+                                      // }
                                     },
+                                      botton_height:0.00001,
+                                      botton_width:0.0001,
+                                      font_size: 14,
+                                      botton_color: Colors.white12
                                   ),
 
                                 );
