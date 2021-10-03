@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:move_application/models/get_member_info.dart';
 import 'package:move_application/models/get_pt_info.dart';
 import 'package:move_application/style/red_container.dart';
@@ -9,12 +10,15 @@ import 'package:move_application/style/text_style.dart';
 class home extends StatelessWidget{
 
   String covid = 'N';
+  String today = DateFormat('yyyyMMdd').format(DateTime.now()).toString();
   Widget build(BuildContext context){
 
     return Scaffold(
       body:FutureBuilder(
         future: getMemberInfo(1234),builder:(BuildContext context,
           AsyncSnapshot<Member_info> snapshot) {
+
+
 
         if (snapshot.hasData == false) {
           return Container(
@@ -28,6 +32,8 @@ class home extends StatelessWidget{
             )
           );
         }
+        String endDate= snapshot.data!.end_date.replaceAll("-", "");
+        int difference = int.parse(DateTime.parse(endDate).difference(DateTime.parse(today)).inDays.toString());
         return Container(
           color: Colors.white12,
           height: MediaQuery.of(context).size.height,
@@ -204,7 +210,7 @@ class home extends StatelessWidget{
                                                 color: Colors.black,),
                                             ),
                                             Text(
-                                              ' XX ',
+                                              difference.toString(),
                                               style: TextStyle(
                                                 fontSize:15.5,
                                                 color: Colors.redAccent,)
