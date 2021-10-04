@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:move_application/models/get_health_club_population.dart';
 import 'package:move_application/models/get_member_info.dart';
 import 'package:move_application/models/get_pt_info.dart';
 import 'package:move_application/style/red_container.dart';
@@ -271,41 +272,65 @@ class home extends StatelessWidget{
 
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.1,),
 
-                                  Container(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
-                                          fontSize: 12.8,
-                                        )),
 
-                                        SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
 
-                                        Container(
-                                          width: MediaQuery.of(context).size.width * 0.125,
-                                          height: MediaQuery.of(context).size.height*0.075,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                              width: 1.5,
-                                              color: Colors.redAccent,
+                                     Container(
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text('현재 이용자 수',style: TextStyle(color: Colors.black54,
+                                            fontSize: 12.8,
+                                          )),
+
+                                          SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
+
+                                          Container(
+                                            width: MediaQuery.of(context).size.width * 0.125,
+                                            height: MediaQuery.of(context).size.height*0.075,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                width: 1.5,
+                                                color: Colors.redAccent,
+                                              ),
+                                              shape: BoxShape.circle,
+                                              color: Colors.white60,
+
                                             ),
-                                            shape: BoxShape.circle,
-                                            color: Colors.white60,
-
-                                          ),
-                                          child: Center(child: Text('N', style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 20.5,
-                                          ),),),
-                                        )
-                                      ],
+                                            child:
+                                            FutureBuilder(future: getHealthClubPopulation(), builder: (BuildContext context, AsyncSnapshot<Hc_population> snapshot) {
+                                              if (snapshot.hasData == false) {
+                                                return Container(
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Center(
+                                                          child: CircularProgressIndicator(color: Colors.yellow[500],),
+                                                        )
+                                                      ],
+                                                    )
+                                                );
+                                              }
+                                                  return Center(
+                                                    child: Text(
+                                                      snapshot.data!.population
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 20.5,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            )
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  
+
 
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.15,),
-                                  
-                                  
+
+
                                   Container(
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -328,7 +353,7 @@ class home extends StatelessWidget{
 
 
                                         SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-                                        
+
                                         Container(
                                           width: MediaQuery.of(context).size.width * 0.125,
                                           height: MediaQuery.of(context).size.height*0.075,
