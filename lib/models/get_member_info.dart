@@ -43,6 +43,9 @@ Future<Member_info> getMemberInfo(memberId) async{
   response = await http.get(apiAddr);//필요 api 호출
   data1 = json.decode(response.body);//받은 정보를 json형태로 decode
 
+  List<String> ptdate=data1["ptdate"].split("-");
+  String FilteredPtDate = ptdate.elementAt(1)+'월 '+ptdate.elementAt(2)+'일';
+
   //받은 데이터정보를 필요한 형태로 저장한다.
   memberInfo = Member_info(
 
@@ -51,7 +54,7 @@ Future<Member_info> getMemberInfo(memberId) async{
     enrollment: data1["enrollment"],
     gym: data1["gym"],
     key: data1["key"],
-    ptdate: data1["ptdate"],
+    ptdate: FilteredPtDate,
     ptinfo: data1["ptinfo"],
     remaining: data1["remaining"],
     start_date: data1["start_date"],
