@@ -162,6 +162,7 @@ class _Info extends State<Info> {
 
 
                 Container(
+
                   child: Column(
                     children: [
                       Padding(
@@ -200,6 +201,7 @@ class _Info extends State<Info> {
                       children: [
                         snapshot.data!.length == 0
                             ? Container(
+
                           margin: EdgeInsets.all(10),
                           width: MediaQuery.of(context).size.width,
                           height: MediaQuery.of(context).size.height * 0.25,
@@ -212,6 +214,26 @@ class _Info extends State<Info> {
                           ),
                         )
                             :Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 0.5,
+                              color: Colors.yellow,
+                            ),
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius:30,
+                                offset: Offset(5,5),
+                                color: Colors.grey.withOpacity(0.1),
+                              ),
+                              BoxShadow(
+                                blurRadius:30,
+                                offset: Offset(-5,-5),
+                                color: Colors.grey.withOpacity(0.1),
+                              ),
+                            ],
+                          ),
                           height: MediaQuery.of(context).size.height * 0.25,
                           child: ListView.builder(
                             itemCount: snapshot.data!.length,
