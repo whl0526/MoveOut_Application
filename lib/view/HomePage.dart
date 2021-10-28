@@ -10,7 +10,8 @@ import 'package:move_application/view/appbar.dart';
 import 'end_drawer.dart';
 
 class HomePage extends StatefulWidget {
-
+  final String access_token;
+  HomePage({required this.access_token});
   @override
   _HomePageState createState() => _HomePageState();
 }
