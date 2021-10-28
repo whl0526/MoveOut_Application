@@ -9,14 +9,15 @@ import 'package:move_application/style/text_style.dart';
 
 
 class home extends StatelessWidget{
-
+  final String ID;
+  home({required this.ID});
   String covid = 'N';
   String today = DateFormat('yyyyMMdd').format(DateTime.now()).toString();
   Widget build(BuildContext context){
 
     return Scaffold(
       body:FutureBuilder(
-        future: getMemberInfo(1234),builder:(BuildContext context,
+        future: getMemberInfo(ID),builder:(BuildContext context,
           AsyncSnapshot<Member_info> snapshot) {
 
 

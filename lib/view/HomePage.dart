@@ -11,7 +11,10 @@ import 'end_drawer.dart';
 
 class HomePage extends StatefulWidget {
   final String access_token;
-  HomePage({required this.access_token});
+  String ID;
+
+  HomePage({required this.access_token, required this.ID});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -19,13 +22,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
 
-  Future<Null> _onReFresh() async {
-    setState(() {});
-    print('d');
-  }
+  late String id = widget.ID;
+
+
 
   int selectedPage = 0;
-  final List<Widget>_pageOptions = [home(),Reservation(),Info()];
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -54,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         shadowColor: null,
         elevation: 0.0,
       ),
-      body: _pageOptions[selectedPage],
+      body: [home(ID:id),Reservation(),Info()][selectedPage],
       bottomNavigationBar: ConvexAppBar(
         initialActiveIndex:0,
         backgroundColor: Colors.white,

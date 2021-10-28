@@ -114,15 +114,18 @@ class _loginView extends State<loginView>{
                 data = json.decode(response.body);
                 LoginIdPw loginIdPw;
                 loginIdPw = LoginIdPw(
-                    result: data["resualt"],
+                    result: data["result"],
                     access_token: data["access_token"]
                 );
 
 
                 if(loginIdPw.result=="OK"){
                   final res = await Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage(access_token: loginIdPw.access_token,)));
-                }
+                      MaterialPageRoute(builder: (context) => HomePage(
+                        access_token: loginIdPw.access_token,
+                        ID: ID,
+                      )));
+                }else(print("Fail"));
 
               },
               child:Icon(Icons.login),
