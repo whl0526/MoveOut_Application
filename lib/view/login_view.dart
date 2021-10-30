@@ -52,35 +52,49 @@ class _loginView extends State<loginView>{
             children: [
               Container(
                 width: MediaQuery.of(context).size.width*0.5,
-                height:MediaQuery.of(context).size.height*0.2,
+                height:MediaQuery.of(context).size.height*0.23,
                 decoration: BoxDecoration(
-
                     image:
-                    DecorationImage(image:AssetImage('images/logo.png'),
+                    DecorationImage(
+                      image:AssetImage('images/logo.png'),
                     fit:  BoxFit.cover,
                     ),
+
                 ),
                 child:Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text('Integraged fitness service',
                     style: TextStyle(
-                        fontSize: 15,
-                      color: Colors.grey,
+                        fontSize: 15.1,
+                      color: Color(0xFFBB9B9B9),
                     ),),
                   ],
                 ),
 
               ),
-              SizedBox(height: MediaQuery.of(context).size.height*0.05,),
+              SizedBox(height: MediaQuery.of(context).size.height*0.02,),
               Container(
                 width: MediaQuery.of(context).size.width*0.77,
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.yellow,
-                    width:1.2,
+                    width:1.15,
                   ),
                   borderRadius: BorderRadius.circular(35),
+                  color:Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius:10,
+                      offset: Offset(5,5),
+                      color: Colors.grey.withOpacity(0.4),
+                    ),
+                    BoxShadow(
+                      blurRadius:10,
+                      offset: Offset(-5,-5),
+                      color: Colors.grey.withOpacity(0.2),
+                    ),
+                  ],
                 ),
                 child: Row(
                   children: [
@@ -110,9 +124,22 @@ class _loginView extends State<loginView>{
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.yellow,
-                    width:1.2,
+                    width:1.15,
                   ),
                   borderRadius: BorderRadius.circular(35),
+                  color:Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius:10,
+                      offset: Offset(5,5),
+                      color: Colors.grey.withOpacity(0.4),
+                    ),
+                    BoxShadow(
+                      blurRadius:10,
+                      offset: Offset(-5,-5),
+                      color: Colors.grey.withOpacity(0.2),
+                    ),
+                  ],
                 ),
                 child: Row(
                   children: [
@@ -138,10 +165,11 @@ class _loginView extends State<loginView>{
                 ),
 
               ),
-              SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+              SizedBox(height: MediaQuery.of(context).size.height*0.015,),
 
-                 FloatingActionButton(
-                  onPressed: () async{
+
+                 InkWell(
+                  onTap: () async{
                     // var data = {
                     //   "userid" : ID,
                     //   "password" : PW,
@@ -184,8 +212,10 @@ class _loginView extends State<loginView>{
 
                   },
                   child:Icon(Icons.login,
-                  size:35,
-                  color: Colors.yellow),
+                  size:45,
+                  color: Color(0xFFBB9B9B9),
+                  ),
+
                   // onPressed: () async{
                   //   final res = await Navigator.push(context,
                   //       MaterialPageRoute(builder: (context) => HomePage()));
