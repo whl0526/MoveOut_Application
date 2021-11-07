@@ -2,7 +2,7 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:move_application/view/appbar.dart';
-import 'package:move_application/view/board/board.dart';
+import 'package:move_application/view/board/board_category.dart';
 import 'package:move_application/view/home/home.dart';
 import 'package:move_application/view/reservation/reservation.dart';
 import 'package:move_application/view/myInfo/my_info.dart';
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
         shadowColor: null,
         elevation: 0.0,
       ),
-      body: [home(ID:id),Reservation(),Board(),Info()][selectedPage],
+      body: [home(ID:id),Reservation(),BoardCategory(),Info()][selectedPage],
       bottomNavigationBar: ConvexAppBar(
         initialActiveIndex:0,
         backgroundColor: Colors.white,
