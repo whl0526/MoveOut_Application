@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:move_application/view/reservation/zone/free_weight.dart';
 import 'package:move_application/view/reservation/zone/middle_weight.dart';
 import 'package:move_application/view/reservation/zone/squat.dart';
-import 'package:table_calendar/table_calendar.dart';
 import 'package:move_application/view/reservation/zone/aerobic.dart';
 
 class Reservation extends StatefulWidget{
@@ -12,11 +11,6 @@ class Reservation extends StatefulWidget{
 }
 
 class _Reservation extends State<Reservation> {
-
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,13 +26,13 @@ class _Reservation extends State<Reservation> {
                     final res = await Navigator.push(context,
                         MaterialPageRoute(builder: (context) => aerobic(space_name:'유산소' ,)));
                   },
-                  child:  buildCategory("images/treadmill-removebg-preview.png", "유산소 존"),
+                  child:  buildCategory("images/reservation-images/treadmill9.jpg", "유산소 존"),
                 ),InkWell(
                   onTap: () async{
                     final res = await Navigator.push(context,
                         MaterialPageRoute(builder: (context) => middle_weight(space_name:'중앙 웨이트')));
                   },
-                  child:  buildCategory("images/bench5.png", "중앙 웨이트 존"),
+                  child:  buildCategory("images/reservation-images/bench9.jpg", "중앙 웨이트 존"),
                 ),
               ],
             ),
@@ -51,14 +45,14 @@ class _Reservation extends State<Reservation> {
                     final res = await Navigator.push(context,
                         MaterialPageRoute(builder: (context) => squat(space_name:'하체')));
                   },
-                  child:  buildCategory("images/squat3.png", "하체 존"),
+                  child:  buildCategory("images/reservation-images/squat9.jpg", "하체 존"),
                 ),
                 InkWell(
                   onTap: () async{
                     final res = await Navigator.push(context,
                         MaterialPageRoute(builder: (context) => free_weight(space_name:'우측 웨이트')));
                   },
-                  child:  buildCategory("images/deadlift-removebg-preview.png", "우측 웨이트 존"),
+                  child:  buildCategory("images/reservation-images/deadlift9.jpg", "우측 웨이트 존"),
 
                 ),
               ],
@@ -74,11 +68,11 @@ class _Reservation extends State<Reservation> {
       width: (MediaQuery.of(context).size.width)*0.37,
       decoration: BoxDecoration(
         border: Border.all(
-          width: 0.5,
+          width: 0.85,
           color:Colors.yellow,
         ),
         borderRadius: BorderRadius.circular(12.5),
-        color:Colors.white,
+        color:Color(0x01222C),
         boxShadow: [
           BoxShadow(
             blurRadius:35,
@@ -99,7 +93,7 @@ class _Reservation extends State<Reservation> {
           children: [
             AspectRatio(
               child: Image.asset(imageUrl, fit: BoxFit.fill,),
-              aspectRatio: 1 / 0.85,
+              aspectRatio: 1 / 0.88,
             ),
             SizedBox(
               height:MediaQuery.of(context).size.height/50,
