@@ -36,9 +36,23 @@ class _HomePageState extends State<HomePage> {
       endDrawer: CustomEndDrawer(),
       appBar: AppBar(
         toolbarHeight: MediaQuery.of(context).size.height*0.095,
-        title: Text(
-          '비켜',
-          style: TitleStyle,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              'images/logo.png',
+                  fit:BoxFit.contain,
+              height:44,
+              width:55,
+            ),
+            Text(
+              '비켜',
+              style: TextStyle(color: Colors.black,
+                fontSize: 25,
+              letterSpacing: 1.8,
+              fontWeight: FontWeight.w600),
+            ),
+          ],
         ),
         actions: [
           IconButton(
@@ -91,13 +105,13 @@ class _HomePageState extends State<HomePage> {
           ),
           TabItem(
               icon: Image.asset(
-                "icons/reservation-icon-5.jpg",
+                "images/board.png",
                 color: Colors.grey[500],
-                scale: 42,
+                scale:20,
               ),activeIcon: Image.asset(
-            "icons/reservation-icon-5.jpg",
+            "images/board.png",
             color: Colors.yellow,
-            scale: 30,)
+            scale: 10,)
           ),
           TabItem(icon: Image.asset(
             'images/human.png',
