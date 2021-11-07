@@ -83,11 +83,11 @@ class _HomePageState extends State<HomePage> {
         items: [
           TabItem(
                   icon: Image.asset(
-              "images/home.png",
+              "icons/homepage-icons/home.png",
               color: Colors.grey[500],
                     scale: 6,
               ),activeIcon: Image.asset(
-              "images/home.png",
+              "icons/homepage-icons/home.png",
             color: Colors.yellow,
             scale: 6.1,
           ),
@@ -95,23 +95,23 @@ class _HomePageState extends State<HomePage> {
           ),
           TabItem(
               icon: Image.asset(
-            "icons/reservation-icon-5.jpg",
+            "icons/homepage-icons/timetable.png",
             color: Colors.grey[500],
-            scale: 42,
+            scale: 6,
           ),activeIcon: Image.asset(
-            "icons/reservation-icon-5.jpg",
+            "icons/homepage-icons/timetable.png",
             color: Colors.yellow,
-            scale: 30,)
+            scale: 6.1,)
           ),
           TabItem(
               icon: Image.asset(
-                "images/board.png",
+                "icons/homepage-icons/meeting.png",
                 color: Colors.grey[500],
-                scale:20,
+                scale:6,
               ),activeIcon: Image.asset(
-            "images/board.png",
+            "icons/homepage-icons/meeting.png",
             color: Colors.yellow,
-            scale: 10,)
+            scale: 6.1,)
           ),
           TabItem(icon: Image.asset(
             'images/human.png',

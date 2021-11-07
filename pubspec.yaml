@@ -61,6 +61,7 @@ flutter:
   uses-material-design: true
   assets:
     - icons/
+    - icons/homepage-icons/
     - images/
     - images/board-categories/
     - images/reservation-images/
