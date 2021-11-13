@@ -31,18 +31,41 @@ class _posts extends State<posts>{
           ),
           Expanded(
             flex:3,
-              child:Text("내용 (안에 사진 첨부되어야함)")
-              ,),
+            child: ListView.builder(
+
+              itemBuilder: (BuildContext _context, int i){
+                return Container(
+
+                  child: Text('댓글들.'),
+
+                );
+              },
+              itemCount: 10,
+              scrollDirection: Axis.vertical,
+            ),
+          ),
           Expanded(
             flex:4,
             child: ListView.builder(
+
               itemBuilder: (BuildContext _context, int i){
                 return ListTile(
+
                   title: Text('댓글들.'),
-                  onTap: ()async{
-                    final router  = await Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => posts()));
-                  },
+                  trailing: Container(
+                    width: MediaQuery.of(context).size.width*0.3,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(flex:1,child: Container(child: Text('대댓글'),)),
+                            Expanded(flex:1,child: Container(child: Text('좋아요'),)),
+                            Expanded(flex:1,child: Container(child: Text('...'),)),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 );
               },
               itemCount: 10,
