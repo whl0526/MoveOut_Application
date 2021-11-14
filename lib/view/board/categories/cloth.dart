@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:move_application/models/get_posts_board.dart';
+import 'package:move_application/models/get_board_all.dart';
 import 'package:move_application/style/red_container.dart';
+import 'package:move_application/style/snapshot_no_data.dart';
 import 'package:move_application/view/appbar.dart';
 import 'package:move_application/view/board/posting.dart';
 import 'package:move_application/view/board/posts.dart';
@@ -49,18 +50,7 @@ class _cloth extends State<cloth> {
             future: getBoardAll("food"),
             builder: (BuildContext context, AsyncSnapshot<List<Board_all>> snapshot) {
               if (snapshot.hasData == false) {
-                return Container(
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Center(
-
-                          child: CircularProgressIndicator(color: Colors.yellow[500],),
-                        )
-                      ],
-                    )
-                );
+                return snapshotNoData();
               }
               return Expanded(
                 child: Center(
@@ -72,7 +62,6 @@ class _cloth extends State<cloth> {
 
                         return Container(
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-
                           decoration: BoxDecoration(
                             border: Border(
                               bottom: BorderSide(width: 0.5,
@@ -93,7 +82,7 @@ class _cloth extends State<cloth> {
                             ),
                             onTap: () async {
                               final router = await Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => posts()));
+                                  MaterialPageRoute(builder: (context) => posts(post_id: snapshot.data!.elementAt(i).id,)));
                             },
                           )
                         ) ;
