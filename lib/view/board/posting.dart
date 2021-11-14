@@ -86,8 +86,8 @@ class _posting extends State<posting> {
                       MaterialPageRoute(builder: (context) => cloth(space_name: "운동복",)));
                 },
                 botton_height: 0.02,
-                text: "글쓰기",
-                botton_color: Colors.red,
+                text: "작성",
+                botton_color: Colors.redAccent,
                 font_size: 13,
                 botton_width: 0.02,
               ),

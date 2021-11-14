@@ -12,7 +12,7 @@ class _method extends State<method>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(widget.space_name),
+      appBar: CustomAppbar(widget.space_name+' 게시판'),
 
     );
   }

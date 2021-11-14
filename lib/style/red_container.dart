@@ -40,8 +40,8 @@ class RedRoundedActionButton extends StatelessWidget {
         margin: EdgeInsets.all(10.0),
         padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * botton_height , horizontal:MediaQuery.of(context).size.width*botton_width),
         decoration: BoxDecoration(
-            color: botton_color , borderRadius: BorderRadius.circular(15.0)/*,border: Border.all(width: 3)*/),
-        child: Text(text, style: TextStyle(fontSize:font_size , fontWeight: FontWeight.bold , color:Colors.black ,letterSpacing: 1.0)),
+            color: botton_color , borderRadius: BorderRadius.circular(12.5)),
+        child: Text(text, style: TextStyle(fontSize:font_size , fontWeight: FontWeight.w600 , color:Colors.black ,letterSpacing: 1.2)),
       ),
     );
   }

@@ -3,8 +3,10 @@ import 'package:move_application/models/get_board_all.dart';
 import 'package:move_application/style/red_container.dart';
 import 'package:move_application/style/snapshot_no_data.dart';
 import 'package:move_application/view/appbar.dart';
+
 import 'package:move_application/view/board/posting.dart';
 import 'package:move_application/view/board/posts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class cloth extends StatefulWidget {
   final String space_name;
@@ -21,31 +23,46 @@ class _cloth extends State<cloth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(widget.space_name),
+      appBar: CustomAppbar(widget.space_name+' 게시판'),
       body: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                child: RedRoundedActionButton(
-                  botton_width: 0.04,
-                  font_size: 16,
-                  botton_color: Colors.red,
-                  text: "글쓰기",
-                  botton_height: 0.02,
-                  callback: () async {
-                    final router = await Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => posting(
-                                  categoty: '운동복',
-                                )));
-                  },
-                ),
-              )
+
+                child: RaisedButton(
+                    color:Colors.white,
+                    shape:RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.5),
+      ),
+                    onPressed: ()async {
+        final router = await Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => posting(
+                      categoty: '운동복',
+                    )));
+      },
+        child: Row(
+          children: [
+          Icon(FontAwesomeIcons.pen,
+          size:15.5,
+          color:Color(0xFFBB9B9B9)),
+            Text(' 글 쓰기',
+              style: TextStyle(
+                fontSize: 14,
+                letterSpacing: 1.2,
+                fontWeight: FontWeight.w600,
+            ),),
+          ],
+
+
+        )),
+              ),
             ],
           ),
+
           FutureBuilder(
             future: getBoardAll("food"),
             builder: (BuildContext context, AsyncSnapshot<List<Board_all>> snapshot) {
@@ -61,13 +78,27 @@ class _cloth extends State<cloth> {
                         List datetimeSplite = datetime.split(' ');
 
                         return Container(
-                          margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(width: 0.5,
-                                color:Colors.black,),
+                          margin: EdgeInsets.fromLTRB(15,0,15,5),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 0.5,
+                                color:Colors.black54,
+                              ),
+                              borderRadius: BorderRadius.circular(12.5),
+                              color:Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius:55,
+                                  offset: Offset(5,5),
+                                  color: Colors.grey.withOpacity(0.1),
+                                ),
+                                BoxShadow(
+                                  blurRadius:55,
+                                  offset: Offset(5,-5),
+                                  color: Colors.grey.withOpacity(0.1),
+                                ),
+                              ],
                             ),
-                          ),
                           child: ListTile(
 
                             title: Text(snapshot.data!.elementAt(i).title),
@@ -96,6 +127,7 @@ class _cloth extends State<cloth> {
               );
           },
           ),
+
 
         ],
       ),
