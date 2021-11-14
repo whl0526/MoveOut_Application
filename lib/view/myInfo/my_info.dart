@@ -255,7 +255,9 @@ class _Info extends State<Info> {
                                             ),
                                             actions: [
                                               FlatButton(onPressed: (){
+
                                                 Navigator.pop(context);
+
                                               }, child: Text('닫기'))
                                             ],
                                           contentPadding: EdgeInsets.only(top: 10.0,bottom: 10),

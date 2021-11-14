@@ -10,6 +10,8 @@ class posts extends StatefulWidget{
 }
 
 class _posts extends State<posts>{
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,7 @@ class _posts extends State<posts>{
               Container(
                 padding: EdgeInsets.all(10),
                 width: MediaQuery.of(context).size.width,
-                child: Text("이름(ID)"),
+                child: Text("이지은님"),
               ),
             ],
           ),
