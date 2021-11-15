@@ -107,8 +107,16 @@ class _cloth extends State<cloth> {
                             trailing: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('작성자 :'+snapshot.data!.elementAt(i).userid),
-                                Text('작성일 :'+datetimeSplite[0].split('-')[1]+'/'+datetimeSplite[0].split('-')[2]),
+                                Text('작성자 :'+snapshot.data!.elementAt(i).userid,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    color: Colors.black,
+                                  ),),
+                                Text('작성일자 :'+datetimeSplite[0].split('-')[1]+'/'+datetimeSplite[0].split('-')[2],
+                                  style: TextStyle(
+                                  fontSize: 11,
+                                  color: Colors.black54,
+                                ),),
                               ],
                             ),
                             onTap: () async {
