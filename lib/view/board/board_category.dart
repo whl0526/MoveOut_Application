@@ -26,7 +26,7 @@ class _BoardCategory extends State<BoardCategory>{
                     InkWell(
                       onTap: () async{
                         final abc  = await Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => food(space_name:'식단',)));
+                            MaterialPageRoute(builder: (context) => cloth(space_name:'식단',)));
                       },
                       child:  buildCategory("images/board-categories/food.jpg", "식단", "다이어트,벌크업 식단, etc"),
                     ),InkWell(

@@ -38,7 +38,7 @@ Future<List<Board_all>> getBoardAll(String category) async{
   data1 = json.decode(response.body);//받은 정보를 json형태로 decode
   print( data1.elementAt(0)["datetime"]);
   List<Board_all>  board_all= [];
-  for(int i=data1.length-1;i>0;i--){
+  for(int i=data1.length-1;i>-1;i--){
     board_all.add(
         Board_all(
           datetime: data1.elementAt(i)["datetime"],

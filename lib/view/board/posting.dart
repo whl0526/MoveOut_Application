@@ -82,8 +82,7 @@ class _posting extends State<posting> {
               child: RedRoundedActionButton(
                 callback:() async {
                   print(postBoard( 1234.toString(),Food, "none", post_variable[1], post_variable[0]));
-                  final router = await Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => cloth(space_name: "운동복",)));
+                  Navigator.of(context).pop();
                 },
                 botton_height: 0.02,
                 text: "작성",
