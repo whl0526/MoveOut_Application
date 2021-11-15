@@ -46,9 +46,10 @@ class _cloth extends State<cloth> {
       },
         child: Row(
           children: [
-          Icon(FontAwesomeIcons.pen,
-          size:15.5,
-          color:Color(0xFFBB9B9B9)),
+          // Icon(FontAwesomeIcons.pen,
+          // size:15.5,
+          // color:Color(0xFFBB9B9B9)),
+            Image(image: AssetImage("icons/pencil.png",),width:15,height:15,),
             Text(' 글 쓰기',
               style: TextStyle(
                 fontSize: 14,
