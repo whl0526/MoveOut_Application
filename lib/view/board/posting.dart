@@ -3,6 +3,7 @@ import 'package:move_application/models/post_postingBoard.dart';
 import 'package:move_application/style/red_container.dart';
 import 'package:move_application/view/appbar.dart';
 import 'package:move_application/view/board/categories/cloth.dart';
+import 'package:multi_image_picker/multi_image_picker.dart';
 
 
 class posting extends StatefulWidget{
@@ -13,6 +14,8 @@ class posting extends StatefulWidget{
 }
 
 
+
+List<Asset> images = <Asset>[];
 
 class _posting extends State<posting> {
   String Food = 'food';
@@ -35,6 +38,20 @@ class _posting extends State<posting> {
         )
     );
 
+  }
+
+  getMImage() async {
+    List<Asset> resultList = <Asset>[];
+    resultList =
+    await MultiImagePicker.pickImages(
+      maxImages: 10,
+      enableCamera: true,
+
+      selectedAssets: images,
+    );
+    setState(() {
+      images = resultList;
+    });
   }
 
 
@@ -72,10 +89,30 @@ class _posting extends State<posting> {
               ),
             ),
 
-            customTextField(2,"사진을 골라주세요"),
             Container(
               width: MediaQuery.of(context).size.width*0.7,
-              child: Text('image picker들어갈 자리'),
+              child:InkWell(
+                child: Text("사진 불러오기",style: TextStyle(color: Colors.black),),
+                onTap: (){getMImage();},
+              ),
+            ),
+            images.isEmpty
+                ? Container()
+                : Container(
+              height:200,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: images.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Asset asset = images[index];
+                    return Container(
+                      child:  AssetThumb(
+                        asset: asset, width: 5, height: 5,),
+                    );
+
+
+                  }),
             ),
 
             Center(

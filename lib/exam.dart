@@ -34,6 +34,7 @@ class _exam extends State<exam> {
     setState(() {
     });
   }
+
   final ImagePicker _picker = ImagePicker();
 
   @override
