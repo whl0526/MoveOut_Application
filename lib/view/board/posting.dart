@@ -108,7 +108,13 @@ class _posting extends State<posting> {
                     Asset asset = images[index];
                     return Container(
                       child:  AssetThumb(
-                        asset: asset, width: 5, height: 5,),
+                        asset: asset, width: 3000, height: 3000,spinner: const Center(
+                        child: SizedBox(
+                          width:200,
+                          height: 50,
+                          child: CircularProgressIndicator(),
+                        ),
+                      ) ,),
                     );
 
 
