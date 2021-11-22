@@ -107,14 +107,44 @@ class _posting extends State<posting> {
                   itemBuilder: (BuildContext context, int index) {
                     Asset asset = images[index];
                     return Container(
-                      child:  AssetThumb(
-                        asset: asset, width: 3000, height: 3000,spinner: const Center(
-                        child: SizedBox(
-                          width:200,
-                          height: 50,
-                          child: CircularProgressIndicator(),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 0.5,
+                          color:Colors.yellow,
                         ),
-                      ) ,),
+                        borderRadius: BorderRadius.circular(12.5),
+                        color:Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius:35,
+                            offset: Offset(5,5),
+                            color: Colors.grey.withOpacity(0.2),
+                          ),
+                          BoxShadow(
+                            blurRadius:35,
+                            offset: Offset(-5,-5),
+                            color: Colors.grey.withOpacity(0.2),
+                          ),
+                        ],
+                      ),
+                      child: Stack(
+                        children: [
+                          AssetThumb(
+                            asset: asset, width: 3000, height: 3000,spinner: const Center(
+                            child: SizedBox(
+                              width:200,
+                              height: 50,
+                              child: CircularProgressIndicator(),
+                            ),
+                          ) ,),
+                          Positioned(
+                            top: 10,
+                            right: 10,
+                            child:Text((index+1).toString()+'/'+images.length.toString()),
+                          )
+                        ],
+                      )
+                      ,
                     );
 
 
