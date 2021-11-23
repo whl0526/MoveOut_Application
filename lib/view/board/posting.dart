@@ -11,11 +11,12 @@ class posting extends StatefulWidget{
   posting({required this.categoty});
   @override
   _posting createState() => _posting();
+
 }
 
 
 
-List<Asset> images = <Asset>[];
+
 
 class _posting extends State<posting> {
   String Food = 'food';
@@ -37,16 +38,16 @@ class _posting extends State<posting> {
           ),
         )
     );
-
   }
 
+
+  List<Asset> images = <Asset>[];
   getMImage() async {
     List<Asset> resultList = <Asset>[];
     resultList =
     await MultiImagePicker.pickImages(
       maxImages: 10,
       enableCamera: true,
-
       selectedAssets: images,
     );
     setState(() {
@@ -59,6 +60,12 @@ class _posting extends State<posting> {
   @override
   Widget build(BuildContext context) {
 
+    @override
+    void initState(){
+      super.initState();
+      List<Asset> images = <Asset>[];
+    }
+
 
     return Scaffold(
       appBar: CustomAppbar("글쓰기"),
@@ -66,6 +73,7 @@ class _posting extends State<posting> {
         physics: AlwaysScrollableScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+
           children: [
             customTextField(0,"제목을 입력하세요"),
             Container(
@@ -98,57 +106,56 @@ class _posting extends State<posting> {
             ),
             images.isEmpty
                 ? Container()
-                : Container(
-              height:200,
-              width: MediaQuery.of(context).size.width,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: images.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    Asset asset = images[index];
-                    return Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.5,
-                          color:Colors.yellow,
+                : Center(
+              child: Container(
+                height:200,
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: images.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      Asset asset = images[index];
+                      return Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 0.5,
+                            color:Colors.yellow,
+                          ),
+                          borderRadius: BorderRadius.all(Radius.circular(1)),
+                          color:Colors.white,
+                          
                         ),
-                        borderRadius: BorderRadius.circular(12.5),
-                        color:Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius:35,
-                            offset: Offset(5,5),
-                            color: Colors.grey.withOpacity(0.2),
-                          ),
-                          BoxShadow(
-                            blurRadius:35,
-                            offset: Offset(-5,-5),
-                            color: Colors.grey.withOpacity(0.2),
-                          ),
-                        ],
-                      ),
-                      child: Stack(
-                        children: [
-                          AssetThumb(
-                            asset: asset, width: 3000, height: 3000,spinner: const Center(
-                            child: SizedBox(
-                              width:200,
-                              height: 50,
-                              child: CircularProgressIndicator(),
-                            ),
-                          ) ,),
-                          Positioned(
-                            top: 10,
-                            right: 10,
-                            child:Text((index+1).toString()+'/'+images.length.toString()),
-                          )
-                        ],
-                      )
-                      ,
-                    );
+                        child: Stack(
+                          children: [
+                            InkWell(
+                              onTap:(){
+                                print('ad');
+                              },
+                              child:AssetThumb(
+                                asset: asset, width: 3000, height: 3000,
+                                spinner: const Center(
+                                  child: SizedBox(
+                                    width:200,
+                                    height: 50,
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ) ,) ,
+                            )
+                            ,
+                            Positioned(
+                              bottom: 10,
+                              right: 10,
+                              child:Text((index+1).toString()+'/'+images.length.toString()),
+                            )
+                          ],
+                        )
+                        ,
+                      );
 
 
-                  }),
+                    }),
+              ),
             ),
 
             Center(
