@@ -42,7 +42,8 @@ dependencies:
   sticky_headers: ^0.1.8
   smart_select: ^4.3.2
   path_provider: ^2.0.4
-  simple_s3: ^0.3.2
+  amazon_cognito_identity_dart_2: ^0.1.25+4
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2

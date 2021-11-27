@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
-import 'package:simple_s3/simple_s3.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:image_picker/image_picker.dart';
+import 'package:move_application/models/s3_upload.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +26,8 @@ class _posting extends State<posting> {
   String Food = 'food';
   String Title = "";
   String Content = "";
-  SimpleS3 _simpleS3 = SimpleS3();
   final RegExp _regExp = RegExp(r'[\uac00-\ud7af]', unicode: true);
-
+  PickedFile? _image;
 //0= 타이틀,1=내용,2=이미지
   List<String> post_variable = ['', '', '', ''];
 
@@ -42,6 +42,14 @@ class _posting extends State<posting> {
               contentPadding: EdgeInsets.symmetric(vertical: 10),
               hintText: hintText),
         ));
+  }
+
+  Future getImage() async{
+    var image = await ImagePicker.platform.pickImage(source: ImageSource.gallery);
+
+    _image = image;
+    setState(() {
+    });
   }
 
   Future<File> getImageFileFromAsset(Asset asset) async {
@@ -174,7 +182,14 @@ class _posting extends State<posting> {
                                          left:10,
                                          child: RaisedButton(
                                            child: Text('awd'),
-                                           onPressed: () async {},
+                                           onPressed: () async {
+                                             //
+                                             // AwsS3.uploadFile(
+                                             //     accessKey: "AKIA4A3FZ5KZFILVFRGT",
+                                             //     secretKey: "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",
+                                             //     bucket: "capstone2-bikyeo",
+                                             //     file: snapshot.data);
+                                           },
                                          ));
 
                                    },
@@ -186,7 +201,56 @@ class _posting extends State<posting> {
                             }),
                       ),
                     ),
-
+              Container(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: InkWell(
+                  child: Text(
+                    "사진 불러오기",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    getImage();
+                  },
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.7,
+                child: InkWell(
+                  child: Text(
+                    "업로드",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onTap: () {
+                    File storedImage = File(_image!.path);
+                        AwsS3.uploadFile(
+                        accessKey: "",
+                        secretKey: "",
+                        bucket: "capstone2-bikyeo",
+                        file: storedImage);
+                  },
+                ),
+              ),
+              FutureBuilder(
+                future:  AwsS3.uploadFile(
+                    accessKey: "AKIA4A3FZ5KZFILVFRGT",
+                    secretKey: "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",
+                    bucket: "capstone2-bikyeo",
+                    file: File(_image!.path)),
+                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) { 
+                if(snapshot.hasData){
+                  return Container(
+                    child: Image.network(snapshot.data)
+                  );
+                }
+                else return Container();
+              },
+                
+              ),
+              
+              
+              
+              
+              
               Center(
                 child: RedRoundedActionButton(
                   callback: () async {
