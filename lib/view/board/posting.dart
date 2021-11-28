@@ -183,12 +183,7 @@ class _posting extends State<posting> {
                                          child: RaisedButton(
                                            child: Text('awd'),
                                            onPressed: () async {
-                                             //
-                                             // AwsS3.uploadFile(
-                                             //     accessKey: "AKIA4A3FZ5KZFILVFRGT",
-                                             //     secretKey: "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",
-                                             //     bucket: "capstone2-bikyeo",
-                                             //     file: snapshot.data);
+
                                            },
                                          ));
 
@@ -232,8 +227,8 @@ class _posting extends State<posting> {
               ),
               FutureBuilder(
                 future:  AwsS3.uploadFile(
-                    accessKey: "AKIA4A3FZ5KZFILVFRGT",
-                    secretKey: "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",
+                    accessKey: "",
+                    secretKey: "/",
                     bucket: "capstone2-bikyeo",
                     file: File(_image!.path)),
                 builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) { 
