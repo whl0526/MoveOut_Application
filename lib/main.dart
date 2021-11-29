@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:move_application/exam.dart';
+import 'package:move_application/view/home/home.dart';
 import 'package:move_application/view/login_view.dart';
 import 'view/HomePage.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';

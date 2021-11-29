@@ -225,23 +225,26 @@ class _posting extends State<posting> {
                   },
                 ),
               ),
-              FutureBuilder(
+              _image != null ? FutureBuilder(
                 future:  AwsS3.uploadFile(
                     accessKey: "",
-                    secretKey: "/",
+                    secretKey: "",
                     bucket: "capstone2-bikyeo",
                     file: File(_image!.path)),
-                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) { 
-                if(snapshot.hasData){
-                  return Container(
-                    child: Image.network(snapshot.data)
-                  );
-                }
-                else return Container();
-              },
-                
-              ),
-              
+                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                  if(snapshot.hasData){
+                    return Container(
+                        child: Image.network(snapshot.data)
+                    );
+                  }
+                  else return Container();
+                },
+
+              )
+                :
+            Container(),
+
+
               
               
               
