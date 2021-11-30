@@ -21,52 +21,67 @@ class _cloth extends State<cloth> {
   int ItemCount = 10;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbar(widget.space_name+' 게시판'),
+      appBar: CustomAppbar(widget.space_name + ' 게시판'),
       body: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-
                 child: RaisedButton(
-                    color:Colors.white,
-                    shape:RoundedRectangleBorder(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.5),
-      ),
-                    onPressed: ()async {
-        final router = await Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => posting(
-                     categoty: '운동복',
-                    )));
-      },
-        child: Row(
-          children: [
-          // Icon(FontAwesomeIcons.pen,
-          // size:15.5,
-          // color:Color(0xFFBB9B9B9)),
-            Image(image: AssetImage("icons/pencil.png",),width:15,height:15,),
-            Text('글 쓰기',
-              style: TextStyle(
-                fontSize: 14,
-                letterSpacing: 1.2,
-                fontWeight: FontWeight.w600,
-            ),),
-          ],
-
-
-        )),
+                    ),
+                    onPressed: () async {
+                      final router = await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => posting(
+                                    categoty: '운동복',
+                                  )));
+                      if (router) {
+                        setState(() {});
+                      }
+                    },
+                    child: Row(
+                      children: [
+                        // Icon(FontAwesomeIcons.pen,
+                        // size:15.5,
+                        // color:Color(0xFFBB9B9B9)),
+                        Image(
+                          image: AssetImage(
+                            "icons/pencil.png",
+                          ),
+                          width: 15,
+                          height: 15,
+                        ),
+                        Text(
+                          '글 쓰기',
+                          style: TextStyle(
+                            fontSize: 14,
+                            letterSpacing: 1.2,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    )),
               ),
             ],
           ),
-
           FutureBuilder(
             future: getBoardAll("food"),
-            builder: (BuildContext context, AsyncSnapshot<List<Board_all>> snapshot) {
+            builder: (BuildContext context,
+                AsyncSnapshot<List<Board_all>> snapshot) {
               if (snapshot.hasData == false) {
                 return snapshotNoData();
               }
@@ -79,54 +94,65 @@ class _cloth extends State<cloth> {
                         List datetimeSplite = datetime.split(' ');
 
                         return Container(
-                          margin: EdgeInsets.fromLTRB(15,0,15,5),
+                            margin: EdgeInsets.fromLTRB(15, 0, 15, 5),
                             decoration: BoxDecoration(
                               border: Border.all(
                                 width: 0.5,
-                                color:Colors.black54,
+                                color: Colors.black54,
                               ),
                               borderRadius: BorderRadius.circular(12.5),
-                              color:Colors.white,
+                              color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                  blurRadius:55,
-                                  offset: Offset(5,5),
+                                  blurRadius: 55,
+                                  offset: Offset(5, 5),
                                   color: Colors.grey.withOpacity(0.1),
                                 ),
                                 BoxShadow(
-                                  blurRadius:55,
-                                  offset: Offset(5,-5),
+                                  blurRadius: 55,
+                                  offset: Offset(5, -5),
                                   color: Colors.grey.withOpacity(0.1),
                                 ),
                               ],
                             ),
-                          child: ListTile(
-
-                            title: Text(snapshot.data!.elementAt(i).title),
-                            subtitle: Text(snapshot.data!.elementAt(i).head),
-                            //snapshot.data!.elementAt(i).image == none
-                            trailing: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('작성자 :'+snapshot.data!.elementAt(i).userid,
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    color: Colors.black,
-                                  ),),
-                                Text('작성일자 :'+datetimeSplite[0].split('-')[1]+'/'+datetimeSplite[0].split('-')[2],
-                                  style: TextStyle(
-                                  fontSize: 11,
-                                  color: Colors.black54,
-                                ),),
-                              ],
-                            ),
-                            onTap: () async {
-                              final router = await Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => posts(post_id: snapshot.data!.elementAt(i).id,)));
-                            },
-                          )
-                        ) ;
-
+                            child: ListTile(
+                              title: Text(snapshot.data!.elementAt(i).title),
+                              subtitle: Text(snapshot.data!.elementAt(i).head),
+                              //snapshot.data!.elementAt(i).image == none
+                              trailing: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '작성자 :' +
+                                        snapshot.data!.elementAt(i).userid,
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Text(
+                                    '작성일자 :' +
+                                        datetimeSplite[0].split('-')[1] +
+                                        '/' +
+                                        datetimeSplite[0].split('-')[2],
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      color: Colors.black54,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              onTap: () async {
+                                final router = await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => posts(
+                                              post_id: snapshot.data!
+                                                  .elementAt(i)
+                                                  .id,
+                                            )));
+                              },
+                            ));
                       },
                       itemCount: snapshot.data!.length,
                       scrollDirection: Axis.vertical,
@@ -134,10 +160,8 @@ class _cloth extends State<cloth> {
                   ),
                 ),
               );
-          },
+            },
           ),
-
-
         ],
       ),
     );

@@ -13,7 +13,7 @@ import 'package:move_application/style/red_container.dart';
 import 'package:move_application/view/appbar.dart';
 import 'package:move_application/view/board/categories/cloth.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
-
+import 'package:path/path.dart' as path;
 class posting extends StatefulWidget {
   final String categoty;
 
@@ -27,11 +27,12 @@ class _posting extends State<posting> {
   String Food = 'food';
   String Title = "";
   String Content = "";
-  final RegExp _regExp = RegExp(r'[\uac00-\ud7af]', unicode: true);
+  String BoardImage = "";
   PickedFile? _image;
 
 //0= 타이틀,1=내용,2=이미지
   List<String> post_variable = ['', '', '', ''];
+
 
   Widget customTextField(@required int textVariable, String hintText) {
     return Container(
@@ -46,28 +47,40 @@ class _posting extends State<posting> {
         ));
   }
 
+  //이미지 한장만 가져오기
   Future getImage() async {
     var image =
         await ImagePicker.platform.pickImage(source: ImageSource.gallery);
-
     _image = image;
     setState(() {});
   }
 
-  Future<String> getImageFileFromAsset(Asset asset) async {
-    final byteData = await asset.getByteData();
-    final tempFile =
-        File("${(await getTemporaryDirectory()).path}/${asset.name}");
-    final file = await tempFile.writeAsBytes(
-      byteData.buffer
-          .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes),
-    );
-    String filePath = file.toString().split("File:").elementAt(1).split("'").elementAt(1);
-    return filePath;
+  //
+  Future<List<String>> getImageFileFromAsset(List<Asset> asset) async {
+
+    List<String> ImageUrls = [];
+    for(int i = 0;i<asset.length;i++){
+
+      final byteData = await asset[i].getByteData();
+      final tempFile =
+      File("${(await getTemporaryDirectory()).path}/${asset[i].name}");
+      final file = await tempFile.writeAsBytes(
+        byteData.buffer
+            .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes),
+      );
+
+      String filePath = file.toString().split("File:").elementAt(1).split("'").elementAt(1);
+      ImageUrls.add(filePath);
+
+    }
+
+    return ImageUrls;
   }
 
   List<Asset> images = <Asset>[];
   List<File>  fileImage = <File>[];
+
+
   getMImage() async {
     List<Asset> resultList = <Asset>[];
     resultList = await MultiImagePicker.pickImages(
@@ -126,6 +139,8 @@ class _posting extends State<posting> {
                   },
                 ),
               ),
+
+              //여러 사진 불러와서 띄우기
               images.isEmpty
                   ? Container()
                   : Center(
@@ -181,18 +196,21 @@ class _posting extends State<posting> {
                             }),
                       ),
                     ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.7,
-                child: InkWell(
-                  child: Text(
-                    "사진 불러오기",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onTap: () {
-                    getImage();
-                  },
-                ),
-              ),
+              //사진하나불러오기
+              // Container(
+              //   width: MediaQuery.of(context).size.width * 0.7,
+              //   child: InkWell(
+              //     child: Text(
+              //       "사진 불러오기",
+              //       style: TextStyle(color: Colors.black),
+              //     ),
+              //     onTap: () {
+              //       getImage();
+              //     },
+              //   ),
+              // ),
+
+              //aws
               Container(
                 width: MediaQuery.of(context).size.width * 0.7,
                 child: InkWell(
@@ -203,38 +221,62 @@ class _posting extends State<posting> {
                   onTap: () {
                     File storedImage = File(_image!.path);
                     AwsS3.uploadFile(
-                        accessKey: "AKIA4A3FZ5KZFILVFRGT",
-                        secretKey: "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",
+                        accessKey: "",
+                        secretKey: "",
                         bucket: "capstone2-bikyeo",
                         file: storedImage);
                   },
                 ),
               ),
-              (_image != null) ? Container(
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                child: Image.file(
-                  File(_image!.path),
-                  fit: BoxFit.fill,
-                ),
-              )
-                  :Container(),
 
+              //aws업로드 이미지 보여주기
+              // (_image != null) ? Container(
+              //   height: 200,
+              //   width: MediaQuery.of(context).size.width,
+              //   child: Image.file(
+              //     File(_image!.path),
+              //     fit: BoxFit.fill,
+              //   ),
+              // )
+              //     :Container(),
 
-              Center(
-                child: RedRoundedActionButton(
-                  callback: () async {
-                    print(postBoard(1234.toString(), Food, "none",
-                        post_variable[1], post_variable[0]));
-                    Navigator.of(context).pop();
-                  },
-                  botton_height: 0.02,
-                  text: "작성",
-                  botton_color: Colors.redAccent,
-                  font_size: 13,
-                  botton_width: 0.02,
-                ),
+              //작성버튼
+              FutureBuilder(
+                future: getImageFileFromAsset(images),
+                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+
+                  return Center(
+                    child: RedRoundedActionButton(
+                      callback: () async {
+                        //snapshot은 List<String> file.path들
+                        for(int i=0;i<snapshot.data.length;i++){
+                          File storedImage = File(snapshot.data[i]);
+                          BoardImage +=
+                           'https://capstone2-bikyeo.s3.ap-northeast-2.amazonaws.com//'+path.basename(storedImage.path)+',';
+                          AwsS3.uploadFile(
+                              accessKey: "AKIA4A3FZ5KZFILVFRGT",
+                              secretKey: "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",
+                              bucket: "capstone2-bikyeo",
+                              file: storedImage,
+                          );
+                        }
+
+                        print(postBoard(1234.toString(),Food, BoardImage,
+                            post_variable[1], post_variable[0]));
+                        Navigator.pop(context,true);
+
+                      },
+                      botton_height: 0.02,
+                      text: "작성",
+                      botton_color: Colors.redAccent,
+                      font_size: 13,
+                      botton_width: 0.02,
+                    ),
+                  );
+                },
+
               ),
+
 
               //이미지바꾸기
               // (images.length != 0)
