@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:image_picker/image_picker.dart';
 import 'package:move_application/models/s3_upload.dart';
@@ -28,6 +29,7 @@ class _posting extends State<posting> {
   String Content = "";
   final RegExp _regExp = RegExp(r'[\uac00-\ud7af]', unicode: true);
   PickedFile? _image;
+
 //0= 타이틀,1=내용,2=이미지
   List<String> post_variable = ['', '', '', ''];
 
@@ -44,30 +46,28 @@ class _posting extends State<posting> {
         ));
   }
 
-  Future getImage() async{
-    var image = await ImagePicker.platform.pickImage(source: ImageSource.gallery);
+  Future getImage() async {
+    var image =
+        await ImagePicker.platform.pickImage(source: ImageSource.gallery);
 
     _image = image;
-    setState(() {
-    });
+    setState(() {});
   }
 
-  Future<File> getImageFileFromAsset(Asset asset) async {
-
-      final byteData = await asset.getByteData();
-      final tempFile =
-          File("${(await getTemporaryDirectory()).path}/${asset.name}");
-      final file = await tempFile.writeAsBytes(
-        byteData.buffer
-            .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes),
-      );
-
-
-    return file;
+  Future<String> getImageFileFromAsset(Asset asset) async {
+    final byteData = await asset.getByteData();
+    final tempFile =
+        File("${(await getTemporaryDirectory()).path}/${asset.name}");
+    final file = await tempFile.writeAsBytes(
+      byteData.buffer
+          .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes),
+    );
+    String filePath = file.toString().split("File:").elementAt(1).split("'").elementAt(1);
+    return filePath;
   }
 
   List<Asset> images = <Asset>[];
-
+  List<File>  fileImage = <File>[];
   getMImage() async {
     List<Asset> resultList = <Asset>[];
     resultList = await MultiImagePicker.pickImages(
@@ -75,6 +75,7 @@ class _posting extends State<posting> {
       enableCamera: true,
       selectedAssets: images,
     );
+
     setState(() {
       images = resultList;
     });
@@ -108,7 +109,6 @@ class _posting extends State<posting> {
                   maxLines: null,
                   maxLength: 500,
                   decoration: InputDecoration(
-
                       // border:InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(vertical: 10),
                       hintText: "내용을 입력하세요"),
@@ -174,21 +174,6 @@ class _posting extends State<posting> {
                                           '/' +
                                           images.length.toString()),
                                     ),
-                                   FutureBuilder(
-                                     future: getImageFileFromAsset(asset),
-                                     builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
-
-                                     return Positioned(
-                                         left:10,
-                                         child: RaisedButton(
-                                           child: Text('awd'),
-                                           onPressed: () async {
-
-                                           },
-                                         ));
-
-                                   },
-                                   )
 
                                   ],
                                 ),
@@ -217,38 +202,25 @@ class _posting extends State<posting> {
                   ),
                   onTap: () {
                     File storedImage = File(_image!.path);
-                        AwsS3.uploadFile(
-                        accessKey: "",
-                        secretKey: "",
+                    AwsS3.uploadFile(
+                        accessKey: "AKIA4A3FZ5KZFILVFRGT",
+                        secretKey: "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",
                         bucket: "capstone2-bikyeo",
                         file: storedImage);
                   },
                 ),
               ),
-              _image != null ? FutureBuilder(
-                future:  AwsS3.uploadFile(
-                    accessKey: "",
-                    secretKey: "",
-                    bucket: "capstone2-bikyeo",
-                    file: File(_image!.path)),
-                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if(snapshot.hasData){
-                    return Container(
-                        child: Image.network(snapshot.data)
-                    );
-                  }
-                  else return Container();
-                },
-
+              (_image != null) ? Container(
+                height: 200,
+                width: MediaQuery.of(context).size.width,
+                child: Image.file(
+                  File(_image!.path),
+                  fit: BoxFit.fill,
+                ),
               )
-                :
-            Container(),
+                  :Container(),
 
 
-              
-              
-              
-              
               Center(
                 child: RedRoundedActionButton(
                   callback: () async {
@@ -262,7 +234,23 @@ class _posting extends State<posting> {
                   font_size: 13,
                   botton_width: 0.02,
                 ),
-              )
+              ),
+
+              //이미지바꾸기
+              // (images.length != 0)
+              //     ?FutureBuilder(
+              //   future: getImageFileFromAsset(images[1]),
+              //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+              //     print(snapshot.data);
+              //     print(_image!.path);
+              //     return  Image.file(
+              //       File(snapshot.data),
+              //       fit: BoxFit.fill,
+              //     );
+              //   },
+              // )
+              //     :Container(),
+
             ],
           ),
         ));
