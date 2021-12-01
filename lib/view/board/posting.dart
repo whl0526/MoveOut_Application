@@ -127,8 +127,12 @@ class _posting extends State<posting> {
                       hintText: "내용을 입력하세요"),
                 ),
               ),
+
               Container(
-                width: MediaQuery.of(context).size.width * 0.7,
+                margin: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(7),
+                decoration: BoxDecoration(
+                    color: Colors.redAccent , borderRadius: BorderRadius.circular(12.5)),
                 child: InkWell(
                   child: Text(
                     "사진 불러오기",
@@ -211,23 +215,23 @@ class _posting extends State<posting> {
               // ),
 
               //aws
-              Container(
-                width: MediaQuery.of(context).size.width * 0.7,
-                child: InkWell(
-                  child: Text(
-                    "업로드",
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onTap: () {
-                    File storedImage = File(_image!.path);
-                    AwsS3.uploadFile(
-                        accessKey: "",
-                        secretKey: "",
-                        bucket: "capstone2-bikyeo",
-                        file: storedImage);
-                  },
-                ),
-              ),
+              // Container(
+              //   width: MediaQuery.of(context).size.width * 0.7,
+              //   child: InkWell(
+              //     child: Text(
+              //       "업로드",
+              //       style: TextStyle(color: Colors.black),
+              //     ),
+              //     onTap: () {
+              //       File storedImage = File(_image!.path);
+              //       AwsS3.uploadFile(
+              //           accessKey: "",
+              //           secretKey: "",
+              //           bucket: "capstone2-bikyeo",
+              //           file: storedImage);
+              //     },
+              //   ),
+              // ),
 
               //aws업로드 이미지 보여주기
               // (_image != null) ? Container(
@@ -254,8 +258,8 @@ class _posting extends State<posting> {
                           BoardImage +=
                            'https://capstone2-bikyeo.s3.ap-northeast-2.amazonaws.com//'+path.basename(storedImage.path)+',';
                           AwsS3.uploadFile(
-                              accessKey: "AKIA4A3FZ5KZFILVFRGT",
-                              secretKey: "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",
+                              accessKey: "",
+                              secretKey: "",
                               bucket: "capstone2-bikyeo",
                               file: storedImage,
                           );

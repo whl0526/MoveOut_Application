@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:move_application/models/get_board_one.dart';
 import 'package:move_application/models/get_comments.dart';
+import 'package:move_application/models/post_comment.dart';
 import 'package:move_application/style/drag_animation.dart';
 import 'package:move_application/style/snapshot_no_data.dart';
 import 'package:move_application/style/red_container.dart';
@@ -125,7 +126,11 @@ class _posts extends State<posts> {
                             child: Text('댓글달기'),
                           ),
                           onTap: () async{
-                            
+                            if(comment != ""){
+                              postComment(widget.post_id.toString(),1234.toString(), comment);
+                              setState(() {});
+                            }
+
 
                           },
                         )
