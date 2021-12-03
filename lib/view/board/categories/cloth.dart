@@ -40,7 +40,7 @@ class _cloth extends State<cloth> {
                 child: RaisedButton(
                     color: Colors.white,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.5),
+                      borderRadius: BorderRadius.circular(20)
                     ),
                     onPressed: () async {
                       final router = await Navigator.push(
@@ -60,10 +60,10 @@ class _cloth extends State<cloth> {
                         // color:Color(0xFFBB9B9B9)),
                         Image(
                           image: AssetImage(
-                            "icons/pencil.png",
+                            "icons/pen.png",
                           ),
-                          width: 15,
-                          height: 15,
+                          width: 20,
+                          height: 20,
                         ),
                         Text(
                           '글 쓰기',
@@ -100,7 +100,7 @@ class _cloth extends State<cloth> {
                                 width: 0.5,
                                 color: Colors.black54,
                               ),
-                              borderRadius: BorderRadius.circular(12.5),
+                              borderRadius: BorderRadius.circular(20),
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(

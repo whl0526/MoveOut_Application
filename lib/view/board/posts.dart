@@ -6,7 +6,7 @@ import 'package:move_application/style/drag_animation.dart';
 import 'package:move_application/style/snapshot_no_data.dart';
 import 'package:move_application/style/red_container.dart';
 import 'package:move_application/view/appbar.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class posts extends StatefulWidget {
   final int post_id;
 
@@ -35,13 +35,27 @@ class _posts extends State<posts> {
               image = snapshot.data!.image.split(",");
             }
             return Column(
+
               children: [
                 Row(
+
                   children: [
                     Container(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(15),
                       width: MediaQuery.of(context).size.width,
-                      child: Text('작성자 :' + snapshot.data!.userid),
+                      child: Row(
+                          children: [
+                            Icon(FontAwesomeIcons.user,
+                              size:24,
+                              color:Color(0xFFBB9B9B9),
+                            ),
+                            Text("  #"+snapshot.data!.userid, style: TextStyle(
+                              fontSize: 18,
+                              color:Colors.black54),),
+                    ],
+
+                      ),
+
                     ),
                   ],
                 ),
@@ -119,11 +133,18 @@ class _posts extends State<posts> {
                                 // border:InputBorder.none,
                                   contentPadding:
                                   EdgeInsets.symmetric(vertical: 10),
-                                  hintText: "댓글달기"),
+                                  hintText: "댓글을 입력하세요."),
                             )),
                         InkWell(
                           child: Container(
-                            child: Text('댓글달기'),
+                            child: Image(
+                              image: AssetImage(
+                                "icons/comment.png",
+                              ),
+                              width: 45,
+                              height: 25,
+                              color:Color(0xFFBB9B9B9),
+                            ),
                           ),
                           onTap: () async{
                             if(comment != ""){
@@ -175,7 +196,7 @@ class _posts extends State<posts> {
                             scrollDirection: Axis.vertical,
                           );
                         } else
-                          return Center(child: Text('댓글이 없습니다'));
+                          return Center(child: Text('댓글이 없습니다.'));
                       },
                     )),
               ],

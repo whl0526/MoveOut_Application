@@ -103,17 +103,17 @@ class _posting extends State<posting> {
     }
 
     return Scaffold(
-        appBar: CustomAppbar("글쓰기"),
+        appBar: CustomAppbar("글 쓰기"),
         body: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              customTextField(0, "제목을 입력하세요"),
+              customTextField(0, "제목"),
               Container(
                 margin: EdgeInsets.all(5),
-                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                height: MediaQuery.of(context).size.height * 0.3,
+                padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                height: MediaQuery.of(context).size.height * 0.4,
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: TextField(
                   onChanged: (text) => post_variable[1] = text,
@@ -123,20 +123,25 @@ class _posting extends State<posting> {
                   maxLength: 500,
                   decoration: InputDecoration(
                       // border:InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(vertical: 10),
-                      hintText: "내용을 입력하세요"),
+                      contentPadding: EdgeInsets.symmetric(vertical: 5),
+                      hintText: "내용을 입력하세요."),
                 ),
               ),
 
               Container(
                 margin: EdgeInsets.all(10.0),
-                padding: EdgeInsets.all(7),
-                decoration: BoxDecoration(
-                    color: Colors.redAccent , borderRadius: BorderRadius.circular(12.5)),
                 child: InkWell(
-                  child: Text(
-                    "사진 불러오기",
-                    style: TextStyle(color: Colors.black),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Image(
+                        image: AssetImage(
+                          "icons/camera1.png",
+                        ),
+                        width: 30,
+                        height: 28,
+                      ),
+                    ],
                   ),
                   onTap: () {
                     getMImage();
@@ -270,11 +275,11 @@ class _posting extends State<posting> {
                         Navigator.pop(context,true);
 
                       },
-                      botton_height: 0.02,
-                      text: "작성",
+                      botton_height: 0.012,
+                      text: "완료",
                       botton_color: Colors.redAccent,
-                      font_size: 13,
-                      botton_width: 0.02,
+                      font_size: 12.5,
+                      botton_width: 0.025,
                     ),
                   );
                 },
