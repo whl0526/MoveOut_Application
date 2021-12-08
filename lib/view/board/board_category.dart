@@ -28,20 +28,20 @@ class _BoardCategory extends State<BoardCategory>{
                         final abc  = await Navigator.push(context,
                             MaterialPageRoute(builder: (context) => cloth(space_name:'식단',)));
                       },
-                      child:  buildCategory("images/board-categories/food.jpg", "식단", "다이어트,벌크업 식단, etc"),
+                      child:  buildCategory("images/board-categories/food.jpg", "식단", ""),
                     ),InkWell(
                       onTap: () async{
                         final abc = await Navigator.push(context,
                             MaterialPageRoute(builder: (context) => cloth(space_name:'운동복')));
                       },
-                      child:  buildCategory("images/board-categories/cloth.jpg", "운동복", "추천의류, 할인상품 etc"),
+                      child:  buildCategory("images/board-categories/cloth.jpg", "운동복", ""),
                     ),
                     InkWell(
                       onTap: () async{
                         final abc = await Navigator.push(context,
                             MaterialPageRoute(builder: (context) => method(space_name:'운동방법')));
                       },
-                      child:  buildCategory("images/board-categories/method.jpg", "운동방법", "운동루틴, 추천운동 etc"),
+                      child:  buildCategory("images/board-categories/method.jpg", "운동방법", ""),
                     ),
                     InkWell(
                       onTap: () async{

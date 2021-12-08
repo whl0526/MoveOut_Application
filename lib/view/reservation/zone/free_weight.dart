@@ -80,12 +80,12 @@ class _free_weight extends State<free_weight> {
                             );
 
                           },
-                          child: buildCategory("icons/스미스 머신.jpg", "스미스 머신"),
+                          child: buildCategory("icons/파워 렉.jpg", "랙"),
                         ),
                       ),InkWell(
                         onTap: () {
                         },
-                        child: buildCategory("icons/파워 렉.jpg", "랙 "),
+                        child: buildCategory("icons/스미스 머신.jpg", "스미스 머신"),
                       ),
                     ],
 
