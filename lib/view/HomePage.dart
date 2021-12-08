@@ -31,7 +31,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
+    return WillPopScope(child:
+    Scaffold(
       key: _scaffoldkey,
       endDrawer: CustomEndDrawer(),
       appBar: AppBar(
@@ -41,16 +42,16 @@ class _HomePageState extends State<HomePage> {
           children: [
             Image.asset(
               'images/logo.png',
-                  fit:BoxFit.contain,
+              fit:BoxFit.contain,
               height:44,
               width:55,
             ),
             Text(
               '비켜',
               style: TextStyle(color: Colors.black,
-                fontSize: 25,
-              letterSpacing: 1.8,
-              fontWeight: FontWeight.w600),
+                  fontSize: 25,
+                  letterSpacing: 1.8,
+                  fontWeight: FontWeight.w600),
             ),
           ],
         ),
@@ -82,12 +83,12 @@ class _HomePageState extends State<HomePage> {
         height: MediaQuery.of(context).size.height*0.075,// 탭 높이
         items: [
           TabItem(
-                  icon: Image.asset(
+            icon: Image.asset(
               "icons/homepage-icons/home.png",
               color: Colors.grey[500],
-                    scale: 6,
-              ),activeIcon: Image.asset(
-              "icons/homepage-icons/home.png",
+              scale: 6,
+            ),activeIcon: Image.asset(
+            "icons/homepage-icons/home.png",
             color: Colors.yellow,
             scale: 6.1,
           ),
@@ -95,10 +96,10 @@ class _HomePageState extends State<HomePage> {
           ),
           TabItem(
               icon: Image.asset(
-            "icons/homepage-icons/timetable.png",
-            color: Colors.grey[500],
-            scale: 6,
-          ),activeIcon: Image.asset(
+                "icons/homepage-icons/timetable.png",
+                color: Colors.grey[500],
+                scale: 6,
+              ),activeIcon: Image.asset(
             "icons/homepage-icons/timetable.png",
             color: Colors.yellow,
             scale: 6.1,)
@@ -120,7 +121,7 @@ class _HomePageState extends State<HomePage> {
             'images/human.png',
             color: Colors.yellow,
             scale: 6.1,
-            )),
+          )),
 
         ],
         onTap: (int index){
@@ -129,7 +130,9 @@ class _HomePageState extends State<HomePage> {
           });
         },
       ),
-    );
-    throw UnimplementedError();
+    ), onWillPop: (){
+      //뒤로가기 막기
+      return Future(()=>false);
+    }) ;
   }
 }

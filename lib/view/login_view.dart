@@ -192,6 +192,7 @@ class _loginView extends State<loginView>{
                           'Content-Type': 'application/json; charset=UTF-8',
                         },
                         body: jsonEncode({"userid":ID,"password":PW})
+
                     );//필요 api 호출
 
                     data = json.decode(response.body);
