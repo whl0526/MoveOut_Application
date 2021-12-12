@@ -38,4 +38,8 @@ https://user-images.githubusercontent.com/67422547/145715869-7fbee9d6-183c-4f3c-
 
 
 
->>>>>>> 
+## 서버 구상도
+
+
+
+![image-20211212234201201](C:\Users\user\AppData\Roaming\Typora\typora-user-images\image-20211212234201201.png)
