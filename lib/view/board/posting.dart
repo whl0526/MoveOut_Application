@@ -263,8 +263,8 @@ class _posting extends State<posting> {
                           BoardImage +=
                            'https://capstone2-bikyeo.s3.ap-northeast-2.amazonaws.com//'+path.basename(storedImage.path)+',';
                           AwsS3.uploadFile(
-                              accessKey: "",
-                              secretKey: "",
+                              accessKey: "AKIA4A3FZ5KZFILVFRGT",
+                              secretKey: "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",
                               bucket: "capstone2-bikyeo",
                               file: storedImage,
                           );
