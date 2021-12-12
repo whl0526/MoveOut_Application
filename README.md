@@ -42,3 +42,13 @@ https://user-images.githubusercontent.com/67422547/145715869-7fbee9d6-183c-4f3c-
 
 
 
+<<<<<<< HEAD
+=======
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
+
+
+https://user-images.githubusercontent.com/67422547/145715869-7fbee9d6-183c-4f3c-bfe7-462b08faa2a9.mp4
+
+>>>>>>> 5eeb21cac8c67cf1d8da0113f4adb1e5cb5201d3
