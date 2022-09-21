@@ -24,13 +24,13 @@
 
 ## 서비스 소개
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0f1c23ef-eb59-4497-93e1-c8b41ead4219/Untitled.png)
+![Untitled (27)](https://user-images.githubusercontent.com/67450169/191557589-544f4f1a-b008-466b-89e5-c228bc56a5d2.png)
 
 ---
 
 ## 주요 페이지 소개
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/042876c9-4af2-4c0e-8c4c-3e7e03ffdd45/Untitled.png)
+![Untitled (28)](https://user-images.githubusercontent.com/67450169/191557618-be12f0d5-eca2-4a0c-b502-ec9b7ba2425f.png)
 
 ---
 
@@ -38,23 +38,22 @@
 
 ### 1.로그인 2.메인페이지 3.PT내용
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bf179738-25b9-48a6-89b0-f024c0ff0153/Untitled.png)
+![Untitled (29)](https://user-images.githubusercontent.com/67450169/191557629-d71bb708-d54b-4d44-a9a2-76cb5af15f0d.png)
 
 ---
 
 ### 1.예약페이지 2.기구선택 3.날짜선택
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2dbccb7c-f2ae-43ec-bbb2-1ff2e12b9951/Untitled.png)
+![Untitled (30)](https://user-images.githubusercontent.com/67450169/191557639-e1a5f4d4-2031-445e-9d66-5c07d7eb45dc.png)
 
 ---
 
 ### 1.예약시간표 2.예약시간 서택 3.기구 사용시간 선택
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ad82961a-323c-4650-84f8-2640d2eb608b/Untitled.png)
+![Untitled (31)](https://user-images.githubusercontent.com/67450169/191557651-1e201970-1fad-4289-9cbc-be0da5350eab.png)
 
 ---
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/caf89948-d35a-4cdd-8d91-27473480baa2/Untitled.png)
+![Untitled (32)](https://user-images.githubusercontent.com/67450169/191557659-a6297d40-0837-4521-a6b4-a0039998781e.png)
 
 ### 예약을 하면 타임테이블에 17시 5분간 예약이 된것을 확인 할 수 있고
 
@@ -64,13 +63,13 @@
 
 ### 1. 게시판 2.게시글&댓글
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/08eef811-2e56-4968-9ad7-2027098d68a0/Untitled.png)
+![Untitled (33)](https://user-images.githubusercontent.com/67450169/191557680-5574b710-1166-45ab-9193-2254bcefd310.png)
 
 ---
 
 ### 글쓰기
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/75d75ef6-780d-4e1a-961c-f958b69ca92b/Untitled.png)
+![Untitled (34)](https://user-images.githubusercontent.com/67450169/191557692-fa71088f-917e-48d9-85c1-483f53337cb8.png)
 
 
 
