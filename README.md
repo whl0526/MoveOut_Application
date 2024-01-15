@@ -82,3 +82,6 @@ https://user-images.githubusercontent.com/67422547/145715869-7fbee9d6-183c-4f3c-
 
 
 ![image](https://user-images.githubusercontent.com/67422547/145716931-155738f9-d680-40e7-abb8-9d048cb22594.png)
+어플리케이션을 만들기 위해  하이브리드 앱 프레임워크로 flutter를 사용했습니다.
+
+Ec2로 기본적인 서버를 만들고 **rds를 생성, ec2서버와 연동하여 서버를 구성**하고 **데이터 베이스에 저장하기 힘든 사진 파일**을 주고 받아야하기에 **Aws에서 제공하는s3 저장소를 사용하여 게시판에 사용될 사진 데이터를 처리** 하였습니다.
