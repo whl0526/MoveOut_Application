@@ -21,6 +21,11 @@
 - **헬스관련 정보 게시판을 통한 커뮤니티 구성**
 
 ---
+## 시연영상
+
+![image](https://user-images.githubusercontent.com/67422547/145716087-076ca197-087f-4d8c-a1b0-406aacdc5d65.png)
+
+https://user-images.githubusercontent.com/67422547/145715869-7fbee9d6-183c-4f3c-bfe7-462b08faa2a9.mp4
 
 ## 서비스 소개
 
@@ -70,21 +75,6 @@
 ### 글쓰기
 
 ![Untitled (34)](https://user-images.githubusercontent.com/67450169/191557692-fa71088f-917e-48d9-85c1-483f53337cb8.png)
-
-
-
-
-
-
-
-## 시연영상
-
-![image](https://user-images.githubusercontent.com/67422547/145716087-076ca197-087f-4d8c-a1b0-406aacdc5d65.png)
-
-https://user-images.githubusercontent.com/67422547/145715869-7fbee9d6-183c-4f3c-bfe7-462b08faa2a9.mp4
-
-
-
 
 
 ## 서버 구상도
